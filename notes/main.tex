@@ -1,0 +1,64 @@
+% Template:     Informe LaTeX
+% Documento:    Archivo principal
+% Versión:      8.3.5 (12/04/2024)
+% Codificación: UTF-8
+%
+% Autor: Pablo Pizarro R.
+%        pablo@ppizarror.com
+%
+% Manual template: [https://latex.ppizarror.com/informe]
+% Licencia MIT:    [https://opensource.org/licenses/MIT]
+
+% CREACIÓN DEL DOCUMENTO
+\documentclass[
+	spanish, % Idioma: spanish, english, etc.
+	letterpaper, oneside
+]{article}
+
+% INFORMACIÓN DEL DOCUMENTO
+\def\documenttitle {Google Data Analysis Course}
+\def\documentsubtitle {}
+\def\documentsubject {Un libro de apuntes por Amber Costa}
+
+\def\documentauthor {Amb Costa}
+\def\coursename {}
+\def\coursecode {}
+
+\def\universityname {}
+\def\universityfaculty {}
+\def\universitydepartment {}
+\def\universitydepartmentimage {}
+\def\universitydepartmentimagecfg {}
+\def\universitylocation {In your Area}
+
+% INTEGRANTES, PROFESORES Y FECHAS
+\def\authortable {
+}
+
+% IMPORTACIÓN DEL TEMPLATE
+\input{template}
+
+% INICIO DE PÁGINAS
+\begin{document}
+
+% PORTADA
+\templatePortrait
+
+% CONFIGURACIÓN DE PÁGINA Y ENCABEZADOS
+\templatePagecfg
+
+% TABLA DE CONTENIDOS - ÍNDICE
+\templateIndex
+
+% CONFIGURACIONES FINALES
+\templateFinalcfg
+
+% ======================= INICIO DEL DOCUMENTO =======================
+\input{ciclo_datos}
+\input{destrezas}
+\input{fases_add}
+\input{otros_f_add}
+\input{example} % Ejemplo, se puede borrar
+
+% FIN DEL DOCUMENTO
+\end{document}
