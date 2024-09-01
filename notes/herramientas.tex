@@ -1,13 +1,29 @@
 \section {Kit de Herramientas del Analista}
 
 \subsection{\textit{Spreadsheets} - Hojas de Cálculo}
-\begin{itemize}
-    \item {Recopilar, almacenar, organizar y ordenar información}
-    \item {Organización de los datos a través de clasificación y filtros}
-    \item {Uso de fórmulas y funciones para realizar cálculos utilizando los datos}
-    \item {Identificar patrones, reunir datos de manera que se adapten al proyecto en cuestión}
-    \item {Crear visualizaciones de datos como gráficos y tablas}
-\end{itemize}
+\begin{description}
+    \item[Celda]{ : Combinación de filas y columnas que designa una posición. El orden es ColFil. \textit{Ejemplo : columna A fila 3 = A3}
+    \begin{description}
+        \item[Referencia Relativa]{ : El valor de la celda cambia junto con la fórmula donde está presente, al arrastrarla o copiarla en otro lugar}
+        \item[Referencia Absoluta]{ : El valor de la celda es fijo y no cambia con movimientos en fórmulas o celdas.\textit{Para realizar cambio entre absoluto y relativo, presionar F4}}
+    \end{description}
+    \begin{table}
+        \centering
+        \begin{tabular}{|p{5cm}|p{4.5cm}|p{4.5cm}|}
+            \hline
+            \multicolumn{3}{|c|}{Diferencias entre Referencias de Celdas} \\
+            \hline
+            & \textbf{Referencia Absoluta} & \textbf{Referencia Relativa} \\
+            \hline
+            \textbf{Ejemplos} & A1, C3, G2:G9 & \$A\$10, C\$2, \$D3 \\
+            \hline
+            \textbf{Si la celda se arrastra una columna a la derecha, una fila hacia abajo} & A10 $\rightarrow$ B11 & \$A10 $\rightarrow$ \$A11 \\
+            \hline
+        \end{tabular}
+    \end{table}}
+    \item{Para escribir fórmulas, generalmente se empieza con '='. Al escribirlo, aparece un menú de autocompletar que incluye fórmulas, nombres y \textit{strings}. \textit{Ejemplo : =SUM()}}
+    \item {En la esquina inferior derecha se muestra un cuadrado de \textbf{Llenado Automático} : al hacer clic y arrastrar, se rellenan otras celdas con el mismo valor o fórmula}
+\end{description}
 
 \subsection{\textit{DB + Queries} - Bases de Datos y Consultas}
 \begin{itemize}
