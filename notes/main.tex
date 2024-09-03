@@ -38,8 +38,10 @@
 % IMPORTACIÓN DEL TEMPLATE
 \input{template}
 
-% Multirow for tables
+% Multirow for tables, glossaries
 \usepackage{multirow}
+\usepackage[toc]{glossaries-extra}
+\input{gloss}
 
 % INICIO DE PÁGINAS
 \begin{document}
@@ -66,6 +68,8 @@
 \input{otros_f_add}
 \input{problemas}
 %\input{example} Ejemplo, se puede borrar
+
+\printglossary
 
 % FIN DEL DOCUMENTO
 \end{document}
