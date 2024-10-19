@@ -9,26 +9,19 @@
 % protección de datos
 
 
-\subsection{\textit{Prepare} - Preparar}
-Una vez se define el proyecto, se \textbf{planifican} los datos necesarios para resolver el desafío. Se determinan \textbf{métricas, formatos y estructuras}, junto a \textbf{medidas de seguridad} como protección, administración y acceso. También se toman medidas contra \textbf{sesgo y parcialidad}
+\section{\textit{Prepare} - Preparar}
+Una vez se define el proyecto, se \textbf{planifican} los datos necesarios para resolver el desafío. Se determinan \textbf{métricas, formatos y estructuras}, junto a \textbf{medidas de seguridad} como protección, administración y acceso. También se toman medidas contra \gls{bias} y \gls{dtbs}. La modificación de formato, estructura o valor de los datos permite trabajar en
 \begin{itemize}
-    \item {\textbf{Preguntas Efectivas} :
-    \begin{itemize}
-        \item {Qué tipo de datos son adecuados y correctos para resolver el problema?}
-        \item {Qué necesito para descubrir cómo resolver este problema? qué investigación previa necesito?}
-        \item {Qué habilidades prácticas son necesarias para extraer, utilizar, organizar y proteger los datos?}
-    \end{itemize}}
+    \item {\textbf{Organización} : más fácil de usar}
+    \item {\textbf{Compatibilidad} : el mismo set de datos puede ser utilizado por aplicaciones o sistemas externos y diferentes}
+    \item {\textbf{Migración} : los datos similares en formato pueden transladarse de un sistema a otro}
+    \item {\textbf{Fusión} : unión de datos en una misma organización}
+    \item {\textbf{Mejora} : los datos pueden mostrarse en campos más detallados}
+    \item {\textbf{Comparación} : entre datos o sets}
 \end{itemize}
 
-\subsubsection{Conceptos Previos}
-\begin{itemize}
-    \item {\textbf{Población} : Todos los valores posibles en un set de datos}
-    \item{\textbf{Muestra} : Parte de una población, y que es representativa del mismo}
-    \item {\textbf{Modelo de Datos} : modelo utilizado para organizar y relacionar los \textit{Elementos de Datos : piezas de información como nombres de personas, números de cuenta y direcciones}}
-\end{itemize}
-
-\subsubsection{Tipos de Datos}
-\paragraph{Por Objetividad y Capacidad de Medición}
+\subsection{Tipos de Datos}
+\subsubsection{Por Objetividad y Capacidad de Medición}
 \begin{itemize}
     \item{\textbf{Cuantitativos} : Cuentan con hechos numéricos, medidas específicas y objetivas. \textit{Qué cosas, cuántas, qué tan seguido?} Se subdividen en dos tipos:
     \begin{itemize}
@@ -42,32 +35,76 @@ Una vez se define el proyecto, se \textbf{planifican} los datos necesarios para 
     \end{itemize}}
 \end{itemize}
 
-\paragraph{Por Cercanía a sus Fuentes}
+\subsubsection{Por Cercanía a sus Fuentes}
 \begin{itemize}
     \item {\textbf{\textit{$1^{\text{st}}$ party data} - de Primera Fuente} : Datos recolectados por un individuo o grupo, utilizando recursos propios}
     \item {\textbf{\textit{$2^{\text{nd}}$ party data} - de Segunda Fuente} : Datos recolectados por un grupo, directamente desde su audiencia, y que luego se venden}
     \item {\textbf{\textit{$3^{\text{rd}}$ party data} - de Tercera Fuente} : Datos recolectados desde fuentes externas, que no los capturaron directamente}
 \end{itemize}
 
-\paragraph{Por Ubicación}
+\subsubsection{Por Ubicación}
 \begin{itemize}
     \item {\textbf{Internos} : Datos que viven dentro de los sistemas de la compañía o empresa}
     \item {\textbf{Externos} : Datos que viven o son generados fuera de la organización}
 \end{itemize}
 
-\subsubsection{Estructuras de Datos}
+\subsubsection{Por Nivel de Organización}
 \begin{itemize}
-    \item {\textbf{Estructurados} : Datos organizados en formatos específicos, como filas y columnas. \textit{Ejemplos : Spreadsheets, DB}}
-    \item {\textbf{No Estructurados} : Datos que no evidencian ninguna manera fácil de organizar. \textit{Ejemplos : audios, videos, archivos, correos, fotos, redes sociales}}
+    \item {\textbf{Estructurados} : Corresponden a datos definidos, a menudo \textbf{cuantitativos}, organizados en formatos específicos como filas y columnas. Son fáciles de ordenar, buscar y analizar. \textit{Ejemplos : registros telefónicos, Excel, DB SQL}}
+    \item {\textbf{No Estructurados} : Datos variados, a menudo \textbf{cualitativos}, que no muestran alguna manera fácil de organizar. Proporcionan libertad de análisis, pero son más difíciles de buscar. \textbf{Representan la mayoría de los datos en el mundo.} \textit{Ejemplos : DB NOSQL, SMS, fotos y videos, archivos}}
 \end{itemize}
 
-
-\subsubsection{Recolección de Datos}
-Al momento de recolectar, se consideran los métodos de captura, fuentes de datos, la cantidad y periodo deseado. Una vez se tienen los datos, se decide y filtra qué datos utilizar
-
+\subsubsection{Por Formato}
 \begin{itemize}
-    \item {Entrevistas}
-    \item {Observaciones}
-    \item {Formularios, cuestionarios, encuestas}
-    \item {\textit{Cookies}}
+    \item {\textbf{\textit{Wide Data} - Formato Ancho} : Cada elemento de dato tiene un solo registro o fila, con múltiples campos que contienen los valores para sus atributos. Preferir cuando
+    \begin{itemize}
+        \item {Se crean tablas o gráficos con pocas variables sobre cada tema}
+        \item {Se comparan gráficos lineales sencillos}
+    \end{itemize}}
+    \item {\textbf{\textit{Long Data} - Formato Corto} : Cada registro se relaciona con un valor por atributo, así que cada elemento tendrá datos a través de múltiples registros. Preferir cuando
+    \begin{itemize}
+        \item {Se almacenan muchas variables sobre cada tema}
+        \item {Se realizan análisis estadísticos avanzados o gráficos}
+    \end{itemize}}
 \end{itemize}
+
+\subsection{Niveles y Técnicas del Modelado de Datos}
+Crear un \textbf{modelo} de datos corresponde a crear diagramas o visualizaciones que representen cómo estos se organizan y relacionan. \textbf{Algunas técnicas de modelado comunes son \textit{ERD, UML, Data Dictionary}}. Los tipos más comunes de modelado son 
+\begin{description}
+    \item[Modelado Conceptual]{ : Ofrece una visión de alto nivel de la estructura de datos. No contiene detalles técnicos. \textbf{Es la forma en que los datos interactúan en una organización}}
+    \item[Modelado Lógico]{ : Se centra en los detalles técnicos de una \textit{DB} como relaciones, atributos y entidades, inlcuyendo cómo identificar registros individuales}
+    \item[Modelado Físico]{ : Describe el funcionamiento de una \textit{DB} junto con todas las entidades y atributos utilizados, como \textit{ nombres de columnas y tablas, tipo de DB}} 
+\end{description}
+
+\subsection{Ética de los Datos}
+Extendiendo el concepto de \gls{ethcs}, la \textbf{ética de los datos} consiste en estándares para la recolección, uso y distribución de los datos, justificados por el \textit{\textbf{GDPR} - General Data Protection Regulation of the European Union}. Sus aspectos consisten en
+\begin{itemize}
+    \item {\textbf{\textit{Ownership} - Propiedad} : Los datos sin procesar son propiedad de los individuos que la entregan, y tienen el control principal sobre su uso, proceso y distribución}
+    \item {\textbf{\textit{Transaction Transparency} - Transparencia de Transacción} : Las actividades y algoritmos utilizados para procesar datos, debieran ser transparentes y entendibles para el individuo que los entrega}
+    \item {\textbf{\textit{Consent} - Consentimiento} : El individuo tiene derecho a conocer las formas y razones detrás del uso de sus datos antes de que estén de acuerdo con entregarlos}
+    \item {\textbf{\textit{Currency} - Transacciones} : Los individuos debieran ser conscientes de las transacciones monetarias y su escala, que resulten del uso de los datos}
+    \item {\textbf{\textit{Privacy} - Privacidad} : Ante toda transacción de datos, la información y actividad personal del individuo debe asegurarse. Esto puede traducirse en
+    \begin{itemize}
+        \item {Protección contra acceso no autorizado a datos privados}
+        \item {Libertad ante uso inapropiado de los datos}
+        \item {Derecho a inspeccionar, actualizar o corregir datos}
+        \item {Consentimiento libre para el uso o restricción de datos}
+        \item {Derecho legal al acceso de los datos}
+    \end{itemize}}
+    \item {\textbf{\textit{Openness} - Apertura} : Los datos procesados debieran ser de libre acceso, uso y distribución. Los estándares de \textbf{\textit{Open Data}} son
+    \begin{itemize}
+        \item {\textbf{Disponibilidad y Acceso}}
+        \item {\textbf{Reutilización y Redistribución}}
+        \item {\textbf{Participación Universal}}
+        \item {\textbf{Interoperabilidad} : capacidad de conectar sistemas y servicios para la conexión y distribución abierta de datos}
+    \end{itemize}}
+\end{itemize}
+
+\subsubsection{Anonimización de Datos}
+Protección de los \textbf{datos privados o confidenciales} de las personas. Algunos ejemplos son \textit{números de teléfono, nombres, patentes de autos, direcciones IP, registros médicos, números de cuentas bancarias, número de seguro social}
+\begin{itemize}
+    \item {\textbf{\textit{PII} - Información de Identificación Personal} : Información que puede usarse por si misma o junto a otros datos, para rastrear la identidad de una persona}
+    \item {\textbf{Desidentificación} : proceso para eliminar toda la información de identificación personal. \textit{Ejemplo : dejar espacios en blanco, ejecutar comando hash, enmascarar con códigos de longitud fija, ocultar utilizando valores alterados}}
+\end{itemize}
+
+\newpage
