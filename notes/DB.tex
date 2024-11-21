@@ -1,0 +1,89 @@
+% separando subsecciones por motivos de orden
+\subsection{\textit{DB + Queries} - Bases de Datos y Consultas}
+\begin{itemize}
+    \item {Aislar información específica de una base de datos}
+    \item {Facilitar aprendizaje y comprensión de las solicitudes/consultas}
+    \item {Seleccionar, crear, agregar o descargar datos desde la Base de Datos para Análisis}
+    \item {\textbf{\textit{Primary Key} - Clave Primaria} : Identificador que referencia una columna donde cada uno de sus valores es único
+    \begin{itemize}
+        \item {Se utiliza para asegurar que los datos en una columna en específico son únicos}
+        \item {No admite valores nulos o blancos}
+        \item {Solo se permite una llave primaria en una tabla. Además, las tablas no siempre requieren tener una clave primaria}
+        \item {Es posible construir una clave primaria a partir de varias columnas de una tabla: \textbf{Clave Compuesta}}
+    \end{itemize}}
+    \item {\textbf{\textit{Foreign Key} - Clave Externa} : Campo dentro de una tabla que es una llave primaria en otra.
+    \begin{itemize}
+        \item {Columna (o grupo de) que permite conectar los datos entre dos tablas}
+        \item {Como referencia a la clave primaria de otra tabla, permite conectarlas}
+        \item {Puede existir más de una clave externa en una tabla}
+    \end{itemize}}
+    \item {\textbf{Tipos de Base de Datos : }
+    \begin{itemize}
+        \item {\textbf{Relacional} : Bases de datos que contienen un grupo de tablas que pueden conectarse entre si utilizando sus relaciones o lo que tengan en común. Generalmente se relacionan con \textit{SQL - Structured Query Language} \textbf{Si un campo se usa en dos tablas, esto puede usarse para conectarlas.} \textit{Ejemplos de dialectos SQL: MySQL, PostgreSQL, Big Query}}
+        \item {\textbf{No Relacional} : Bases de datos donde todas las variables posibles a analizar, se agrupan conjuntamente. Esto las hace difícil de clasificar. Generalmente relacionadas con dialectos \textit{NOSQL}}
+    \end{itemize}}
+\end{itemize}
+
+\subsubsection{\textit{Metadata} - Metadatos}
+Los metadatos son datos sobre datos, y permiten interpretar los contenidos de una hoja de cálculo o DB. Como parte de \gls{dtgvrnnc}, se almacenan en una ubicación central, convirtiéndose en una fuente única y verídica de información consistente y uniforme, de acceso estandarizado. Así, se asegura que los datos son exactos, precisos, relevantes y actualizados. 
+
+\paragraph{Repositorios de \textit{Metadata}}
+Bases de datos creadas específicamente para guardar metadatos, ya sea de forma física o virtual. Permiten realizar agregaciones de datos de forma más fácil y rápida al describir aspectos como
+\begin{itemize}
+    \item {Estado y Ubicación de los metadatos}
+    \item {Estructura de las tablas contenidas}
+    \item {Descripción de flujo de datos dentro del repositorio}
+    \item {Seguimiento de los usuarios que acceden a los metadatos, junto con el tiempo de acceso}
+\end{itemize}
+
+
+\paragraph{Algunos ejemplos de elementos de \textit{Metadata}}
+\begin{itemize}
+    \item {Títulos y Descripciones}
+    \item {Etiquetas y Categorías}
+    \item {Permisos de Acceso y Edición}
+    \item {Fecha de Creación y Usuario a cargo}
+    \item {Fecha de Modificación y Usuario que realizó el cambio}
+\end{itemize}
+
+\paragraph{Tipos más comunes de \textit{Metadata}}
+\begin{itemize}
+        \item {\textbf{Descriptivo} : Describe los datos, y puede utilizarse para identificarlos a futuro}
+        \item {\textbf{Estructural} : Indica cómo un grupo de datos se organiza, y si es que pertenece (o no) a una o más recolecciones de datos}
+        \item {\textbf{Administrativo} : Indica la fuente técnica de una propiedad u objeto digital}
+\end{itemize}
+
+\subsubsection{Comandos y Sintaxis SQL}
+Tomar en cuenta que existen múltiples dialectos SQL y es recomendable consultar la documentación. Sin embargo, la gran mayoría de las instrucciones son comunes, y se promueven buenas prácticas de comandos. Algunos de los dialectos SQL consisten en \textit{MySQL, BigQuery, PostgreSQL, Microsoft SQL, SQLite}
+\begin{itemize}
+    \item [*]{ : selector universal para todas las columnas}
+\end{itemize}
+
+\paragraph{Cláusulas}
+Instrucciones básicas de todo \gls{qry} de SQL
+\begin{itemize}
+    \item {\textbf{SELECT}}
+    \item {\textbf{FROM}\textit{ : table\_name}}
+    \item {\textbf{WHERE} : filtro para incorporar condiciones tipo \textit{WHEN}, etc}
+\end{itemize}
+
+\paragraph{Buenas Prácticas}
+\begin{itemize}
+    \item {MAYÚSCULAS para iniciadores/cláusulas y funciones}
+    \item {minúsculas para nombres de columnas. evitar mezclas}
+    \item {'comillas simples' para strings}
+    \item {${"}$comillas dobles${"}$ si el string contiene comillas simples/'apóstrofos'}
+    \item {${--}$realizar comentarios para revisiones a futuro}
+    \item{/* Para comentarios muy extensos, considerar este formato */}
+    \item {\textbf{\textit{snake\_case}} como reemplazo de los espacios en los nombres\_de\_columnas}
+    \item {\textbf{\textit{CamelCase}} para nombrar tablas. laPrimeraMayúscula no es obligatoria}
+    \item {Uso de sangrías para mantener cada línea en menos de 100 caracteres}
+    \item {Considerar el uso de editores de texto SQL, que mejoran la legibilidad a través de ediciones como colores y sangrías, además de aceptar \gls{rgx}}
+\end{itemize}
+
+\paragraph{Excepciones}
+\begin{itemize}
+    \item {Generalmente el uso de mayúsculas/minúsculas no afecta al código. BigQuery si distingue entre mayúsculas/minúsculas, a diferencia de otros dialectos}
+    \item {Lo mismo para comillas simples o dobles, pero las buenas prácticas garantizan buen funcionamiento a través de todos los dialectos}
+    \item {MySQL acepta \#etiqueta para comentarios}
+\end{itemize}

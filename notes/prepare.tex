@@ -20,52 +20,18 @@ Una vez se define el proyecto, se \textbf{planifican} los datos necesarios para 
     \item {\textbf{Comparación} : entre datos o sets}
 \end{itemize}
 
-\subsection{Tipos de Datos}
-\subsubsection{Por Objetividad y Capacidad de Medición}
+\subsection{Ordenar vs. Filtrar}
 \begin{itemize}
-    \item{\textbf{Cuantitativos} : Cuentan con hechos numéricos, medidas específicas y objetivas. \textit{Qué cosas, cuántas, qué tan seguido?} Se subdividen en dos tipos:
-    \begin{itemize}
-        \item{\textbf{Discretos} : Son cuantificables y tienen un número limitado de valores}
-        \item{\textbf{Contínuos} : Se miden y pueden tener casi cualquier valor numérico}
-    \end{itemize}}
-    \item{\textbf{Cualitativos} : Medidas subjetivas o explanatorias para cualidades y características. \textit{Por qué? Cómo?} Estos datos también se dividen en
-    \begin{itemize}
-        \item{\textbf{Nominal} : No presentan estructura o secuencia aparente}
-        \item{\textbf{Ordinal} : Pueden ordenarse en base a características}
-    \end{itemize}}
+    \item {\textbf{Ordenado} : Búsqueda de orden significativo para facilitar el entender, analizar y visualizar datos}
+    \item {\textbf{Filtrar} : Ocultar datos que no cumplan con criterios definidos, para destacar los que si lo hacen}
 \end{itemize}
 
-\subsubsection{Por Cercanía a sus Fuentes}
+\subsection{Organización de Datos}
+Al organizar los datos, estos son más fáciles de encontrar, usar, mantener seguros y también previenen problemas a futuro. Se recomienda establecer las siguientes prácticas con el equipo de trabajo al empezar el proyecto, e implementar convenciones de metadatos
 \begin{itemize}
-    \item {\textbf{\textit{$1^{\text{st}}$ party data} - de Primera Fuente} : Datos recolectados por un individuo o grupo, utilizando recursos propios}
-    \item {\textbf{\textit{$2^{\text{nd}}$ party data} - de Segunda Fuente} : Datos recolectados por un grupo, directamente desde su audiencia, y que luego se venden}
-    \item {\textbf{\textit{$3^{\text{rd}}$ party data} - de Tercera Fuente} : Datos recolectados desde fuentes externas, que no los capturaron directamente}
-\end{itemize}
-
-\subsubsection{Por Ubicación}
-\begin{itemize}
-    \item {\textbf{Internos} : Datos que viven dentro de los sistemas de la compañía o empresa}
-    \item {\textbf{Externos} : Datos que viven o son generados fuera de la organización}
-\end{itemize}
-
-\subsubsection{Por Nivel de Organización}
-\begin{itemize}
-    \item {\textbf{Estructurados} : Corresponden a datos definidos, a menudo \textbf{cuantitativos}, organizados en formatos específicos como filas y columnas. Son fáciles de ordenar, buscar y analizar. \textit{Ejemplos : registros telefónicos, Excel, DB SQL}}
-    \item {\textbf{No Estructurados} : Datos variados, a menudo \textbf{cualitativos}, que no muestran alguna manera fácil de organizar. Proporcionan libertad de análisis, pero son más difíciles de buscar. \textbf{Representan la mayoría de los datos en el mundo.} \textit{Ejemplos : DB NOSQL, SMS, fotos y videos, archivos}}
-\end{itemize}
-
-\subsubsection{Por Formato}
-\begin{itemize}
-    \item {\textbf{\textit{Wide Data} - Formato Ancho} : Cada elemento de dato tiene un solo registro o fila, con múltiples campos que contienen los valores para sus atributos. Preferir cuando
-    \begin{itemize}
-        \item {Se crean tablas o gráficos con pocas variables sobre cada tema}
-        \item {Se comparan gráficos lineales sencillos}
-    \end{itemize}}
-    \item {\textbf{\textit{Long Data} - Formato Corto} : Cada registro se relaciona con un valor por atributo, así que cada elemento tendrá datos a través de múltiples registros. Preferir cuando
-    \begin{itemize}
-        \item {Se almacenan muchas variables sobre cada tema}
-        \item {Se realizan análisis estadísticos avanzados o gráficos}
-    \end{itemize}}
+    \item {\textbf{Convenciones de Nomenclatura} : Crear nombres significativos y cortos para archivos que lo describan. Eligiendo nombres descriptivos y lógicos, son más fáciles de utilizar y encontrar. Algunos elementos a usar son fechas (formato según país de trabajo), versiones (v02), nombre del proyecto. Por último, evitar espacios o caracteres extraños, y preferir guiones (bajos) o mayúsculas}
+    \item {\textbf{Jerarquía Lógica de Carpetas} : Utilizar carpetas y subcarpetas en jerarquía lógica para agrupar archivos relacionados a algún proyecto o entre si}
+    \item {\textbf{Archivado} : Mover proyectos viejos o en desuso a otra ubicación, ya sean carpetas o unidades de almacenamiento externo. Esto permite crear un archivo, además de eliminar ruido visual. También es una buena oportunidad para realizar copias automáticas, o agendarlas de forma manual}
 \end{itemize}
 
 \subsection{Niveles y Técnicas del Modelado de Datos}
@@ -106,5 +72,14 @@ Protección de los \textbf{datos privados o confidenciales} de las personas. Alg
     \item {\textbf{\textit{PII} - Información de Identificación Personal} : Información que puede usarse por si misma o junto a otros datos, para rastrear la identidad de una persona}
     \item {\textbf{Desidentificación} : proceso para eliminar toda la información de identificación personal. \textit{Ejemplo : dejar espacios en blanco, ejecutar comando hash, enmascarar con códigos de longitud fija, ocultar utilizando valores alterados}}
 \end{itemize}
+
+\subsection{Seguridad de los Datos}
+Protección de los datos ante posibles accesos no autorizados, o corrupción de distintos grados. Algunas herramientas como hojas de cálculo tienen medidas de seguridad incorporadas, como permisos de edición, visualización o control. Pero otras medidas generales consisten en
+\begin{itemize}
+    \item {\textbf{Cifrado} : Un algoritmo único altera los datos y funciona como clave para que otros individuos o sistemas puedan usarlos}
+    \item {\textbf{Tokenización} : Reemplazo de los datos con otros generados aleatoriamente. Para acceder a los datos originales y completos, el usuario o aplicación debe tener permiso para utilizar los datos tokenizados, junto con la asignación del token. Si estos datos tokenizados se piratean, los originales estarán seguros en otra ubicación}
+\end{itemize}
+
+
 
 \newpage

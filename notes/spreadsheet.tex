@@ -1,0 +1,46 @@
+% separación de subsección por motivos de orden
+
+\subsection{\textit{Spreadsheets} - Hojas de Cálculo}
+Las hojas de cálculo pueden conectarse con otras hojas, tablas HTML y archivos \gls{csv}.
+\begin{description}
+    \item[Celda]{ : Posición descrita usando filas \textbf{o registros/\textit{records}} y columnas \textbf{o campos/\textit{fields}}. \textit{Ejemplo : columna A fila 3 = A3}. 
+    \begin{description}
+        \item[Referencia Relativa]{ : El valor de la celda cambia junto con la fórmula donde está presente, al arrastrarla o copiarla en otro lugar}
+        \item[Referencia Absoluta]{ : El valor de la celda es fijo y no cambia con movimientos en fórmulas o celdas.\textit{Para realizar cambio entre absoluto y relativo, presionar F4}}
+        \begin{table}
+            \centering
+            \begin{tabular}{|p{5cm}|p{4.5cm}|p{4.5cm}|}
+                \hline
+                \multicolumn{3}{|c|}{Diferencias entre Referencias de Celdas} \\
+                \hline
+                & \textbf{Referencia Absoluta} & \textbf{Referencia Relativa} \\
+                \hline
+                \textbf{Ejemplos} & A1, C3, G2:G9 & \$A\$10, C\$2, \$D3 \\
+                \hline
+                \textbf{Si la celda se arrastra una columna a la derecha, una fila hacia abajo} & A10 $\rightarrow$ B11 & \$A10 $\rightarrow$ \$A11 \\
+                \hline
+            \end{tabular}
+        \end{table}
+        \item[Formato Condicional]{ : Es posible resaltar celdas con colores diferentes en función del contexto, como errores o valores importantes}
+    \end{description}}
+    \item[Fórmulas y Funciones]{ : 
+    \begin{description}
+        \item {Para empezar fórmulas, se empieza escribiendo '='. Al hacerlo, se despliega un menú que incluye fórmulas, nombres y \textit{strings}}
+        \item {No todas las funciones requieren operadores. \textit{Ejemplos : SUM, AVERAGE, COUNT, MIN, MAX}}
+        \item {Es posible combinar ambos, la fórmula entrega los criterios bajo los que una función se ejecuta. \textit{Ejemplo : =CONTAR:SI()}}
+        \item {En la esquina inferior derecha se muestra un cuadrado de \textbf{Llenado Automático} : al hacer clic y arrastrar, se rellenan otras celdas con el mismo término}
+        \item[Errores Comunes]{ : 
+        \begin{itemize}
+            \item {\textbf{\#DIV/0!} : Intento de dividir por cero o por una celda vacía}
+            \item {\textbf{\#ERROR()} : Fórmula no puede ser interpretada como input. \textit{Parsing error}}
+            \item {\textbf{\#N/A} : Los datos a usar en la fórmula no se encuentran en la hoja}
+            \item {\textbf{\#NAME?} : No se entiende el nombre de la fórmula o función}
+            \item {\textbf{\#NUM!} : Los cálculos de la fórmula o función no pueden realizarse}
+            \item {\textbf{\#VALUE!} : Error general para problemas con fórmulas o referencias de celda}
+            \item {\textbf{\#REF!} : Una fórmula referencia una celda no válida o eliminada}
+        \end{itemize}} 
+    \end{description}}
+\end{description}
+
+
+
