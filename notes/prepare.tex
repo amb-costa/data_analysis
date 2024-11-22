@@ -1,16 +1,5 @@
-% nta: eventualmente se añade esto: cosas para aprender en la unidad
-% cómo se generan los datos
-% diferentes formatos, tipos y estructuras de datos
-% analizar sesgo y credibilidad
-% qué significa "datos limpios"?
-% familiaridad con db
-% extracción de datos con sql
-% introducción a organización de datos
-% protección de datos
-
-
 \section{\textit{Prepare} - Preparar}
-Una vez se define el proyecto, se \textbf{planifican} los datos necesarios para resolver el desafío. Se determinan \textbf{métricas, formatos y estructuras}, junto a \textbf{medidas de seguridad} como protección, administración y acceso. También se toman medidas contra \gls{bias} y \gls{dtbs}. La modificación de formato, estructura o valor de los datos permite trabajar en
+Una vez se define el proyecto, se \textbf{planifican} los datos necesarios para resolver el desafío. Se determinan \textbf{métricas, formatos y estructuras}, junto a \textbf{medidas de seguridad} como protección, administración y acceso. También se toman medidas contra \textbf{sesgos estadísticos}. La modificación de formato, estructura o valor de los datos permite trabajar en
 \begin{itemize}
     \item {\textbf{Organización} : más fácil de usar}
     \item {\textbf{Compatibilidad} : el mismo set de datos puede ser utilizado por aplicaciones o sistemas externos y diferentes}
@@ -37,7 +26,7 @@ Al organizar los datos, estos son más fáciles de encontrar, usar, mantener seg
 \subsection{Niveles y Técnicas del Modelado de Datos}
 Crear un \textbf{modelo} de datos corresponde a crear diagramas o visualizaciones que representen cómo estos se organizan y relacionan. \textbf{Algunas técnicas de modelado comunes son \textit{ERD, UML, Data Dictionary}}. Los tipos más comunes de modelado son 
 \begin{description}
-    \item[Modelado Conceptual]{ : Ofrece una visión de alto nivel de la estructura de datos. No contiene detalles técnicos. \textbf{Es la forma en que los datos interactúan en una organización}}
+    \item[Modelado Conceptual]{ : Ofrece una visión de alto nivel de la estructura de datos sin incluir detalles técnicos. \textbf{Forma en que los datos interactúan en una organización}}
     \item[Modelado Lógico]{ : Se centra en los detalles técnicos de una \textit{DB} como relaciones, atributos y entidades, inlcuyendo cómo identificar registros individuales}
     \item[Modelado Físico]{ : Describe el funcionamiento de una \textit{DB} junto con todas las entidades y atributos utilizados, como \textit{ nombres de columnas y tablas, tipo de DB}} 
 \end{description}

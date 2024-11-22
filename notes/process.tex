@@ -1,0 +1,67 @@
+% estos son los temas a tocar
+% data integrity
+% sample size
+% random sampling
+% testing data
+% data cleaning techniques for spreadsheets + DB
+% verifying + reporting (documenting) cleaning results
+
+
+\section{\textit{Process} - Procesar}
+Después de ser recopilados, los datos pasan por una \textbf{limpieza} para arreglar cualquier limitación como errores, duplicados o espacios vacíos, y manejar imprecisiones, casos extremos y valores desalineados. También se comprueba la ausencia de sesgos
+\begin{itemize}
+    \item {\textbf{Datos Duplicados} : el mismo dato aparece en más de una fila}
+    \item {\textbf{Datos Indirectos} : datos con características similares a los datos reales}
+\end{itemize}
+
+\subsection{Datos Sucios}
+Los datos sucios son incompletos, incorrectos y/o irrelevantes para el problema formulado
+\paragraph{Tipos de datos sucios más comunes}
+\begin{itemize}
+    \item {\textbf{Desactualizados} : Existen valores más actualizados y exactos}
+    \item {\textbf{Duplicados} : Existen registros repetidos}
+    \item {\textbf{Incompletos} : Carecen de campos importantes}
+    \item {\textbf{Incorrectos, Inexactos}}
+    \item {\textbf{Desordenados} : Diferentes formatos para el mismo valor}
+    \item {\textbf{Provenientes de una sola fuente}}
+    \item {\textbf{Actualizados constantemente}}
+    \item {\textbf{Limitados por geografía}}
+\end{itemize}
+
+\paragraph{Situaciones de posible Vulneración de Integridad}
+\begin{itemize}
+    \item {\textbf{Replicación/Duplicación} : los datos se guardan en diferentes ubicaciones a la vez}
+    \item {\textbf{Transferencia} : los datos son copiados desde un dispositivo de almacenamiento a una memoria, o desde un computador a otro}
+    \item {\textbf{Manipulación} : los datos se modifican para que sean más fáciles de organizar y leer} 
+    \item {\textbf{Amenazas Informáticas} : virus, \textit{malware}, hacking, fallas de sistemas, entre otras}
+    \item {\textbf{Error Humano} : causa principal de mala calidad de datos}
+\end{itemize}
+
+\subsection{Limpieza e Integridad de los Datos}
+Cuando los datos están íntegros, se asegura que son exactos, completos, consistentes y confiables a lo largo de su ciclo de vida: un análisis exitoso depende de esta integridad. Se recomienda realizar una \textbf{copia de los datos} antes de iniciar cualquier proceso de limpieza, orden o filtrado. 
+\paragraph{Cómo trabajar con Datos Incompletos}
+\begin{itemize}
+    \item {Identificar patrones en los datos ya disponibles}
+    \item {Si el tiempo lo permite, esperar para recolectar más datos}
+    \item {Conversar con \gls{stkhldrs} y ajustar los objetivos}
+    \item {Buscar otros sets de datos que puedan funcionar}
+\end{itemize}
+
+
+\subsection{Validación de Datos}
+La validación es una herramienta de revisión de exactitud y calidad de los datos antes de añadirlos o importarlos. Se utilizan criterios para los datos, y la validez se determina cuando los valores cumplen (o no) con las restricciones establecidas
+\begin{description}
+    \item [\gls{datatype}]{ : formato correcto para los valores}
+    \item [Rango]{ : los valores se encuentran dentro de un rango de máximos y mínimos predefinidos}
+    \item [Obligatoriedad]{ : los valores no pueden ser nulos, blancos o vacíos}
+    \item [Unicidad]{ : ningún valor está duplicado}
+    \item [Largo de Campo]{ : los valores dentro de un campo se encuentran dentro del rango de caracteres esperado}
+    \item [\gls{rgx}]{ : los valores coinciden con patrones preestablecidos}
+    \item [Campos Cruzados]{ : los valores cumplen simultáneamente con restricciones múltiples}
+    \item [Membresía]{ : los valores en una columna provienen de un conjunto de valores específicos} 
+    \item [Exactitud]{ : se cumple con un grado de conformidad establecido con respecto a la entidad real siendo medida}
+    \item [Exhaustividad]{ : grado en que los datos contienen todas las medidas o componentes deseados}
+    \item [Coherencia]{ : grado de repetibilidad de los datos desde diferentes puntos de entrada o recopilación}
+\end{description}
+
+\newpage
