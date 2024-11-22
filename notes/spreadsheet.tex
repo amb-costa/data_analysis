@@ -2,6 +2,23 @@
 
 \subsection{\textit{Spreadsheets} - Hojas de Cálculo}
 Las hojas de cálculo pueden conectarse con otras hojas, tablas HTML y archivos \gls{csv}.
+
+\paragraph{Herramientas Comunes}
+Considerar que toda fórmula se comienza escribiendo '='. Al hacerlo, se despliega un menú que incluye fórmulas, nombres y \gls{str}. Esta lista incluye ejemplos de \gls{syntx} para fórmulas y funciones
+\begin{itemize}
+    \item {\textbf{Formateo Condicional} : Cambia la estética de las celdas cuando sus valores cumplen con condiciones especificadas}
+    \item {\textbf{Llenado Automático} : Presente como un cuadrado en la esquina inferior derecha de la celda, se arrastra y llena celdas vacías con el contenido y referencias de la celda inicial}
+    \item {\textbf{Remover Duplicados} : Busca y elimina automáticamente aquellas entradas que podrían estar duplicadas} 
+    \item {\textbf{SPLIT} : Función que divide el texto en base a un caracter, y guarda cada fragmento en una celda nueva. El caracter es un \textbf{delimitador} y puede ser un espacio, coma, guiones, entre otros}
+    \item {\textbf{=CONCATENATE(item1,item2...)} : Función que une múltiples \gls{str} en uno solo. \textit{=CONCATENATE("text","string") devuelve "textstring"}}
+    \item {\textbf{=COUNTIF(rango,"valor\_comillas")} : Función que devuelve el número de celdas que cumplen con un valor específico dentro de un rango determinado. \textit{=COUNTIF(A2:A30,'${\geq}$10') devuelve la cantidad de valores que son iguales o mayores a 10}}
+    \item {\textbf{=LEN(rango)} : Función que entrega el largo de un \gls{str} al contar el número de caracteres que contiene. \textit{=LEN(A21) devuelve el largo del string en la celda A21}}
+    \item {\textbf{=LEFT} : Función que devuelve un conjunto de caracteres a la izquierda de un \gls{str} determinado}
+    \item {\textbf{=RIGHT} : Función que devuelve un conjunto de caracteres a la derecha de un \gls{str} determinado}
+    \item {\textbf{=MID(rango,punto\_referencia,cant\_char)} : Función que devuelve un segmento desde el medio de un \gls{str}. \textit{=MID(C3,4,5) devuelve un string de 5 caracteres que empezó en la posición 4 del string inicial ubicado en la celda C3}}
+    \item {\textbf{=TRIM(rango)} : Función que remueve los espacios iniciales, finales y repetidos de un \gls{str}. \textit{=TRIM('' a esto le sobran espacios  '') devuelve ''a esto le sobran espacios''}}    
+\end{itemize}
+
 \begin{description}
     \item[Celda]{ : Posición descrita usando filas \textbf{o registros/\textit{records}} y columnas \textbf{o campos/\textit{fields}}. \textit{Ejemplo : columna A fila 3 = A3}. 
     \begin{description}
@@ -21,14 +38,10 @@ Las hojas de cálculo pueden conectarse con otras hojas, tablas HTML y archivos 
                 \hline
             \end{tabular}
         \end{table}
-        \item[Formato Condicional]{ : Es posible resaltar celdas con colores diferentes en función del contexto, como errores o valores importantes}
     \end{description}}
     \item[Fórmulas y Funciones]{ : 
     \begin{description}
-        \item {Para empezar fórmulas, se empieza escribiendo '='. Al hacerlo, se despliega un menú que incluye fórmulas, nombres y \textit{strings}}
         \item {No todas las funciones requieren operadores. \textit{Ejemplos : SUM, AVERAGE, COUNT, MIN, MAX}}
-        \item {Es posible combinar ambos, la fórmula entrega los criterios bajo los que una función se ejecuta. \textit{Ejemplo : =CONTAR:SI()}}
-        \item {En la esquina inferior derecha se muestra un cuadrado de \textbf{Llenado Automático} : al hacer clic y arrastrar, se rellenan otras celdas con el mismo término}
         \item[Errores Comunes]{ : 
         \begin{itemize}
             \item {\textbf{\#DIV/0!} : Intento de dividir por cero o por una celda vacía}

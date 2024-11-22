@@ -12,6 +12,7 @@ Después de ser recopilados, los datos pasan por una \textbf{limpieza} para arre
 \begin{itemize}
     \item {\textbf{Datos Duplicados} : el mismo dato aparece en más de una fila}
     \item {\textbf{Datos Indirectos} : datos con características similares a los datos reales}
+    \item {\textbf{Fusión de Datos} : proceso de combinación de dos o más sets de datos en uno. Es importante que los sets sean \textbf{compatibles}, es decir, que puedan trabajar entre si}
 \end{itemize}
 
 \subsection{Datos Sucios}
@@ -38,13 +39,19 @@ Los datos sucios son incompletos, incorrectos y/o irrelevantes para el problema 
 \end{itemize}
 
 \subsection{Limpieza e Integridad de los Datos}
-Cuando los datos están íntegros, se asegura que son exactos, completos, consistentes y confiables a lo largo de su ciclo de vida: un análisis exitoso depende de esta integridad. Se recomienda realizar una \textbf{copia de los datos} antes de iniciar cualquier proceso de limpieza, orden o filtrado. 
+Cuando los datos están íntegros, se asegura que son exactos, completos, consistentes y confiables a lo largo de su ciclo de vida: un análisis exitoso depende de esta integridad. Se recomienda realizar una \textbf{copia de los datos} antes de iniciar cualquier proceso de limpieza, orden o filtrado. El proceso de limpiado incluye pero no se limita a 
+\begin{itemize}
+    \item {Remover duplicados}
+    \item {Remover espacios extra o en blanco}
+    \item {Arreglar faltas de ortografía, puntuación incorrecta, mayúsculas inconsistentes, entre otras fallas tipográficas}
+    \item {Remover formatos}
+\end{itemize}
 \paragraph{Cómo trabajar con Datos Incompletos}
 \begin{itemize}
     \item {Identificar patrones en los datos ya disponibles}
     \item {Si el tiempo lo permite, esperar para recolectar más datos}
     \item {Conversar con \gls{stkhldrs} y ajustar los objetivos}
-    \item {Buscar otros sets de datos que puedan funcionar}
+    \item {Buscar otros sets de datos que puedan funcionar. \textit{Posiblemente realizar Fusión de Datos}}
 \end{itemize}
 
 
@@ -63,5 +70,19 @@ La validación es una herramienta de revisión de exactitud y calidad de los dat
     \item [Exhaustividad]{ : grado en que los datos contienen todas las medidas o componentes deseados}
     \item [Coherencia]{ : grado de repetibilidad de los datos desde diferentes puntos de entrada o recopilación}
 \end{description}
+
+\subsection{Errores Comunes de Limpieza}
+\begin{itemize}
+    \item {No verificar errores ortográficos}
+    \item {No documentar errores}
+    \item {No verificar valores de campos erróneos}
+    \item {Pasar por alto valores faltantes}
+    \item {Mirar solo un subconjunto de datos}
+    \item {Perder de vista los objetivos empresariales}
+    \item {No corregir la fuente de los errores}
+    \item {No analizar el sistema antes de limpiar los datos}
+    \item {No realizar copias de seguridad antes de empezar la limpieza}
+    \item {No contemplar la limpieza en plazos y procesos}
+\end{itemize}
 
 \newpage
