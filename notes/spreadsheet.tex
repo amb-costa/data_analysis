@@ -1,22 +1,28 @@
 % separación de subsección por motivos de orden
 
-\subsection{\textit{Spreadsheets} - Hojas de Cálculo}
-Las hojas de cálculo pueden conectarse con otras hojas, tablas HTML y archivos \gls{csv}.
+\section{\textit{Spreadsheets} - Hojas de Cálculo}
+Las hojas de cálculo se utilizan generalmente para conjuntos de datos pequeños, donde los valores se ingresan de forma manual. Brindan funciones incorporadas como creaciones de gráficos y visualizaciones, corrección ortográfica incorporada, entre otras. Pueden conectarse con otras hojas, tablas HTML y archivos \gls{csv}.
 
 \paragraph{Herramientas Comunes}
-Considerar que toda fórmula se comienza escribiendo '='. Al hacerlo, se despliega un menú que incluye fórmulas, nombres y \gls{str}. Esta lista incluye ejemplos de \gls{syntx} para fórmulas y funciones
+Toda fórmula se comienza escribiendo '='. Al hacerlo, se despliega un menú que incluye fórmulas, nombres y \gls{str}. Se incluyen ejemplos de \gls{syntx} para \textcolor{blue}{fórmulas} y \textcolor{ForestGreen}{funciones}
 \begin{itemize}
     \item {\textbf{Formateo Condicional} : Cambia la estética de las celdas cuando sus valores cumplen con condiciones especificadas}
     \item {\textbf{Llenado Automático} : Presente como un cuadrado en la esquina inferior derecha de la celda, se arrastra y llena celdas vacías con el contenido y referencias de la celda inicial}
     \item {\textbf{Remover Duplicados} : Busca y elimina automáticamente aquellas entradas que podrían estar duplicadas} 
-    \item {\textbf{SPLIT} : Función que divide el texto en base a un caracter, y guarda cada fragmento en una celda nueva. El caracter es un \textbf{delimitador} y puede ser un espacio, coma, guiones, entre otros}
-    \item {\textbf{=CONCATENATE(item1,item2...)} : Función que une múltiples \gls{str} en uno solo. \textit{=CONCATENATE("text","string") devuelve "textstring"}}
-    \item {\textbf{=COUNTIF(rango,"valor\_comillas")} : Función que devuelve el número de celdas que cumplen con un valor específico dentro de un rango determinado. \textit{=COUNTIF(A2:A30,'${\geq}$10') devuelve la cantidad de valores que son iguales o mayores a 10}}
-    \item {\textbf{=LEN(rango)} : Función que entrega el largo de un \gls{str} al contar el número de caracteres que contiene. \textit{=LEN(A21) devuelve el largo del string en la celda A21}}
-    \item {\textbf{=LEFT} : Función que devuelve un conjunto de caracteres a la izquierda de un \gls{str} determinado}
-    \item {\textbf{=RIGHT} : Función que devuelve un conjunto de caracteres a la derecha de un \gls{str} determinado}
-    \item {\textbf{=MID(rango,punto\_referencia,cant\_char)} : Función que devuelve un segmento desde el medio de un \gls{str}. \textit{=MID(C3,4,5) devuelve un string de 5 caracteres que empezó en la posición 4 del string inicial ubicado en la celda C3}}
-    \item {\textbf{=TRIM(rango)} : Función que remueve los espacios iniciales, finales y repetidos de un \gls{str}. \textit{=TRIM('' a esto le sobran espacios  '') devuelve ''a esto le sobran espacios''}}    
+    \item {\textbf{Buscar y Reemplazar} : Herramienta que busca por un término específico y lo reemplaza por otro determinado}
+    \item {\textcolor{ForestGreen}{\textbf{SPLIT}} : Función que divide el texto en base a un caracter, y guarda cada fragmento en una celda nueva. El caracter es un \textbf{delimitador} y puede ser un espacio, coma, guiones, entre otros}
+    \item {\textcolor{ForestGreen}{\textbf{=CONCATENATE(item1,item2...)}} : Función que une múltiples \gls{str} en uno solo. \textit{ej =CONCATENATE("text",'' '',"string") devuelve "text string"}}
+    \item {\textcolor{ForestGreen}{\textbf{=COUNTIF(rango,"valor\_comillas")}} : Cuenta el número de celdas, dentro de un rango determinado que cumplen con una condición. \textit{ej =COUNTIF(A2:A30,'${\geq}$10') devuelve la cantidad de valores que son iguales o mayores a 10}}
+    \item {\textcolor{ForestGreen}{\textbf{=LEN(rango)}} : Cuenta el número de caracteres que contiene un \gls{str} dado. \textit{ej =LEN(A21) devuelve el largo del string en la celda A21}}
+    \item {\textcolor{ForestGreen}{\textbf{=LEFT}} \& \textcolor{ForestGreen}{\textbf{=RIGHT}}: Extrae un conjunto de caracteres a la izquierda o derecha de un \gls{str} determinado}
+    \item {\textcolor{ForestGreen}{\textbf{=MID(rango,punto\_referencia,cant\_char)}} : Extrae un segmento de \gls{str} desde el medio. \textit{ej =MID(C3,4,5) devuelve un string de 5 caracteres que empezó en la posición 4 del string inicial ubicado en la celda C3}}
+    \item {\textcolor{ForestGreen}{\textbf{=TRIM(rango)}} : Remueve los espacios iniciales, finales y repetidos de un \gls{str}. \textit{ej =TRIM('' a esto le sobran espacios  '') devuelve ''a esto le sobran espacios''}}
+    \item {\textcolor{ForestGreen}{\textbf{=VLOOKUP(valor,''nombre\_ubicacion'',rango,columna,FALSE)}} : \textit{Vertical Lookup}, busca un valor en una columna, para devolver otro valor correspondiente. \textit{ej =VLOOKUP() con FALSE para coincidencias exactas}}
+    \item {\textcolor{ForestGreen}{\textbf{=COUNTA}} : Cuenta el total de valores dentro de un rango especificado}
+    \item {\textcolor{ForestGreen}{\textbf{=IMPORTRANGE(sheet\_url,range\_str)}} : Importa datos desde una hoja de cálculo a otra, con actualización automática ante cualquier cambio}
+    \item {\textcolor{ForestGreen}{\textbf{=QUERY(sheet+range,"SQL CLAUSE")}} : Pseudo instrucción SQL, puede funcionar como asistente para importación de datos}
+    \item {\textcolor{ForestGreen}{\textbf{=FILTER(range,cond1,cond2...)}} : Muestra datos que cumplen con una o más condiciones en un rango específico. \textit{A diferencia de \textcolor{ForestGreen}{QUERY}}, no puede combinarse con otras funciones en pos de cálculos más complejos}
+    
 \end{itemize}
 
 \begin{description}

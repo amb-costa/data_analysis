@@ -1,9 +1,11 @@
 \section{\textit{Prepare} - Preparar}
-Una vez se define el proyecto, se \textbf{planifican} los datos necesarios para resolver el desafío. Se determinan \textbf{métricas, formatos y estructuras}, junto a \textbf{medidas de seguridad} como protección, administración y acceso. También se toman medidas contra \textbf{sesgos estadísticos}. La modificación de formato, estructura o valor de los datos permite trabajar en
+Una vez se define el \gls{objemp}, se \textbf{planifican} los datos para resolverlo. Se determinan \textbf{métricas, formatos y estructuras}, junto a \textbf{medidas de seguridad} como protección, administración y acceso. También se toman medidas contra \textbf{sesgos estadísticos}
+
+\paragraph{Beneficios de Modificar Formatos y Estructuras}
 \begin{itemize}
     \item {\textbf{Organización} : más fácil de usar}
-    \item {\textbf{Compatibilidad} : el mismo set de datos puede ser utilizado por aplicaciones o sistemas externos y diferentes}
-    \item {\textbf{Migración} : los datos similares en formato pueden transladarse de un sistema a otro}
+    \item {\textbf{Compatibilidad} : el mismo set de datos puede usarse por aplicaciones o sistemas externos y diferentes}
+    \item {\textbf{Migración} : los datos pueden transladarse entre sistemas con formatos similares}
     \item {\textbf{Fusión} : unión de datos en una misma organización}
     \item {\textbf{Mejora} : los datos pueden mostrarse en campos más detallados}
     \item {\textbf{Comparación} : entre datos o sets}
@@ -24,12 +26,12 @@ Al organizar los datos, estos son más fáciles de encontrar, usar, mantener seg
 \end{itemize}
 
 \subsection{Niveles y Técnicas del Modelado de Datos}
-Crear un \textbf{modelo} de datos corresponde a crear diagramas o visualizaciones que representen cómo estos se organizan y relacionan. \textbf{Algunas técnicas de modelado comunes son \textit{ERD, UML, Data Dictionary}}. Los tipos más comunes de modelado son 
-\begin{description}
-    \item[Modelado Conceptual]{ : Ofrece una visión de alto nivel de la estructura de datos sin incluir detalles técnicos. \textbf{Forma en que los datos interactúan en una organización}}
-    \item[Modelado Lógico]{ : Se centra en los detalles técnicos de una \textit{DB} como relaciones, atributos y entidades, inlcuyendo cómo identificar registros individuales}
-    \item[Modelado Físico]{ : Describe el funcionamiento de una \textit{DB} junto con todas las entidades y atributos utilizados, como \textit{ nombres de columnas y tablas, tipo de DB}} 
-\end{description}
+Un \textbf{modelo} de datos consiste en diagramas o visualizaciones que representen la organización y conexión entre datos. \textbf{Algunas técnicas de modelado comunes son \textit{ERD, UML, Data Dictionary}}. Los tipos más comunes de modelado son 
+\begin{itemize}
+    \item {\textbf{Modelado Conceptual} : Ofrece una visión de alto nivel de la estructura de datos sin incluir detalles técnicos. \textbf{Forma en que los datos interactúan en una organización}}
+    \item {\textbf{Modelado Lógico} : Se centra en los detalles técnicos de una \textit{DB} como relaciones, atributos y entidades, inlcuyendo cómo identificar registros individuales}
+    \item {\textbf{Modelado Físico} : Describe el funcionamiento de una \textit{DB} junto con todas las entidades y atributos utilizados, como \textit{ nombres de columnas y tablas, tipo de DB}} 
+\end{itemize}
 
 \subsection{Ética de los Datos}
 Extendiendo el concepto de \gls{ethcs}, la \textbf{ética de los datos} consiste en estándares para la recolección, uso y distribución de los datos, justificados por el \textit{\textbf{GDPR} - General Data Protection Regulation of the European Union}. Sus aspectos consisten en
@@ -56,7 +58,7 @@ Extendiendo el concepto de \gls{ethcs}, la \textbf{ética de los datos} consiste
 \end{itemize}
 
 \subsubsection{Anonimización de Datos}
-Protección de los \textbf{datos privados o confidenciales} de las personas. Algunos ejemplos son \textit{números de teléfono, nombres, patentes de autos, direcciones IP, registros médicos, números de cuentas bancarias, número de seguro social}
+Protección de los \textbf{datos privados o confidenciales} de las personas. \textit{Ej : patentes de autos, direcciones IP, registros médicos, cuentas bancarias, número de seguro social}
 \begin{itemize}
     \item {\textbf{\textit{PII} - Información de Identificación Personal} : Información que puede usarse por si misma o junto a otros datos, para rastrear la identidad de una persona}
     \item {\textbf{Desidentificación} : proceso para eliminar toda la información de identificación personal. \textit{Ejemplo : dejar espacios en blanco, ejecutar comando hash, enmascarar con códigos de longitud fija, ocultar utilizando valores alterados}}

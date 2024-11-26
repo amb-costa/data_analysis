@@ -1,9 +1,25 @@
+% nta : esta sección desaparece eventualmente
+% cada parte del kit necesita ser una sección de por si
+% entonces también solucionar la subsección de DB
+
 \section {Kit de Herramientas del Analista}
-\input{spreadsheet}
 \input{DB}
 
 \subsection{\textit{Spreadsheets vs Databases}}
 Considerar que para ambos, \textbf{Campo} corresponde a las columnas, y \textbf{Registro} a las filas. En un registro se contienen múltiples campos, o sea: un set de datos puede tener múltiples valores.
+
+\paragraph{Características en Común}
+Ambas herramientas permiten aritmética, fórmulas, y la agregación de datos
+
+\paragraph{Diferencias}
+Las hojas de cálculo se generan en un programa, mientras que SQL es un lenguaje de interacción con programas de DB.
+Las hojas de cálculo se guardan de forma local, mientras que las consultas SQL se mantienen en la DB.
+Las hojas de cálculo brindan acceso a datos que el usuario ingresa. SQL puede obtener información desde fuentes variadas en la misma DB
+Las hojas de cálculo son ideales para sets de datos pequeños, SQL permiten trabajar con sets más grandes
+Las hojas de cálculo facilitan el trabajo independiente, mientras que SQL mantiene registro de los cambios dentro del equipo
+Las hojas de cálculo contienen funcionalidades incorporadas, y SQL es útil en varios programas
+
+
 \begin{table}
     \centering
     \begin{tabular}{|p{3.5cm}|p{5.5cm}|p{5.5cm}|}

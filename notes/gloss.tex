@@ -1,5 +1,7 @@
 \makeglossaries
 
+\renewcommand*{\glstextformat}[1]{\textcolor{Bittersweet}{#1}}
+
 \newglossaryentry{cntxt}{
     name = Contexto,
     sort = {contexto},
@@ -105,7 +107,7 @@
 \newglossaryentry{datatype}{
     name = \textit{Data Type},
     sort = {data type},
-    description = {\textit{Tipo de Dato}. Descripción del tipo de valor que cierto atributo posee. \textit{Ejemplos : number, string, bool (verdadero o falso en base a condiciones lógicas)}}
+    description = {\textit{Tipo de Dato}. Descripción del tipo de valor que cierto atributo posee. \textit{Ejemplos : number (int, float), string, bool (verdadero o falso en base a condiciones lógicas)}}
 }
 
 \newglossaryentry{ethcs}{
@@ -156,5 +158,34 @@
     description = {\textit{Sintaxis}. Estructura predeterminada que incluye toda la información requerida, junto con su ubicación correcta}
 }
 
+\newglossaryentry{schm}{
+    name = \textit{Schema},
+    sort = {schema},
+    description = {\textit{Esquema}. Descripción de la forma en que algo está organizado}
+}
+
+\newglossaryentry{typecast}{
+    name = \textit{Typecasting},
+    sort = {typecast},
+    description = {Conversión de \gls{datatype}}
+}
+
+\newglossaryentry{chnglg}{
+    name = \textit{Changelog},
+    sort = {changelog},
+    description = {\textit{Registro de cambios}. Archivo que contiene la lista de modificaciones hecha a un proyecto, en orden cronológico}
+}
+
+\newglossaryentry{objemp}{
+    name = Objetivo Empresarial,
+    sort = {objetivo},
+    description = {Resultado u objetivos que la empresa busca alcanzar, que considera exitoso. \textit{También llamado Desafío Empresarial}}
+}
+
+\newglossaryentry{habbland}{
+    name = Habilidades Blandas,
+    sort = {habilidades},
+    description = {Cualidades y comportamentos no técnicos, que describen el trabajo de una persona}
+}
 
 \glsaddallunused

@@ -53,38 +53,3 @@ Bases de datos creadas específicamente para guardar metadatos, ya sea de forma 
         \item {\textbf{Administrativo} : Indica la fuente técnica de una propiedad u objeto digital}
 \end{itemize}
 
-\subsubsection{Comandos y Sintaxis SQL}
-Tomar en cuenta que existen múltiples dialectos SQL y es recomendable consultar la documentación. Sin embargo, la gran mayoría de las instrucciones son comunes, y se promueven buenas prácticas de comandos. Algunos de los dialectos SQL consisten en \textit{MySQL, BigQuery, PostgreSQL, Microsoft SQL, SQLite}
-\begin{itemize}
-    \item {\textbf{*} : selector universal para todas las columnas}
-    \item {\textbf{Null} : Indicador de valores no existentes en un set de datos. \textit{null ${\neq}$ 0}}
-\end{itemize}
-
-\paragraph{Cláusulas}
-Instrucciones básicas de todo \gls{qry} de SQL
-\begin{itemize}
-    \item {\textbf{SELECT}}
-    \item {\textbf{FROM}\textit{ : table\_name}}
-    \item {\textbf{WHERE} : filtro para incorporar condiciones tipo \textit{WHEN}, etc}
-\end{itemize}
-
-\paragraph{Buenas Prácticas}
-\begin{itemize}
-    \item {MAYÚSCULAS para iniciadores/cláusulas y funciones}
-    \item {minúsculas para nombres de columnas. evitar mezclas}
-    \item {'comillas simples' para strings}
-    \item {${"}$comillas dobles${"}$ si el string contiene comillas simples/'apóstrofos'}
-    \item {${--}$realizar comentarios para revisiones a futuro}
-    \item{/* Para comentarios muy extensos, considerar este formato */}
-    \item {\textbf{\textit{snake\_case}} como reemplazo de los espacios en los nombres\_de\_columnas}
-    \item {\textbf{\textit{CamelCase}} para nombrar tablas. laPrimeraMayúscula no es obligatoria}
-    \item {Uso de sangrías para mantener cada línea en menos de 100 caracteres}
-    \item {Considerar el uso de editores de texto SQL, que mejoran la legibilidad a través de ediciones como colores y sangrías, además de aceptar \gls{rgx}}
-\end{itemize}
-
-\paragraph{Excepciones}
-\begin{itemize}
-    \item {Generalmente el uso de mayúsculas/minúsculas no afecta al código. BigQuery si distingue entre mayúsculas/minúsculas, a diferencia de otros dialectos}
-    \item {Lo mismo para comillas simples o dobles, pero las buenas prácticas garantizan buen funcionamiento a través de todos los dialectos}
-    \item {MySQL acepta \#etiqueta para comentarios}
-\end{itemize}
