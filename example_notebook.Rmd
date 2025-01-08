@@ -1,0 +1,20 @@
+---
+title: "R Notebook"
+author : "amb-costa"
+output: html_notebook
+---
+Primera instancia: 08/01/2025
+Los primeros intentos para conectar Posit Cloud con Github no son ideales. Hay alguna manera de instalar R  Desktop en mac? haría las cosas más fácil. Al menos hay una descarga de archivos. La idea es generar un flujo constante entre todos los compiladores
+This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code.
+
+Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Ctrl+Shift+Enter*.
+
+```{r}
+plot(cars)
+```
+
+Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Ctrl+Alt+I*.
+
+When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Ctrl+Shift+K* to preview the HTML file).
+
+The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
