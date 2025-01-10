@@ -55,7 +55,7 @@ Definen las tareas para llevar a cabo una transacción en específico, que solo 
 Instrucciones que se añaden a las cláusulas previamente mencionadas
 \begin{itemize}
     \item {\textbf{SELECT} : \textit{Data Query Language}, realiza la consulta en si}
-    \item {\textbf{FROM} tableName}
+    \item {\textbf{FROM} tableName. \textit{Utilizar tildes invertidas para el nombre de la ubicación de la tabla : `data\_bank.data\_table`}}
     \item {\textbf{WHERE} : filtro para incorporar condiciones tipo \textit{WHEN}, etc}
     \item {object \textbf{AS} alias : asigna un alias al objeto descrito. También se utiliza en otras funciones para asignar características}
 \end{itemize}
@@ -63,11 +63,16 @@ Instrucciones que se añaden a las cláusulas previamente mencionadas
 \subsubsection{Funciones}
 Acciones a llevar a cabo, generalmente se añaden en otras cláusulas para realizar filtros
 \begin{itemize}
+    \item {\textbf{UNIX\_DATE} : devuelve la cantidad de días que han pasado desde 01/01/1970. \textit{Se utiliza para comparar fechas en distintos husos horarios}}
     \item {\textbf{LENGTH} (col) : devuelve el tamaño del \gls{str}}
     \item {\textbf{SUBSTR} (col,start,amount) : crea un substring en base a un punto de partida y una cantidad de caracteres}
     \item {\textbf{TRIM} (col) : remueve espacios extra}
-    \item {\textbf{CAST} (col AS data\_type) : realiza \gls{typecast}}
-    \item {\textbf{CONCAT} (substr1, substr2, ...) AS full\_str : une dos o más substrings en una columna}
+    \item {\textbf{CAST} (col AS data\_type) : realiza \gls{typecast}. \textbf{SAFE\_CAST} devuelve NULL si la consulta falla}
+    \item {\textbf{CONCAT} (substr1, substr2, ...) \textbf{AS} full\_str : une dos o más substrings en una columna
+    \begin{itemize}
+        \item {\textbf{CONCAT(col1+col2+...)} también es válido}
+        \item {\textbf{CONCAT\_WS} (separador, col1, ...) : Une cada cadena de texto con el separador entregado}
+    \end{itemize}}
     \item {SELECT \textbf{DISTINCT} : se realiza el query eliminando duplicados en la columna}
     \item {SELECT \textbf{COALESCE} (col1, col2,...) \textbf{AS} new\_col : entrega resultados no \textit{null} y los asigna a un registro nuevo. Si registro es \textit{null}, devuelve el siguiente campo que no lo sea}
     \item {SELECT col \textbf{CASE} \textbf{WHEN} cond1 \textbf{THEN} action1 \textbf{ELSE} cond2 \textbf{END AS} newcol : recorre múltiples condiciones a definir, y entrega un valor cuando una condición se cumple. \textit{Similar a if/else en otros lenguajes de programación}}
