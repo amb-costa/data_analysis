@@ -57,7 +57,15 @@ Instrucciones que se añaden a las cláusulas previamente mencionadas
     \item {\textbf{SELECT} : \textit{Data Query Language}, realiza la consulta en si}
     \item {\textbf{FROM} tableName. \textit{Utilizar tildes invertidas para el nombre de la ubicación de la tabla : `data\_bank.data\_table`}}
     \item {\textbf{WHERE} : filtro para incorporar condiciones tipo \textit{WHEN}, etc}
-    \item {object \textbf{AS} alias : asigna un alias al objeto descrito. También se utiliza en otras funciones para asignar características}
+    \item {SELECT col \textbf{CASE} \textbf{WHEN} cond1 \textbf{THEN} action1 \textbf{ELSE} cond2 \textbf{END AS} newcol : recorre múltiples condiciones a definir, y entrega un valor cuando una condición se cumple. \textit{Similar a if/else en otros lenguajes de programación}}
+    \item {object \textbf{AS} alias : asigna un alias al objeto descrito para facilitar escritura y lectura. También se utiliza en otras funciones para asignar características. \textit{Si hay errores en el dialecto, pueden omitirse: FROM table\_name alias\_name}}
+    \item {\textbf{JOIN} : cláusula usada para combinar columnas de dos o más tablas, en base a una columna en común. \textit{Versión SQL de =VLOOKUP}
+    \begin{itemize}
+        \item {\textbf{INNER} : default. Devuelve valores que coincidan en ambas tablas}
+        \item {\textbf{LEFT} : devuelve todos los registros de la tabla a la izquierda(antes de declarar JOIN), y solo los registros que coincidan en la de la derecha}
+        \item {\textbf{RIGHT} : análogo a LEFT}
+        \item {\textbf{FULL OUTER} : combina LEFT y RIGHT, y devuelve todos los valores que coincidan en ambas tablas}
+    \end{itemize}}
 \end{itemize}
 
 \subsubsection{Funciones}
@@ -68,6 +76,8 @@ Acciones a llevar a cabo, generalmente se añaden en otras cláusulas para reali
     \item {\textbf{SUBSTR} (col,start,amount) : crea un substring en base a un punto de partida y una cantidad de caracteres}
     \item {\textbf{TRIM} (col) : remueve espacios extra}
     \item {\textbf{CAST} (col AS data\_type) : realiza \gls{typecast}. \textbf{SAFE\_CAST} devuelve NULL si la consulta falla}
+    \item {\textbf{COUNT}(cols) : devuelve el número de filas para un rango especificado}
+    \item {COUNT(\textbf{DISTINCT} cols) : devuelve el número de filas con valores distintos para un rango en específico}
     \item {\textbf{CONCAT} (substr1, substr2, ...) \textbf{AS} full\_str : une dos o más substrings en una columna
     \begin{itemize}
         \item {\textbf{CONCAT(col1+col2+...)} también es válido}
@@ -75,7 +85,7 @@ Acciones a llevar a cabo, generalmente se añaden en otras cláusulas para reali
     \end{itemize}}
     \item {SELECT \textbf{DISTINCT} : se realiza el query eliminando duplicados en la columna}
     \item {SELECT \textbf{COALESCE} (col1, col2,...) \textbf{AS} new\_col : entrega resultados no \textit{null} y los asigna a un registro nuevo. Si registro es \textit{null}, devuelve el siguiente campo que no lo sea}
-    \item {SELECT col \textbf{CASE} \textbf{WHEN} cond1 \textbf{THEN} action1 \textbf{ELSE} cond2 \textbf{END AS} newcol : recorre múltiples condiciones a definir, y entrega un valor cuando una condición se cumple. \textit{Similar a if/else en otros lenguajes de programación}}
+    
 \end{itemize}
 
 

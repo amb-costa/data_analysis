@@ -3,6 +3,8 @@
 \section{\textit{Spreadsheets} - Hojas de Cálculo}
 Las hojas de cálculo se utilizan generalmente para conjuntos de datos pequeños, donde los valores se ingresan de forma manual. Brindan funciones incorporadas como creaciones de gráficos y visualizaciones, corrección ortográfica incorporada, entre otras. Pueden conectarse con otras hojas, tablas HTML y archivos \gls{csv}.
 
+Las hojas de cálculo pueden bloquearse para prevenir cambios por otros usuarios, ya sea la hoja completa o solo un rango. 
+
 \paragraph{Herramientas Comunes}
 Toda fórmula se comienza escribiendo '='. Al hacerlo, se despliega un menú que incluye fórmulas, nombres y \gls{str}. Se incluyen ejemplos de \gls{syntx} para \textcolor{blue}{fórmulas} y \textcolor{ForestGreen}{funciones}. Después de aplicar una fórmula, se recomienda copiar y pegar la información generada para convertirla en datos estáticos
 \begin{itemize}
@@ -25,14 +27,17 @@ Toda fórmula se comienza escribiendo '='. Al hacerlo, se despliega un menú que
         
     \end{itemize}} 
     \item {\textcolor{ForestGreen}{\textbf{SPLIT}} : Función que divide el texto en base a un caracter, y guarda cada fragmento en una celda nueva. El caracter es un \textbf{delimitador} y puede ser un espacio, coma, guiones, entre otros}
+    \item {\textcolor{ForestGreen}{\textbf{MATCH}} : Función que se utiliza para ubicar la posición de un valor específico a buscar}
     \item {\textcolor{ForestGreen}{\textbf{=CONCATENATE(item1,item2...)}} : Función que une múltiples \gls{str} en uno solo. \textit{ej =CONCATENATE("text",'' '',"string") devuelve "text string"}. Para dos valores, CONCAT es suficiente}
     \item {\textcolor{ForestGreen}{\textbf{=COUNTIF(rango,"valor\_comillas")}} : Cuenta el número de celdas, dentro de un rango determinado que cumplen con una condición. \textit{ej =COUNTIF(A2:A30,'${\geq}$10') devuelve la cantidad de valores que son iguales o mayores a 10}}
     \item {\textcolor{ForestGreen}{\textbf{=LEN(rango)}} : Cuenta el número de caracteres que contiene un \gls{str} dado. \textit{ej =LEN(A21) devuelve el largo del string en la celda A21}}
     \item {\textcolor{ForestGreen}{\textbf{=LEFT}} \& \textcolor{ForestGreen}{\textbf{=RIGHT}}: Extrae un conjunto de caracteres a la izquierda o derecha de un \gls{str} determinado}
     \item {\textcolor{ForestGreen}{\textbf{=MID(rango,punto\_referencia,cant\_char)}} : Extrae un segmento de \gls{str} desde el medio. \textit{ej =MID(C3,4,5) devuelve un string de 5 caracteres que empezó en la posición 4 del string inicial ubicado en la celda C3}}
     \item {\textcolor{ForestGreen}{\textbf{=TRIM(rango)}} : Remueve los espacios iniciales, finales y repetidos de un \gls{str}. \textit{ej =TRIM('' a esto le sobran espacios  '') devuelve ''a esto le sobran espacios''}}
-    \item {\textcolor{ForestGreen}{\textbf{=VLOOKUP(valor,''nombre\_ubicacion'',rango,columna,FALSE)}} : \textit{Vertical Lookup}, busca un valor en una columna, para devolver otro valor correspondiente. \textit{ej =VLOOKUP() con FALSE para coincidencias exactas}}
+    \item {\textcolor{ForestGreen}{\textbf{=VLOOKUP(valor,''nombre\_ubicacion'',rango,columna(n°),FALSE)}} : \textit{Vertical Lookup}, busca un valor en una columna numerada (A=1, B=2,...), para devolver otro valor correspondiente. Usar TRUE para coincidencias similares, FALSE para coincidencias exactas. \textit{VLOOKUP tiene problemas con extra espacios: aplicar TRIM para eliminarlos; en presencia de duplicados o más repeticiones, devolverá la primera coincidencia que encuentre de izquierda a derecha, de arriba a abajo}. \textbf{Esta es una herramienta de agregación}}
+    \item {\textcolor{ForestGreen}{\textbf{=VALUE(rango)}} : convierte el rango seleccionado a valores numéricos}
     \item {\textcolor{ForestGreen}{\textbf{=COUNTA}} : Cuenta el total de valores dentro de un rango especificado}
+    \item {\textcolor{ForestGreen}{\textbf{=COUNT}} : Cuenta el total de valores numéricos dentro de un rango específico}
     \item {\textcolor{ForestGreen}{\textbf{=IMPORTRANGE(sheet\_url,range\_str)}} : Importa datos desde una hoja de cálculo a otra, con actualización automática ante cualquier cambio}
     \item {\textcolor{ForestGreen}{\textbf{=QUERY(sheet+range,"SQL CLAUSE")}} : Pseudo instrucción SQL, puede funcionar como asistente para importación de datos}
     \item {\textcolor{ForestGreen}{\textbf{=FILTER(range,cond1,cond2...)}} : Muestra datos que cumplen con una o más condiciones en un rango específico. \textit{A diferencia de \textcolor{ForestGreen}{QUERY}}, no puede combinarse con otras funciones en pos de cálculos más complejos}
@@ -42,6 +47,7 @@ Toda fórmula se comienza escribiendo '='. Al hacerlo, se despliega un menú que
 
 \begin{description}
     \item[Celda]{ : Posición descrita usando filas \textbf{o registros/\textit{records}} y columnas \textbf{o campos/\textit{fields}}. \textit{Ejemplo : columna A fila 3 = A3}. 
+    \item {Para referenciar otras hojas de cálculo, se utilizan apóstrofes simples, terminadas con un signo de exclamación, seguidas del rango a referenciar. \textit{`otra\_hoja`!ra:ngo}}
     \begin{description}
         \item[Referencia Relativa]{ : El valor de la celda cambia junto con la fórmula donde está presente, al arrastrarla o copiarla en otro lugar}
         \item[Referencia Absoluta]{ : El valor de la celda es fijo y no cambia con movimientos en fórmulas o celdas.\textit{Para realizar cambio entre absoluto y relativo, presionar F4}}
