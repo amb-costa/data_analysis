@@ -57,6 +57,14 @@ Instrucciones que se añaden a las cláusulas previamente mencionadas
     \item {\textbf{SELECT} : \textit{Data Query Language}, realiza la consulta en si}
     \item {\textbf{FROM} tableName. \textit{Utilizar tildes invertidas para el nombre de la ubicación de la tabla : `data\_bank.data\_table`}}
     \item {\textbf{WHERE} : filtro para incorporar condiciones tipo \textit{WHEN}, etc}
+    \item {\textbf{SUBQUERIES} : es posible crear una consulta (\textit{inner query/select}) dentro de otra consulta más amplia (\textit{outer query/select}) 
+    \begin{itemize}
+        \item {Primero se ejecuta la consulta interna (siempre entre paréntesis), y los resultados se utilizan en la consulta externa}
+        \item {Generalmente se anidan en las cláusulas \textit{FROM y WHERE}}
+        \item {Solo puede especificarse una columna en la cláusula SELECT. Si la subconsulta necesita comparar varias columnas, tienen que seleccionarse en la consulta externa}
+        \item {Aquellas subconsultas que devuelven más de una fila, solo pueden usarse con múltiples operadores de valor como \textbf{IN, ANY, ALL} en cláusulas WHERE}
+        \item {La subconsulta no puede anidarse en un comando SET}
+    \end{itemize}}
     \item {SELECT col \textbf{CASE} \textbf{WHEN} cond1 \textbf{THEN} action1 \textbf{ELSE} cond2 \textbf{END AS} newcol : recorre múltiples condiciones a definir, y entrega un valor cuando una condición se cumple. \textit{Similar a if/else en otros lenguajes de programación}}
     \item {object \textbf{AS} alias : asigna un alias al objeto descrito para facilitar escritura y lectura. También se utiliza en otras funciones para asignar características. \textit{Si hay errores en el dialecto, pueden omitirse: FROM table\_name alias\_name}}
     \item {\textbf{JOIN} : cláusula usada para combinar columnas de dos o más tablas, en base a una columna en común. \textit{Versión SQL de =VLOOKUP}
@@ -64,8 +72,9 @@ Instrucciones que se añaden a las cláusulas previamente mencionadas
         \item {\textbf{INNER} : default. Devuelve valores que coincidan en ambas tablas}
         \item {\textbf{LEFT} : devuelve todos los registros de la tabla a la izquierda(antes de declarar JOIN), y solo los registros que coincidan en la de la derecha}
         \item {\textbf{RIGHT} : análogo a LEFT}
-        \item {\textbf{FULL OUTER} : combina LEFT y RIGHT, y devuelve todos los valores que coincidan en ambas tablas}
+        \item {\textbf{FULL OUTER} : combina LEFT y RIGHT, y devuelve todos los valores que coincidan en ambas tablas}    
     \end{itemize}}
+    \item {\textbf{HAVING} : permite añadir un filtro a la consulta, que solo puede utilizarse con funciones de agregación como \textbf{MAX, MIN, AVG}}
 \end{itemize}
 
 \subsubsection{Funciones}
