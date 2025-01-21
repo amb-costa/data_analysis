@@ -21,5 +21,53 @@ En el contexto de análisis, la agregación de datos consiste en el proceso de r
     \item {Cuando se mide a través de un periodo de tiempo, se pueden obtener estadísticas como \textbf{promedios, mínimos, máximos y sumas}}
 \end{itemize}
 
+\subsection{Validación de Datos}
+La validación es una herramienta de revisión de exactitud y calidad de los datos antes de añadirlos o importarlos. Se utilizan criterios para los datos, y la validez se determina cuando los valores cumplen (o no) con las restricciones establecidas. \textit{Es una forma de limpieza de datos}
+
+\subsubsection{Tipos de Validación}
+\begin{itemize}
+    \item {\textbf{Tipo de Datos} : los datos coinciden con los tipos de datos definidos para un campo}
+    \item {\textbf{Rango de Datos} : los datos se ubican dentro de un rango de valores aceptable definido para el campo}
+    \item {\textbf{Limitaciones de Datos} : los datos cumplen con ciertas condiciones/criterios para un campo (número entero? cabtudad de carácteres?)}
+    \item {\textbf{Coherencia de Datos} : los datos tienen sentido en el contexto de otros datos}
+    \item {\textbf{Estructura de Datos} : los datos siguen o se ajustan a una estructura establecida}
+    \item {\textbf{Validación de Código} : los códigos de aplicación usados realizan sistemáticamente cualquiera de las validaciones antes mencionadas}
+\end{itemize}
+
+\subsubsection{Condiciones de Validación}
+\begin{description}
+    \item [\gls{datatype}]{ : formato correcto para los valores}
+    \item [Rango]{ : los valores se encuentran dentro de un rango de máximos y mínimos predefinidos}
+    \item [Obligatoriedad]{ : los valores no pueden ser nulos, blancos o vacíos}
+    \item [Unicidad]{ : ningún valor está duplicado}
+    \item [Largo de Campo]{ : el largo de un campo está dentro del rango de caracteres esperado}
+    \item [\gls{rgx}]{ : los valores coinciden con patrones preestablecidos}
+    \item [Campos Cruzados]{ : los valores cumplen simultáneamente con restricciones múltiples}
+    \item [Membresía]{ : los valores en una columna provienen de un conjunto de valores específicos} 
+    \item [Exactitud]{ : se alcanza un grado de conformidad establecido, respecto a la entidad real medida}
+    \item [Exhaustividad]{ : grado en que los datos contienen todos los componentes deseados}
+    \item [Coherencia]{ : grado de repetibilidad de los datos desde diferentes puntos de entrada o recopilación}
+\end{description}
+
+\subsubsection{Proceso de Verificación}
+Al verificar el proceso de limpieza, se confirma su calidad: si fue bien ejecutada, si los datos resultantes son precisos y confiables. Si es necesario, se realiza otra limpieza manual. Algunos pasos de verificación son
+\begin{itemize}
+    \item {Comparar datos limpios vs. sucios}
+    \item {Ver el proyecto desde una perspectiva general, revisar cómo los datos podrían resolver las metas y problemas del proyecto. \textit{Compatibilidad con la lógica de negocios}}
+    \item {Poner atención a cualquier detalle sospechoso o problemático, como números que no hagan sentido}
+\end{itemize}
+
+\paragraph{Lista de checkeo para Verificación}
+\begin{itemize}
+    \item {Fuentes de errores}
+    \item {Faltas de tipografía en palabras y cifras}
+    \item {Espacios y caracteres extra}
+    \item {Duplicados}
+    \item {Formatos no coincidentes}
+    \item {\gls{str} y fechas desordenadas o incoherentes}
+    \item {Etiquetas engañosas de columnas}
+    \item {Datos truncados}
+\end{itemize}
+
 
 \newpage

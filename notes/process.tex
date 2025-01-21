@@ -68,45 +68,6 @@ Cuando los datos están íntegros, se asegura que son exactos, completos, consis
     \item {No contemplar la limpieza en plazos y procesos}
 \end{itemize}
 
-
-\subsection{Validación de Datos}
-La validación es una herramienta de revisión de exactitud y calidad de los datos antes de añadirlos o importarlos. Se utilizan criterios para los datos, y la validez se determina cuando los valores cumplen (o no) con las restricciones establecidas. 
-
-\subsubsection{Condiciones de Validación}
-\begin{description}
-    \item [\gls{datatype}]{ : formato correcto para los valores}
-    \item [Rango]{ : los valores se encuentran dentro de un rango de máximos y mínimos predefinidos}
-    \item [Obligatoriedad]{ : los valores no pueden ser nulos, blancos o vacíos}
-    \item [Unicidad]{ : ningún valor está duplicado}
-    \item [Largo de Campo]{ : el largo de un campo está dentro del rango de caracteres esperado}
-    \item [\gls{rgx}]{ : los valores coinciden con patrones preestablecidos}
-    \item [Campos Cruzados]{ : los valores cumplen simultáneamente con restricciones múltiples}
-    \item [Membresía]{ : los valores en una columna provienen de un conjunto de valores específicos} 
-    \item [Exactitud]{ : se alcanza un grado de conformidad establecido, respecto a la entidad real medida}
-    \item [Exhaustividad]{ : grado en que los datos contienen todos los componentes deseados}
-    \item [Coherencia]{ : grado de repetibilidad de los datos desde diferentes puntos de entrada o recopilación}
-\end{description}
-
-\subsubsection{Proceso de Verificación}
-Al verificar el proceso de limpieza, se confirma su calidad: si fue bien ejecutada, si los datos resultantes son precisos y confiables. Si es necesario, se realiza otra limpieza manual. Algunos pasos de verificación son
-\begin{itemize}
-    \item {Comparar datos limpios vs. sucios}
-    \item {Ver el proyecto desde una perspectiva general, revisar cómo los datos podrían resolver las metas y problemas del proyecto. \textit{Compatibilidad con la lógica de negocios}}
-    \item {Poner atención a cualquier detalle sospechoso o problemático, como números que no hagan sentido}
-\end{itemize}
-
-\paragraph{Lista de checkeo para Verificación}
-\begin{itemize}
-    \item {Fuentes de errores}
-    \item {Faltas de tipografía en palabras y cifras}
-    \item {Espacios y caracteres extra}
-    \item {Duplicados}
-    \item {Formatos no coincidentes}
-    \item {\gls{str} y fechas desordenadas o incoherentes}
-    \item {Etiquetas engañosas de columnas}
-    \item {Datos truncados}
-\end{itemize}
-
 \subsection{Documentación}
 Proceso en que se mantienen archivos de texto, para realizar rastreos de cambios, adiciones, eliminaciones y errores que hayan aparecido durante un proyecto (no solo limpieza de datos). Mantener documentación permite recuperar errores que se hayan producido en la limpieza, informar a otros usuarios ante cualquier cambio, y evaluar la calidad de los datos limpios. 
 

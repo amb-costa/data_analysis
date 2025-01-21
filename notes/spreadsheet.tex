@@ -23,26 +23,37 @@ Toda fórmula se comienza escribiendo '='. Al hacerlo, se despliega un menú que
     \begin{itemize}
         \item {Asigna un menú desplegable a una columna entera. \textit{Seleccionar columna > 'data' > 'validación de datos' > crear criterios (si es una lista de criterios, separar por coma)}}
         \item {Crear casillas de verificación}
-        \item {Crear lista de valores fijos para seleccionar}
-        
+        \item {Crear lista de valores fijos para seleccionar}   
     \end{itemize}} 
     \item {\textcolor{ForestGreen}{\textbf{SPLIT}} : Función que divide el texto en base a un caracter, y guarda cada fragmento en una celda nueva. El caracter es un \textbf{delimitador} y puede ser un espacio, coma, guiones, entre otros}
     \item {\textcolor{ForestGreen}{\textbf{MATCH}} : Función que se utiliza para ubicar la posición de un valor específico a buscar}
     \item {\textcolor{ForestGreen}{\textbf{=CONCATENATE(item1,item2...)}} : Función que une múltiples \gls{str} en uno solo. \textit{ej =CONCATENATE("text",'' '',"string") devuelve "text string"}. Para dos valores, CONCAT es suficiente}
-    \item {\textcolor{ForestGreen}{\textbf{=COUNTIF(rango,"valor\_comillas")}} : Cuenta el número de celdas, dentro de un rango determinado que cumplen con una condición. \textit{ej =COUNTIF(A2:A30,'${\geq}$10') devuelve la cantidad de valores que son iguales o mayores a 10}}
     \item {\textcolor{ForestGreen}{\textbf{=LEN(rango)}} : Cuenta el número de caracteres que contiene un \gls{str} dado. \textit{ej =LEN(A21) devuelve el largo del string en la celda A21}}
     \item {\textcolor{ForestGreen}{\textbf{=LEFT}} \& \textcolor{ForestGreen}{\textbf{=RIGHT}}: Extrae un conjunto de caracteres a la izquierda o derecha de un \gls{str} determinado}
     \item {\textcolor{ForestGreen}{\textbf{=MID(rango,punto\_referencia,cant\_char)}} : Extrae un segmento de \gls{str} desde el medio. \textit{ej =MID(C3,4,5) devuelve un string de 5 caracteres que empezó en la posición 4 del string inicial ubicado en la celda C3}}
     \item {\textcolor{ForestGreen}{\textbf{=TRIM(rango)}} : Remueve los espacios iniciales, finales y repetidos de un \gls{str}. \textit{ej =TRIM('' a esto le sobran espacios  '') devuelve ''a esto le sobran espacios''}}
     \item {\textcolor{ForestGreen}{\textbf{=VLOOKUP(valor,''nombre\_ubicacion'',rango,columna(n°),FALSE)}} : \textit{Vertical Lookup}, busca un valor en una columna numerada (A=1, B=2,...), para devolver otro valor correspondiente. Usar TRUE para coincidencias similares, FALSE para coincidencias exactas. \textit{VLOOKUP tiene problemas con extra espacios: aplicar TRIM para eliminarlos; en presencia de duplicados o más repeticiones, devolverá la primera coincidencia que encuentre de izquierda a derecha, de arriba a abajo}. \textbf{Esta es una herramienta de agregación}}
     \item {\textcolor{ForestGreen}{\textbf{=VALUE(rango)}} : convierte el rango seleccionado a valores numéricos}
-    \item {\textcolor{ForestGreen}{\textbf{=COUNTA}} : Cuenta el total de valores dentro de un rango especificado}
-    \item {\textcolor{ForestGreen}{\textbf{=COUNT}} : Cuenta el total de valores numéricos dentro de un rango específico}
     \item {\textcolor{ForestGreen}{\textbf{=IMPORTRANGE(sheet\_url,range\_str)}} : Importa datos desde una hoja de cálculo a otra, con actualización automática ante cualquier cambio}
     \item {\textcolor{ForestGreen}{\textbf{=QUERY(sheet+range,"SQL CLAUSE")}} : Pseudo instrucción SQL, puede funcionar como asistente para importación de datos}
     \item {\textcolor{ForestGreen}{\textbf{=FILTER(range,cond1,cond2...)}} : Muestra datos que cumplen con una o más condiciones en un rango específico. \textit{A diferencia de \textcolor{ForestGreen}{QUERY}}, no puede combinarse con otras funciones en pos de cálculos más complejos}
     \item {\textcolor{ForestGreen}{\textbf{=SORT(rango, col*,TRUE/FALSE)}} : Ordena el rango definido utilizando una columna de referencia en modo numérico (1 para A, 2 para B...) en orden ascendente (TRUE) o descendente (FALSE). \textbf{A diferencia de las opciones Ordenar por Hoja y Ordenar por Rango, esto si modifica el set de datos completo}}
     \item {\textcolor{ForestGreen}{\textbf{=CONVERT(celda,'formato\_inicial','formato\_final')}} : Cambia el formato de una celda. \textit{Revisar los formatos de cambio para excel o sheets}}
+\end{itemize}
+
+\paragraph{Funciones con Condicionales}
+Para ciertas funciones, es posible añadir el sufijo IF para tomar ciertos argumentos bajo criterios definidos. Generalmente tienen variaciones en plural IFS, que aceptan más de un set de condiciones siguiendo el orden de los argumentos
+\begin{itemize}
+    \item{\textcolor{ForestGreen}{\textbf{=SUM(rango)}} : Suma todos los valores en un rango}
+    \item {\textcolor{ForestGreen}{\textbf{=SUMIF(rango,''condicion'',columna\_asumar)}} : Añade los datos numéricos de una columna en base a alguna condición en un rango en específico}
+    \item {\textcolor{ForestGreen}{\textbf{=AVERAGE(rango)}} : Calcula el promedio de un rango con valores numéricos}
+    \item {\textcolor{ForestGreen}{\textbf{=MAX(rango)}} : Entrega el máximo valor en un rango}
+    \item {\textcolor{ForestGreen}{\textbf{=MAXIF(rango\_max,rango\_marc,condicion)}} : Busca el máximo para un rango, en base a si cierto rango marcado cumple una condición}
+    \item {\textcolor{ForestGreen}{\textbf{=COUNTA(rango)}} : Cuenta el total de valores de cualquier tipo dentro de un rango especificado}
+    \item {\textcolor{ForestGreen}{\textbf{=COUNT(rango)}} : Cuenta el total de valores numéricos o fechas dentro de un rango específico}
+    \item {\textcolor{ForestGreen}{\textbf{=COUNTIF(rango,"valor\_comillas")}} : Cuenta el número de celdas, dentro de un rango determinado que cumplen con una condición. Es posible entregar una celda en vez del criterio, y se usa su contenido. \textit{ej =COUNTIF(A2:A30,'${\geq}$10') devuelve la cantidad de valores que son iguales o mayores a 10}}
+    
+    
 \end{itemize}
 
 \begin{description}

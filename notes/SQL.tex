@@ -11,14 +11,23 @@ También considerar que SQL no guarda los resultados de los \gls{qry} como tabla
 \paragraph{Términos comunes}
 \begin{description}
     \item {\textbf{*} : selector universal para todas las columnas}
-    \item {\textbf{Null} : Indicador de valores no existentes en un set de datos. \textit{null ${\neq}$ 0}} 
+    \item {\textbf{Null} : indicador de valores no existentes en un set de datos. \textit{null ${\neq}$ 0}} 
+    \item {\textbf{Module/\%} : operador que devuelve el resto de la división entre dos números. \textit{ej : 7 \% 3 = 1}}
+    \item {\textbf{<>} : equivalente a !=}
+    \item {\textbf{Tabla temporal} : tabla que existe momentáneamente en el servidor de la base de datos}
+    
 \end{description}
 
 \subsection{Cláusulas, Comandos y Funciones}
 \subsubsection{Data Definition Language}
 Definen y modifican la estructura de una DB, su esquema u objetos como índices y funciones
 \begin{itemize}
-    \item {\textbf{CREATE} [structure] strct\_name : crea una estructura a definir junto con sus características. \textit{Ej : CREATE TABLE tableName (col1 dt1, col2 dt2....) : define una tabla junto a pares de columnas y su \gls{datatype} correspondiente}}
+    \item {\textbf{CREATE} [structure] strct\_name : crea una estructura a definir junto con sus características.
+    \begin{itemize}
+        \item {\textbf{CREATE TABLE} table\_name (col1 dt1, col2 dt2....) : define una tabla con pares de columnas y sus \gls{datatype} correspondientes. \textit{En algunos dialectos, se utiliza \textbf{CREATE TEMP TABLE} para tablas temporales}}
+        \item {\textbf{CREATE TABLE} table\_name \textbf{AS} (query) : crea una tabla utilizando los resultados de una consulta y la añade a la base de datos}
+        \item {\textbf{SELECT INTO} : copia datos de una tabla a otra nueva, temporal. \textit{No es reconocido por Big Query}. Se recomienda \textit{\textbf{SELECT * INTO} table\_temp \textbf{FROM} (table\_original)}}
+    \end{itemize}}
     \item {\textbf{ALTER} [structure] strct\_name {action}: modifica la estructura de TABLE, DATABASE, entre otras estructuras. \textit{Ej : ALTER TABLE tableName ADD COLUMN col\_name data\_type}}
     \item {\textbf{DROP} [structure] strct\_name :  elimina la estructura de DB. \textit{Ej : DROP TABLE tableName}}
     \item {\textbf{TRUNCATE}}
@@ -54,7 +63,7 @@ Definen las tareas para llevar a cabo una transacción en específico, que solo 
 \subsubsection{Comandos}
 Instrucciones que se añaden a las cláusulas previamente mencionadas
 \begin{itemize}
-    \item {\textbf{SELECT} : \textit{Data Query Language}, realiza la consulta en si}
+    \item {\textbf{SELECT} : \textit{Data Query Language}, realiza la consulta en si. \textbf{SELECT INTO} copia los datos de una tabla a otra nueva y temporal, \textit{no reconocido por Big Query}}
     \item {\textbf{FROM} tableName. \textit{Utilizar tildes invertidas para el nombre de la ubicación de la tabla : `data\_bank.data\_table`}}
     \item {\textbf{WHERE} : filtro para incorporar condiciones tipo \textit{WHEN}, etc}
     \item {\textbf{SUBQUERIES} : es posible crear una consulta (\textit{inner query/select}) dentro de otra consulta más amplia (\textit{outer query/select}) 
@@ -65,6 +74,7 @@ Instrucciones que se añaden a las cláusulas previamente mencionadas
         \item {Aquellas subconsultas que devuelven más de una fila, solo pueden usarse con múltiples operadores de valor como \textbf{IN, ANY, ALL} en cláusulas WHERE}
         \item {La subconsulta no puede anidarse en un comando SET}
     \end{itemize}}
+    \item {\textbf{WITH} table\_name \textbf{AS} (subquery) : cláusula que crea una \textbf{tabla temporal} : tabla que existe temporalmente en el servidor.}
     \item {SELECT col \textbf{CASE} \textbf{WHEN} cond1 \textbf{THEN} action1 \textbf{ELSE} cond2 \textbf{END AS} newcol : recorre múltiples condiciones a definir, y entrega un valor cuando una condición se cumple. \textit{Similar a if/else en otros lenguajes de programación}}
     \item {object \textbf{AS} alias : asigna un alias al objeto descrito para facilitar escritura y lectura. También se utiliza en otras funciones para asignar características. \textit{Si hay errores en el dialecto, pueden omitirse: FROM table\_name alias\_name}}
     \item {\textbf{JOIN} : cláusula usada para combinar columnas de dos o más tablas, en base a una columna en común. \textit{Versión SQL de =VLOOKUP}
@@ -94,7 +104,7 @@ Acciones a llevar a cabo, generalmente se añaden en otras cláusulas para reali
     \end{itemize}}
     \item {SELECT \textbf{DISTINCT} : se realiza el query eliminando duplicados en la columna}
     \item {SELECT \textbf{COALESCE} (col1, col2,...) \textbf{AS} new\_col : entrega resultados no \textit{null} y los asigna a un registro nuevo. Si registro es \textit{null}, devuelve el siguiente campo que no lo sea}
-    
+    \item {SELECT \textbf{EXTRACT} () AS newcol\_name : extrae una parte de una fecha para utilizar. \textit{ej : EXTRACT (YEAR FROM STARTTIME) AS year} }
 \end{itemize}
 
 
