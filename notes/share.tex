@@ -9,10 +9,39 @@ Con los resultados del análisis, se preparan \textbf{\textit{Data Viz} - visual
 
 La \textbf{\textit{Data Storytelling} - Narrativa de Datos} consiste en la comunicación del significado de un conjunto de datos a través de una narrativa contada con visuales, que se personalizan de acuerdo a la audiencia. La meta es \textbf{involucrar} a la audiencia al capturar y mantener su atención
 
-La \textbf{Composición de Datos} consiste en combinar las partes individuales de una visualización, y mostrarlas todas como un conjunto. Hay dos tipos principales de \textit{Data Viz}:
+La \textbf{Composición de Datos} consiste en combinar las partes individuales de una visualización, y mostrarlas todas como un conjunto. Para distinguir entre datos \textbf{activos} y \textbf{estáticos}, se considera su antigüedad, cuánto falta para que sean obsoletos o inválidos, y si necesitan actualización para considerarse válidos. Hay dos tipos principales de \textit{Data Viz}:
 \begin{itemize}
-    \item {\textbf{Visualización Estática} : no cambian con el tiempo a menos que se editen}
-    \item {\textbf{Visualización Dinámica} : son interactivas, cambian con el tiempo}
+    \item {\textbf{Visualización Estática} : no cambian con el tiempo a menos que se editen. \textit{ej : screenshots o capturas en presentaciones y paneles}
+    \begin{description}
+        \item [Pros]{ 
+        \begin{itemize}
+            \item {Control estricto de una narrativa puntual de los datos y la información}
+            \item {Explicar en profundidad análisis complejos a un público más amplio}
+        \end{itemize}}
+        \item [Contras]{ 
+        \begin{itemize}
+            \item {Información pierde valor inmediatamente y sigue haciéndolo con el tiempo}
+            \item {Las instantáneas no siguen el ritmo de cambio de los datos}
+        \end{itemize}}
+    \end{description}}
+    \item {\textbf{Visualización Dinámica o Activa} : son interactivas, cambian con el tiempo. \textit{ej : paneles, informes con vistas conectadas}
+    \begin{description}
+        \item[Pros]{
+        \begin{itemize}
+            \item {Paneles más dinámicos y escalables}
+            \item {Datos más actualizados para las personas que los necesiten, cuando lo necesiten}
+            \item {Vistas actualizadas de los datos, construir una única fuente de verdad escalable para distintos usos}
+            \item {Permiten tomar medidas inmediatas sobre datos que cambian con frecuencia}
+            \item {Alivian tiempo y recursos dedicados al análisis}
+        \end{itemize}}
+        \item[Contras]{
+        \begin{itemize}
+            \item {Pueden requerir recursos de ingeniería para mantener las canalizaciones}
+            \item {Se pierde control de narrativa ya que no hay interpretación de datos : caos de datos}
+            \item {Falta de confianza si los datos no se manejan adecuadamente}
+        \end{itemize}
+        }
+    \end{description}}
 \end{itemize}
 Una visual efectiva tiene un \textbf{significado claro}, un uso sofisticado de \textbf{contraste} y una \textbf{ejecución} refinada. Una visualización bien elegida facilita la comprensión de la historia a contar, y dirige la \textbf{atención} a los puntos más importantes : la audiencia debiera reconocer la idea principal en los primeros cinco segundos de verla
 
@@ -40,14 +69,6 @@ Elementos de una visualización de datos que las personas reconocen automáticam
     \end{itemize}}
 \end{itemize}
 
-\paragraph{Algunos Principios de Diseño}
-\begin{itemize}
-    \item {Elegir elemento visual correcto}
-    \item {Optimizar proporción dato-trazo. \textit{Enfocarse en la parte del elemento visual que es esencial para comprender el sentido del gráfico}}
-    \item {Utilizar orientación de manera eficaz}
-    \item {Color y cantidad de cosas}
-\end{itemize}
-
 \paragraph{Elementos de Arte para \textit{DataViz}}
 \begin{itemize}
     \item {\textbf{Línea} : curva, derecha, gruesa, punteado...}
@@ -63,6 +84,7 @@ Elementos de una visualización de datos que las personas reconocen automáticam
 \end{itemize}
 
 \paragraph{Principios básicos de Diseño}
+Además de elegir el elemento visual correcto, se debe optimizar la proporción dato-trazo: \textit{enfocarse en la parte del elemento visual que es esencial para comprender el sentido del gráfico}. Se debe utilizar la orientación de manera eficaz, al igual que la cantidad de cosas y los colores a elegir
 \begin{itemize}
     \item {\textbf{Equilibrio} : distribución pareja de la información}
     \item {\textbf{Énfasis} : punto focal en los datos más importantes, para la concentración del público}
@@ -73,17 +95,6 @@ Elementos de una visualización de datos que las personas reconocen automáticam
     \item {\textbf{Ritmo} : sensación de movimiento o flujo}
     \item {\textbf{Variedad} : mantiene el interés}
     \item {\textbf{Unidad} : el \textit{DataViz} debe ser cohesivo}
-\end{itemize}
-
-\paragraph{Evitar gráficos confusos y engañosos}
-\begin{itemize}
-    \item {Cortar el eje y}
-    \item {Uso engañoso de eje y doble}
-    \item {Limitar artificialmente el alcance de los datos}
-    \item {Elecciones problemáticas en cuanto a cómo se combinan o agrupan los datos}
-    \item {Usar elementos visuales de "parte-todo" cuando los totales no se suman correctamente}
-    \item {Ocultar tendencias en gráficos acumulativos}
-    \item {Suavizar artificialmente las tendencias}
 \end{itemize}
 
 \subsection{Dos \textit{frameworks} para buenas visualizaciones}
@@ -102,33 +113,6 @@ Conjunto útil de preguntas para criticar lo consumido y qué tan eficaz es
     \item {Qué dicen los datos?}
     \item {Qué dice el elemento visual?}
 \end{itemize}
-
-\subsection{Ejemplos de \textit{DataViz}}
-\begin{itemize}
-    \item {\textbf{Gráfico de Barras/Columnas} : contraste de tamaños para comparar dos o más valores. Puede ser horizontal (barras) o vertical (columnas)}
-    \item {\textbf{Gráfico de Líneas} : para cambios, movimientos o tendencias, donde cada punto representa un dato. \textit{Preferir por sobre barras para cambios pequeños}}
-    \item {\textbf{Gráfico Circular} : cuál es la proporción de una parte en relación al conjunto completo}
-    \item {\textbf{Gráfico de Área} : seguimiento de cambio en valores en múltiples categorías}
-    \item {\textbf{Mapas} : organizan los datos en forma periódica}
-    \item {\textbf{Mapa de Calor} : comparación de categorías en un conjunto de datos, como relaciones entre dos variables, utilizando un sistema de color como una \textit{Paleta de Colores Divergente} : muestra dos rangos de calores utilizando intensidad de colores para mostrar la magnitud del número}
-    \item {\textbf{Histograma} : gráfico que muestra la frecuencia en que ciertos valores se encuentran en ciertos rangos}
-    \item {\textbf{Gráfico de Correlación} : muestra las relaciones o tendencias entre datos. \textit{También llamado Diagrama de Dispersión}}
-    \item {\textbf{Diagrama de Densidad} : muestra las tendencias en un intervalo o rango}
-    \item {Se tienen los siguientes patrones significativos (referir al árbol de decisiones)
-    \begin{itemize}
-        \item {\textbf{Cambio} : gráfico de línea/barra}
-        \item {\textbf{Agrupación} : gráfico de distribución}
-        \item {\textbf{Relatividad/Proporciones} : gráfico circular}
-        \item {\textbf{Clasificación} : gráfico de barras}
-        \item {\textbf{Correlación} : diagrama de dispersión}
-    \end{itemize}}
-\end{itemize}
-
-% árbol de decisiones : herramienta de toma de decisiones basadas en preguntas clave, para visualizaciones:
-% solo una variable numérica? histograma, diagrama de densidad
-% múltiples sets de datos? gráfico de líneas, gráfico circular
-% cambios en el tiempo? gráfico de barras
-% mostrar relaciones entre datos? diagrama de dispersión, mapa de calor
 
 \subsection{\textit{Data Viz} - Herramientas de Visualización}
 \begin{itemize}
