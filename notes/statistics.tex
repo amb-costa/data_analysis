@@ -11,9 +11,9 @@
     \item [Margen de Error]{ : Diferencia entre los valores reales y los obtenidos a utilizar. Cantidad máxima que, se espera, los resultados de la muestra difieran de los valores de la población}
     \item [Nivel de Confianza]{ : Grado de confianza en los resultados. Probabilidad de que la muestra represente fielmente al resto de la población. \textit{Si se realiza una encuesta 100 veces, el x\% de las veces saldrán los mismos resultados}}
     \item [Intervalo de Confianza]{ : Rango de valores posibles del resultado de la población respecto al nivel de confianza. \textit{resultado muestra ${\pm}$ margen error}}
-    \item [Significancia Estadística]{ : Determinación sobre la posibilidad de que el resultado se base en posibilidades aleatorias. \textit{A mayor significancia, menor es la probabilidad}. También llamado \textbf{Poder Estadístico}} 
-    \item [Testeo de Hipótesis]{ : Pruebas para verificar si una encuesta o experimento entrega resultados válidos}
-    \item [Tasa de Respuesta Estimada]{ : Porcentaje esperado de respuestas válidas a una encuesta, prueba o estudio}
+    \item [Significancia Estadística]{ : Qué tan probable es que los resultados se obtuvieran por posibilidades aleatorias. \textit{A mayor significancia, menor es la probabilidad}. También llamado \textbf{Poder Estadístico}} 
+    \item [Testeo de Hipótesis]{ : Pruebas para validar los resultados de una encuesta o estudio}
+    \item [Tasa de Respuesta Estimada]{ : Porcentaje esperado de respuestas válidas a un estudio}
     \item [Correlación]{ : mención del grado en que dos variables se mueven una en relación con la otra (un patrón) o entre si (positiva, negativa). \textit{No implica \textbf{Causalidad} : un episodio lleva directamente a un resultado específico}}
 \end{description}
 
@@ -28,17 +28,32 @@
 \end{itemize}
 
 \subsection{Sesgo}
-El sesgo es la preferencia, a favor o en contra, subconsciente o no, respecto a una persona, grupo de personas o cosas. Algunos ejemplos incluyen 
+Preferencia, a favor o en contra, subconsciente o no, respecto a una persona, grupo de personas o cosas. Algunos ejemplos incluyen 
     \begin{description}
-        \item [\textit{Sampling Bias}]{ o \textbf{Sesgo de Muestreo}, cuando una muestra no es representativa de la población}
-        \item [\textit{Observer Bias}]{ o \textbf{Sesgo del Observador/del Investigador}, refiere a cuando dos personas tienden a observar cosas de forma distinta}
-        \item [\textit{Interpretation Bias}]{o \textbf{Sesgo de Interpretación}, es la tendencia a interpretar situaciones de forma positiva o negativa}
-        \item [\textit{Confirmation Bias}]{ o \textbf{Sesgo de Confirmación}, es la tendencia a buscar o interpretar información de tal forma que confirma suposiciones preexistentes}
-        \item [\textit{Data Bias}]{ o \textbf{Sesgo de Datos}, consiste en errores que distorsionan sistemáticamente los resultados hacia cierta dirección}
+        \item [\textit{Sampling Bias} - de Muestreo]{ :  la muestra no es representativa de la población}
+        \item [\textit{Observer Bias} - del Observador/Investigador]{ : dos personas tienden a observar cosas de forma distinta}
+        \item [\textit{Interpretation Bias} de Interpretación]{ : tendencia a interpretar situaciones de forma positiva o negativa}
+        \item [\textit{Confirmation Bias} - de Confirmación]{ : tendencia a buscar o interpretar información de forma que confirme suposiciones preexistentes}
+        \item [\textit{Data Bias} - de Datos]{ : errores que distorsionan sistemáticamente los resultados hacia cierta dirección}
     \end{description}
 
-\subsection{Elementos Básicos para \textit{Data Viz}}
-Estos ejemplos son los tipos más comunes y pueden replicarse a mano o a través de herramientas de \textit{Data Viz}. Dependiendo de la herramienta, pueden haber más tipos disponibles
+\subsection{Aplicación en \textit{Data Viz}}
+Los resultados matemáticos pueden procesarse en forma de visualizaciones, las que pueden replicarse a mano o generar a través de herramientas de \textit{Data Viz}, las que pueden ofrecer distintas formas de personalizar las visuales
+\subsubsection{Elementos de Arte}
+\begin{itemize}
+    \item {\textbf{Línea} : curva, derecha, gruesa, punteado...}
+    \item {\textbf{Forma} : en \textit{DataViz}, siempre 2D}
+    \item {\textbf{Color} : \textbf{Matiz}(color), \textbf{Intensidad}(brillante, mate), \textbf{Valor}(claro, oscuro)}
+    \item {\textbf{Espacio} : área alrededor y entre objetos}
+    \item {\textbf{Movimiento} : sentido de flujo o acción}
+    \item {\textbf{Títulos} : texto escrito en letras grandes en la parte superior de la visualización, describe los datos a presentar}
+    \item {\textbf{Subtítulos} : apoya al título añadiendo más contexto y descripción}
+    \item {\textbf{Leyenda} : identifica el significado de los elementos, aparte o afuera de la visualización}
+    \item {\textbf{Etiquetas} : leyenda ubicada dentro de la visualizacióne. Preferir esta opción, es más fácil de leer. \textit{ej :  en el eje x/y, identifica datos en relación a otros datos}}
+    \item {\textbf{Anotaciones} : centra al público en un aspecto concreto de los datos}
+\end{itemize}
+
+\subsubsection{Ejemplos más Comunes}
 \begin{itemize}
     \item {\textbf{Gráfico de Barras/Columnas} : contraste de tamaños para comparar dos o más valores. Puede ser horizontal (barras) o vertical (columnas)}
     \item {\textbf{Gráfico de Líneas} : para cambios, movimientos o tendencias, donde cada punto representa un dato. \textit{Preferir por sobre barras para cambios pequeños}}
@@ -64,6 +79,8 @@ Estos ejemplos son los tipos más comunes y pueden replicarse a mano o a través
 % múltiples sets de datos? gráfico de líneas, gráfico circular
 % cambios en el tiempo? gráfico de barras
 % mostrar relaciones entre datos? diagrama de dispersión, mapa de calor
+
+
 
 \paragraph{Evitar gráficos confusos y engañosos}
 \begin{itemize}
