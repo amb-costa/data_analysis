@@ -5,71 +5,97 @@ organization : "Google Professional Certificate"
 output: html_notebook
 ---
 
-## Introducción al Proyecto 
-La empresa **Cyclistic** busca *crear una nueva estrategia de márketing para convertir a sus clientes ocasionales a membresías anuales*. Estas membresías son mucho más rentables que el resto de los planes, por lo que la meta es maximizar la cantidad de membresías. Se asigna la siguiente pregunta: *"¿En qué se diferencian los socios anuales y los ciclistas ocasionales con respecto al uso de las bicicletas de Cyclistic?"*
+## Introducción al Proyecto
+
+La empresa **Cyclistic** busca **crear una nueva estrategia de marketing para convertir a sus clientes ocasionales a membresías anuales**. Se quiere maximizar esta cantidad de membresías, ya que son mucho más rentables que el resto de los planes. Se asigna la siguiente pregunta: *"¿En qué se diferencian los socios anuales y los ciclistas ocasionales con respecto al uso de las bicicletas de Cyclistic?"*
 
 Se tiene esta información sobre las características de Cyclistic
 
-* 5824 bicicletas con georreferencia
+-   5824 bicicletas con georreferencia
 
-* 692 estaciones en Chicago
+-   692 estaciones en Chicago
 
-* Tres tipos de planes: un solo viaje, día completo, membresías anuales
+-   Tres tipos de planes: un solo viaje, día completo, membresías anuales
 
-  - Las membresías anuales se consideran **miembros** de Cyclistic
-  
-  - Los planes individuales y diarios se consideran como **ciclistas ocasionales**
+    -   Las membresías anuales se consideran **miembros** de Cyclistic
 
+    -   Los planes individuales y diarios se consideran como **ciclistas ocasionales**
 
-* Además de las bicicletas comunes, se tienen bicicletas reclinadas, triciclos manuales y bicicletas de carga
+-   Además de las bicicletas comunes, se tienen bicicletas reclinadas, triciclos manuales y bicicletas de carga
 
-  - 92% de usuarios utilizan bicicleta normal
-  
-  - 8% utiliza alguna opción asistida
+    -   92% de usuarios utilizan bicicleta normal
 
-* Alrededor del 30% de los usuarios utiliza los servicios para ir al trabajo. El motivo principal de uso es recreación
+    -   8% utiliza alguna opción asistida
 
-* Las campañas digitales disponibles incluyen correos electrónicos y publicaciones en redes sociales, entre otros
+-   Alrededor del 30% de los usuarios utiliza los servicios para ir al trabajo. El motivo principal de uso es recreación
+
+-   Las campañas digitales disponibles incluyen correos electrónicos y publicaciones en redes sociales, entre otros
 
 ## Preguntar
-Considerando la pregunta recibida anteriormente, se reconoce una expectativa de descubrir diferencias entre dos variables, asumiendo que dicha diferencia existe. Se acepta la información numérica de la introducción como verídica, pero también debiera confirmarse una vez se tenga acceso a los datos. Se reformula la pregunta recibida en cinco preguntas **SMART**, destacando las más importantes para este trabajo:
 
-* **Qué significa medir con respecto al uso?**
+Al considerar la pregunta recibida anteriormente, se reconoce la expectativa de comparar los dos tipos de membresía en base a otras métricas comunes. Se acepta la información previa como verídica, pero debiera confirmarse contra los datos reales una vez se tenga acceso a ellos. Se reformula la pregunta recibida en cinco preguntas **SMART**, destacando las más importantes para este trabajo:
 
-* **Se asume que hay una diferencia entre ambos tipos de planes. Cómo se mide esa diferencia?**
+-   **¿Qué significa medir con respecto al uso?**
 
-* Esa diferencia, puede traducirse a una campaña de márketing?
+-   **¿Se asume que hay una diferencia entre ambos tipos de planes. Cómo se mide esa diferencia?**
 
-* Es relevante o eficiente el transformar clientes ocasionales a membresías anuales?
+-   Esa diferencia, ¿Puede traducirse a una campaña de marketing?
 
-* **Se usarán datos históricos de los últimos 12 meses. Estas diferencias, cambian con los meses?**
+-   ¿Es relevante o eficiente el transformar clientes ocasionales a membresías anuales?
+
+-   **Se usarán datos históricos de los últimos 12 meses. Estas diferencias, ¿Cambian con los meses?**
 
 Los *Stakeholders* dentro de la empresa son:
 
-* **Lily Moreno** : Directora de Márketing y Gerente. Responsable del desarrollo de campañas
+-   **Lily Moreno**: Directora de Marketing y Gerente. Responsable del desarrollo de campañas
 
-* **Equipo de Análisis Computacional** : Equipo donde pertenezco, encargados del trabajo con datos en Cyclistic
+-   **Equipo de Análisis Computacional**: Equipo donde pertenezco, encargados del trabajo con datos en Cyclistic
 
-* **Equipo Ejecutivo** : Equipo de jerarquía superior que tomará las decisiones
+-   **Equipo Ejecutivo**: Equipo de jerarquía superior que tomará las decisiones
 
-Se concluye que estas diferencias entre planes, se podrían relacionar con otras características de los viajes, como duración del trayecto o popularidad de una estación. La manera más directa de hacer estas relaciones es a través de la estadística, lo que brinda la oportunidad de comunicarse con el Equipo Ejecutivo utilizando herramientas que podrían reconocer. Finalmente, debido a la naturaleza del medio de transporte, debiera considerarse el mes o estación del año al momento del análisis
+Se concluye que la diferencia entre planes se podría relacionar con características de los viajes, como duración de un trayecto o popularidad de una estación. La manera más directa de revisar estas relaciones es a través de la estadística, lo que brinda la oportunidad de comunicarse con el Equipo Ejecutivo utilizando herramientas que podrían reconocer. Finalmente, debido a la naturaleza del medio de transporte, debiera considerarse el mes o estación del año durante el proceso de análisis
 
-
-##### Se establece el *Problema Empresarial* como : Cyclistic busca convertir a sus clientes ocasionales en membresías anuales: su tipo de membresía más rentable. Para esto, *se estudiarán las relaciones entre los dos tipos de membresía y otras variables durante el año 2024, para comparar ambas membresías entre si. Las diferencias que se encuentren se utilizarán con el fin de crear campañas de márketing que incentiven el pago de membresías
+### Se establece el **Problema Empresarial**: Cyclistic quiere aumentar su rentabilidad transformando sus clientes ocasionales a membresías anuales. Para esto, *se estudian los viajes realizados durante el año 2024, para buscar relaciones entre ambas membresías y otras variables asociadas a los viajes*. Las diferencias entre esas relaciones serán usadas para crear campañas de marketing que incentiven esta captura
 
 ## Preparar
-Se utilizan los datos públicos de **Divvy Bikes**, que son [gestionados, entregados y actualizados mensualmente](https://divvybikes.com/system-data) por **Motivate International Inc.** con autorización de la Ciudad de Chicago, USA. Notar que la empresa en cuestión no es Cyclistic, pero lo es para efectos de este caso práctico. Esto significa que estos datos son **de primera fuente**, y que tengo permiso y acceso a ellos. Se puede acceder a estos datos a través de otras plataformas como **Kaggle** y **Tableau**, y se actualizan de forma mensual.
 
-Previo a la publicación, se anonimiza todo viaje, y se excluyen viajes de prueba y viajes de menos de 60 segundos. Los campos corresponden a la id del viaje, tipo de usuario (o membresía), tipo de viaje (o de bicicleta), hora y fecha de inicio y término, y estaciones de inicio y término con sus respectivas id. A primera vista, pareciera no existir información sobre bicicletas asistidas, limitando el tipo de bicicleta a *clásica* y *eléctrica*, lo que constituye un sesgo que podría ser considerado como parte de mediciones futuras.
+Se utilizan los datos públicos de **Divvy Bikes**, que son [gestionados, entregados y actualizados mensualmente](https://divvybikes.com/system-data) por **Motivate International Inc.** con autorización de la Ciudad de Chicago, USA. Notar que la empresa en cuestión no es Cyclistic, pero serán equivalentes para efectos de este caso práctico.
 
-Se utilizan archivos para los doce meses del año 2024, donde el nombre sigue el formato "2024MM-divvy-tripdata.csv". Se guardan en una carpeta llamada **divvy_trips**. 
+Esta fuente de datos contiene información desde el año 2013, y se actualiza de forma mensual desde abril del 2020. Previo a la publicación de los datos, se anonimiza todo viaje, y se excluyen tanto viajes de prueba como viajes de duración menor a 60 segundos. Se puede acceder a estos datos de forma directa en la página de Divvy Bikes, o a través de otras plataformas como **Kaggle** y **Tableau**
 
-##### Se usa la fuente de datos entregada a través de Cyclistic, sin necesidad de utilizar otras fuentes. Tengo permiso para usar estos datos públicos, y como parte de la empresa. Los resultados estarán sesgados debido a falta de información sobre las opciones asistidas. La fuente mencionada permite asociar los tipos de membresías con variables como ubicación, tiempo y estaciones del año. Se considera que estos datos son *confiables, originales, coherentes, actuales y citados*  
+Como miembro del equipo de análisis computacional de Cyclistic, tengo permiso y acceso a estos **datos internos y de primera fuente**. En la realidad, estos datos son **de tercera fuente**. Cyclistic captura sus propios datos de forma regular y los somete a una limpieza previa para compartir su acceso en distintas plataformas, por lo que cumplen con el estandar **ROCCC** y son **confiables, originales, coherentes, actuales y citados**
 
+Se descargan los archivos correspondientes a los doce meses del año 2024, que consisten en archivos *comma-separated values* de formato "2024MM-divvy-tripdata.csv". Se utiliza **Google Big Query** para la exploración de la mitad de los datos debido al tamaño de algunos archivos, por lo que se necesita otro dialecto SQL a futuro. Los archivos siguen el esquema a continuación
 
-Primera instancia: 08/01/2025
-Los primeros intentos para conectar Posit Cloud con Github no son ideales. Hay alguna manera de instalar R  Desktop en mac? haría las cosas más fácil. Al menos hay una descarga de archivos. La idea es generar un flujo constante entre todos los compiladores
-This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code.
+```         
+
+  ride_id STRING NULLABLE
+  rideable_type STRING NULLABLE
+  started_at TIMESTAMP NULLABLE
+  ended_at TIMESTAMP NULLABLE
+  start_station_name STRING NULLABLE
+  start_station_id STRING NULLABLE
+  end_station_name STRING NULLABLE
+  end_station_id STRING NULLABLE
+  start_lat FLOAT NULLABLE
+  start_lng FLOAT NULLABLE 
+  end_lat FLOAT NULLABLE
+  end_lng FLOAT NULLABLE
+  member_casual STRING NULLABLE
+  
+```
+
+Cada viaje es descrito con un id, tipo de membresía, tipo de bicicleta, junto a hora, fecha, id de estación, nombre y coordenadas tanto para estaciones de inicio como término. Estos son datos **estructurados y cuantitativos** con excepción de los ids y nombres para estaciones y tipos de bicicleta y membresía, que se consideran **cualitativos y ordinales**
+
+El atributo *rideable_type* solo admite los valores *clásico* y *eléctrico*, lo que no describe el uso de bicicletas asistidas. Esto genera un **sesgo** respecto a usuarios de bicicletas alternativas; no es posible confirmar las estadísticas previas, ni individualizar su uso.
+
+En base al esquema descrito, se concluye que las membresías pueden ser comparadas en base a tipos de bicicleta, horas del día y estaciones de inicio y término. Es necesario extraer y transformar información para otras **métricas** de frecuencia: *día de la semana, día del mes, estación del año, hora del día, duración del viaje en minutos y ubicación geográfica de las estaciones*
+
+Por lo tanto, un viaje se considera válido cuando *su id de viaje, id para estaciones de inicio y fin, tipo de bicicleta y membresía no son nulos, y el viaje dura entre 1 minuto y 1439 minutos, equivalente a 23 horas y 59 minutos*
+
+### Tengo autorización para el uso, copia y almacenamiento de la fuente de datos de Cyclistic. Estos datos cumplen con el estándar **ROCCC**, pero se reconoce su sesgo ya que carece de información sobre opciones asistidas. Se establecen los parámetros para medir la validez de un viaje, y las métricas de interés para medir la frecuencia de atributos como día de la semana o ubicación geográfica de estaciones
+
+Primera instancia: 08/01/2025 Los primeros intentos para conectar Posit Cloud con Github no son ideales. Hay alguna manera de instalar R Desktop en mac? haría las cosas más fácil. Al menos hay una descarga de archivos. La idea es generar un flujo constante entre todos los compiladores This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code.
 
 Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Ctrl+Shift+Enter*.
 
