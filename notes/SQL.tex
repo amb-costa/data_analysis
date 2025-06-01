@@ -1,20 +1,20 @@
-% nta : separado para desglosar el capítulo de herramientas
+% nta: separado para desglosar el capítulo de herramientas
 % se hace necesario tener más secciones 
 
 \section{SQL - \textit{Structured Query Language}}
 SQL origina desde \textit{System R/IBM}, y está directamente relacionado con DB relacionales. Permite trabajar con conjuntos de datos grandes al acceder a tablas de DB, en tareas como preparación para análisis posteriores en otro software. Es ideal para el trabajo colaborativo y el seguimiento de \gls{qry} por todos los usuarios.
 
-Tomar en cuenta que existen múltiples dialectos SQL y es recomendable consultar la documentación. Sin embargo, la gran mayoría de las instrucciones son comunes, y se promueven buenas prácticas de comandos. \textit{Ejemplos de Dialectos SQL : MySQL, BigQuery, PostgreSQL, Microsoft SQL, SQLite}
+Tomar en cuenta que existen múltiples dialectos SQL y es recomendable consultar la documentación. Sin embargo, la gran mayoría de las instrucciones son comunes, y se promueven buenas prácticas de comandos. \textit{Ejemplos de Dialectos SQL: MySQL, BigQuery, PostgreSQL, Microsoft SQL, SQLite}
 
 También considerar que SQL no guarda los resultados de los \gls{qry} como tablas, por lo que debe crearse una si es que eso es necesario.
 
 \paragraph{Términos comunes}
 \begin{description}
-    \item {\textbf{*} : selector universal para todas las columnas}
-    \item {\textbf{Null} : indicador de valores no existentes en un set de datos. \textit{null ${\neq}$ 0}} 
-    \item {\textbf{Module/\%} : operador que devuelve el resto de la división entre dos números. \textit{ej : 7 \% 3 = 1}}
-    \item {\textbf{<>} : equivalente a !=}
-    \item {\textbf{Tabla temporal} : tabla que existe momentáneamente en el servidor de la base de datos}
+    \item {\textbf{*}: selector universal para todas las columnas}
+    \item {\textbf{Null}: indicador de valores no existentes en un set de datos. \textit{null ${\neq}$ 0}} 
+    \item {\textbf{Module/\%}: operador que devuelve el resto de la división entre dos números. \textit{ej: 7 \% 3 = 1}}
+    \item {\textbf{<>}: equivalente a !=}
+    \item {\textbf{Tabla temporal}: tabla que existe momentáneamente en el servidor de la base de datos}
     
 \end{description}
 
@@ -22,23 +22,23 @@ También considerar que SQL no guarda los resultados de los \gls{qry} como tabla
 \subsubsection{Data Definition Language}
 Definen y modifican la estructura de una DB, su esquema u objetos como índices y funciones
 \begin{itemize}
-    \item {\textbf{CREATE} [structure] strct\_name : crea una estructura a definir junto con sus características.
+    \item {\textbf{CREATE} [structure] strct\_name: crea una estructura a definir junto con sus características.
     \begin{itemize}
-        \item {\textbf{CREATE TABLE} table\_name (col1 dt1, col2 dt2....) : define una tabla con pares de columnas y sus \gls{datatype} correspondientes. \textit{En algunos dialectos, se utiliza \textbf{CREATE TEMP TABLE} para tablas temporales}}
-        \item {\textbf{CREATE TABLE} table\_name \textbf{AS} (query) : crea una tabla utilizando los resultados de una consulta y la añade a la base de datos}
-        \item {\textbf{SELECT INTO} : copia datos de una tabla a otra nueva, temporal. \textit{No es reconocido por Big Query}. Se recomienda \textit{\textbf{SELECT * INTO} table\_temp \textbf{FROM} (table\_original)}}
+        \item {\textbf{CREATE TABLE} table\_name (col1 dt1, col2 dt2....): define una tabla con pares de columnas y sus \gls{datatype} correspondientes. \textit{En algunos dialectos, se utiliza \textbf{CREATE TEMP TABLE} para tablas temporales}}
+        \item {\textbf{CREATE TABLE} table\_name \textbf{AS} (query): crea una tabla utilizando los resultados de una consulta y la añade a la base de datos}
+        \item {\textbf{SELECT INTO}: copia datos de una tabla a otra nueva, temporal. \textit{No es reconocido por Big Query}. Se recomienda \textit{\textbf{SELECT * INTO} table\_temp \textbf{FROM} (table\_original)}}
     \end{itemize}}
-    \item {\textbf{ALTER} [structure] strct\_name {action}: modifica la estructura de TABLE, DATABASE, entre otras estructuras. \textit{Ej : ALTER TABLE tableName ADD COLUMN col\_name data\_type}}
-    \item {\textbf{DROP} [structure] strct\_name :  elimina la estructura de DB. \textit{Ej : DROP TABLE tableName}}
+    \item {\textbf{ALTER} [structure] strct\_name {action}: modifica la estructura de TABLE, DATABASE, entre otras estructuras. \textit{Ej: ALTER TABLE tableName ADD COLUMN col\_name data\_type}}
+    \item {\textbf{DROP} [structure] strct\_name:  elimina la estructura de DB. \textit{Ej: DROP TABLE tableName}}
     \item {\textbf{TRUNCATE}}
     \item {\textbf{COMMENT}}
-    \item {\textbf{RENAME} [structure] name1 \textbf{TO} name2 : renombra un objeto de DB}
+    \item {\textbf{RENAME} [structure] name1 \textbf{TO} name2: renombra un objeto de DB}
 \end{itemize}
 
 \subsubsection{Data Manipulation Language}
 Controlan el acceso y manejo a los datos del DB.
 \begin{itemize}
-    \item {\textbf{INSERT INTO} tableName (col1,col2,...) \textbf{VALUES} (val1,val2,...) : los valores deben seguir el orden definido en el insert, separados por comas y encerrados en paréntesis}
+    \item {\textbf{INSERT INTO} tableName (col1,col2,...) \textbf{VALUES} (val1,val2,...): los valores deben seguir el orden definido en el insert, separados por comas y encerrados en paréntesis}
     \item {\textbf{UPDATE} tableName \textbf{SET} value = ''new value'' \textbf{WHERE} {conditions}}
     \item {\textbf{DELETE}}
     \item {\textbf{LOCK}}
@@ -52,7 +52,7 @@ Controlan los derechos, permisos y restricciones dentro de la DB
 \end{itemize}
 
 \subsubsection{Transaction Control Language}
-Definen las tareas para llevar a cabo una transacción en específico, que solo puede tener dos resultados : exitosa o no. 
+Definen las tareas para llevar a cabo una transacción en específico, que solo puede tener dos resultados: exitosa o no. 
 \begin{itemize}
     \item {\textbf{BEGIN TRANSACTION}}
     \item {\textbf{COMMIT}}
@@ -63,10 +63,10 @@ Definen las tareas para llevar a cabo una transacción en específico, que solo 
 \subsubsection{Comandos}
 Instrucciones que se añaden a las cláusulas previamente mencionadas
 \begin{itemize}
-    \item {\textbf{SELECT} : \textit{Data Query Language}, realiza la consulta en si. \textbf{SELECT INTO} copia los datos de una tabla a otra nueva y temporal, \textit{no reconocido por Big Query}}
-    \item {\textbf{FROM} tableName. \textit{Utilizar tildes invertidas para el nombre de la ubicación de la tabla : `data\_bank.data\_table`}}
-    \item {\textbf{WHERE} : filtro para incorporar condiciones tipo \textit{WHEN}, etc}
-    \item {\textbf{SUBQUERIES} : es posible crear una consulta (\textit{inner query/select}) dentro de otra consulta más amplia (\textit{outer query/select}) 
+    \item {\textbf{SELECT}: \textit{Data Query Language}, realiza la consulta en si. \textbf{SELECT INTO} copia los datos de una tabla a otra nueva y temporal, \textit{no reconocido por Big Query}}
+    \item {\textbf{FROM} tableName. \textit{Utilizar tildes invertidas para el nombre de la ubicación de la tabla: `data\_bank.data\_table`}}
+    \item {\textbf{WHERE}: filtro para incorporar condiciones tipo \textit{WHEN}, etc}
+    \item {\textbf{SUBQUERIES}: es posible crear una consulta (\textit{inner query/select}) dentro de otra consulta más amplia (\textit{outer query/select}) 
     \begin{itemize}
         \item {Primero se ejecuta la consulta interna (siempre entre paréntesis), y los resultados se utilizan en la consulta externa}
         \item {Generalmente se anidan en las cláusulas \textit{FROM y WHERE}}
@@ -74,37 +74,37 @@ Instrucciones que se añaden a las cláusulas previamente mencionadas
         \item {Aquellas subconsultas que devuelven más de una fila, solo pueden usarse con múltiples operadores de valor como \textbf{IN, ANY, ALL} en cláusulas WHERE}
         \item {La subconsulta no puede anidarse en un comando SET}
     \end{itemize}}
-    \item {\textbf{WITH} table\_name \textbf{AS} (subquery) : cláusula que crea una \textbf{tabla temporal} : tabla que existe temporalmente en el servidor.}
-    \item {SELECT col \textbf{CASE} \textbf{WHEN} cond1 \textbf{THEN} action1 \textbf{ELSE} cond2 \textbf{END AS} newcol : recorre múltiples condiciones a definir, y entrega un valor cuando una condición se cumple. \textit{Similar a if/else en otros lenguajes de programación}}
-    \item {object \textbf{AS} alias : asigna un alias al objeto descrito para facilitar escritura y lectura. También se utiliza en otras funciones para asignar características. \textit{Si hay errores en el dialecto, pueden omitirse: FROM table\_name alias\_name}}
-    \item {\textbf{JOIN} : cláusula usada para combinar columnas de dos o más tablas, en base a una columna en común. \textit{Versión SQL de =VLOOKUP}
+    \item {\textbf{WITH} table\_name \textbf{AS} (subquery): cláusula que crea una \textbf{tabla temporal}: tabla que existe temporalmente en el servidor.}
+    \item {SELECT col \textbf{CASE} \textbf{WHEN} cond1 \textbf{THEN} action1 \textbf{ELSE} cond2 \textbf{END AS} newcol: recorre múltiples condiciones a definir, y entrega un valor cuando una condición se cumple. \textit{Similar a if/else en otros lenguajes de programación}}
+    \item {object \textbf{AS} alias: asigna un alias al objeto descrito para facilitar escritura y lectura. También se utiliza en otras funciones para asignar características. \textit{Si hay errores en el dialecto, pueden omitirse: FROM table\_name alias\_name}}
+    \item {\textbf{JOIN}: cláusula usada para combinar columnas de dos o más tablas, en base a una columna en común. \textit{Versión SQL de =VLOOKUP}
     \begin{itemize}
-        \item {\textbf{INNER} : default. Devuelve valores que coincidan en ambas tablas}
-        \item {\textbf{LEFT} : devuelve todos los registros de la tabla a la izquierda(antes de declarar JOIN), y solo los registros que coincidan en la de la derecha}
-        \item {\textbf{RIGHT} : análogo a LEFT}
-        \item {\textbf{FULL OUTER} : combina LEFT y RIGHT, y devuelve todos los valores que coincidan en ambas tablas}    
+        \item {\textbf{INNER}: default. Devuelve valores que coincidan en ambas tablas}
+        \item {\textbf{LEFT}: devuelve todos los registros de la tabla a la izquierda(antes de declarar JOIN), y solo los registros que coincidan en la de la derecha}
+        \item {\textbf{RIGHT}: análogo a LEFT}
+        \item {\textbf{FULL OUTER}: combina LEFT y RIGHT, y devuelve todos los valores que coincidan en ambas tablas}    
     \end{itemize}}
-    \item {\textbf{HAVING} : permite añadir un filtro a la consulta, que solo puede utilizarse con funciones de agregación como \textbf{MAX, MIN, AVG}}
+    \item {\textbf{HAVING}: permite añadir un filtro a la consulta, que solo puede utilizarse con funciones de agregación como \textbf{MAX, MIN, AVG}}
 \end{itemize}
 
 \subsubsection{Funciones}
 Acciones a llevar a cabo, generalmente se añaden en otras cláusulas para realizar filtros
 \begin{itemize}
-    \item {\textbf{UNIX\_DATE} : devuelve la cantidad de días que han pasado desde 01/01/1970. \textit{Se utiliza para comparar fechas en distintos husos horarios}}
-    \item {\textbf{LENGTH} (col) : devuelve el tamaño del \gls{str}}
-    \item {\textbf{SUBSTR} (col,start,amount) : crea un substring en base a un punto de partida y una cantidad de caracteres}
-    \item {\textbf{TRIM} (col) : remueve espacios extra}
-    \item {\textbf{CAST} (col AS data\_type) : realiza \gls{typecast}. \textbf{SAFE\_CAST} devuelve NULL si la consulta falla}
-    \item {\textbf{COUNT}(cols) : devuelve el número de filas para un rango especificado}
-    \item {COUNT(\textbf{DISTINCT} cols) : devuelve el número de filas con valores distintos para un rango en específico}
-    \item {\textbf{CONCAT} (substr1, substr2, ...) \textbf{AS} full\_str : une dos o más substrings en una columna
+    \item {\textbf{UNIX\_DATE}: devuelve la cantidad de días que han pasado desde 01/01/1970. \textit{Se utiliza para comparar fechas en distintos husos horarios}}
+    \item {\textbf{LENGTH} (col): devuelve el tamaño del \gls{str}}
+    \item {\textbf{SUBSTR} (col,start,amount): crea un substring en base a un punto de partida y una cantidad de caracteres}
+    \item {\textbf{TRIM} (col): remueve espacios extra}
+    \item {\textbf{CAST} (col AS data\_type): realiza \gls{typecast}. \textbf{SAFE\_CAST} devuelve NULL si la consulta falla}
+    \item {\textbf{COUNT}(cols): devuelve el número de filas para un rango especificado}
+    \item {COUNT(\textbf{DISTINCT} cols): devuelve el número de filas con valores distintos para un rango en específico}
+    \item {\textbf{CONCAT} (substr1, substr2, ...) \textbf{AS} full\_str: une dos o más substrings en una columna
     \begin{itemize}
         \item {\textbf{CONCAT(col1+col2+...)} también es válido}
-        \item {\textbf{CONCAT\_WS} (separador, col1, ...) : Une cada cadena de texto con el separador entregado}
+        \item {\textbf{CONCAT\_WS} (separador, col1, ...): Une cada cadena de texto con el separador entregado}
     \end{itemize}}
-    \item {SELECT \textbf{DISTINCT} : se realiza el query eliminando duplicados en la columna}
-    \item {SELECT \textbf{COALESCE} (col1, col2,...) \textbf{AS} new\_col : entrega resultados no \textit{null} y los asigna a un registro nuevo. Si registro es \textit{null}, devuelve el siguiente campo que no lo sea}
-    \item {SELECT \textbf{EXTRACT} () AS newcol\_name : extrae una parte de una fecha para utilizar. \textit{ej : EXTRACT (YEAR FROM STARTTIME) AS year} }
+    \item {SELECT \textbf{DISTINCT}: se realiza el query eliminando duplicados en la columna}
+    \item {SELECT \textbf{COALESCE} (col1, col2,...) \textbf{AS} new\_col: entrega resultados no \textit{null} y los asigna a un registro nuevo. Si registro es \textit{null}, devuelve el siguiente campo que no lo sea}
+    \item {SELECT \textbf{EXTRACT} () AS newcol\_name: extrae una parte de una fecha para utilizar. \textit{ej: EXTRACT (YEAR FROM STARTTIME) AS year} }
 \end{itemize}
 
 
@@ -128,3 +128,5 @@ Acciones a llevar a cabo, generalmente se añaden en otras cláusulas para reali
     \item {Lo mismo para comillas simples o dobles, pero las buenas prácticas garantizan buen funcionamiento a través de todos los dialectos}
     \item {MySQL acepta \#etiqueta para comentarios}
 \end{itemize}
+
+\newpage

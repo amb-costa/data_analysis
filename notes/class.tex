@@ -3,52 +3,50 @@
 \subsection{\textit{Metadata} - Metadatos}
 Los metadatos son datos sobre los datos de una hoja de cálculo o DB, y permiten interpretar su contenido. Como forma de \gls{dtgvrnnc}, se almacenan en una ubicación central (como un \textbf{repositorio de \textit{metadata}}) de forma física o virtual. Actúan como una fuente única y verídica de información consistente, uniforme y de acceso estandarizado. Los tipos más comunes son
 \begin{description}
-        \item {\textbf{Descriptivo} : Describe los datos, y puede utilizarse para identificarlos a futuro. \textit{títulos, descripciones, etiquetas, categorías}}
-        \item {\textbf{Estructural} : Indica cómo un grupo de datos se organiza, y si es que pertenece (o no) a una o más recolecciones de datos. \textit{estructura de datos, estado, ubicación, flujo}}
-        \item {\textbf{Administrativo} : Indica la fuente técnica de una propiedad u objeto digital. \textit{versión, propietarios o usuarios, permisos de acceso y edición}}
+        \item {\textbf{Descriptivo}: Describe los datos, y puede utilizarse para identificarlos a futuro. \textit{títulos, descripciones, etiquetas, categorías}}
+        \item {\textbf{Estructural}: Indica cómo un grupo de datos se organiza, y si es que pertenece (o no) a una o más recolecciones de datos. \textit{estructura de datos, estado, ubicación, flujo}}
+        \item {\textbf{Administrativo}:Indica la fuente técnica de una propiedad u objeto digital. \textit{versión, propietarios o usuarios, permisos de acceso y edición}}
 \end{description}
 
 \subsection{Por Objetividad y Capacidad de Medición}
 \begin{description}
-    \item{\textbf{Cuantitativos} : Son hechos numéricos, medidas específicas y objetivas. \textit{Qué cosas, cuántas, qué tan seguido?} Se subdividen en \textbf{discretos} (cuantificables, número limitado de valores) y \textbf{contínuos} (se miden y pueden tener casi cualquier valor numérico)}
-    \item{\textbf{Cualitativos} : Son explicaciones subjetivas de cualidades y características. \textit{Por qué? Cómo?} Se subdividen en \textbf{nominal} (no presentan estructura o secuencia aparente) y \textbf{ordinal} (pueden ordenarse en base a alguna característica)}
+    \item{\textbf{Cuantitativos}: Son hechos numéricos, medidas específicas y objetivas. \textit{Qué cosas, cuántas, qué tan seguido?} Se subdividen en \textbf{discretos} (cuantificables, número limitado de valores) y \textbf{contínuos} (se miden y pueden tener casi cualquier valor numérico)}
+    \item{\textbf{Cualitativos}: Son explicaciones subjetivas de cualidades y características. \textit{Por qué? Cómo?} Se subdividen en \textbf{nominal} (no presentan estructura o secuencia aparente) y \textbf{ordinal} (pueden ordenarse en base a alguna característica)}
 \end{description}
 
 \subsection{Por Nivel de Organización}
 \begin{description}
-    \item {\textbf{Estructurados} : Son definidos, a menudo \textbf{cuantitativos}, organizados en formatos específicos como filas y columnas. Fáciles de ordenar y buscar. \textit{ej : registros telefónicos, Excel, DB SQL}}
-    \item {\textbf{No Estructurados} : Son variados, a menudo \textbf{cualitativos}, que no muestran algún orden o patrón aparente. Entregan libertad de análisis, pero son más difíciles de buscar. \textbf{Representan la mayoría de los datos en el mundo.} \textit{ej : DB NOSQL, SMS, fotos y videos, archivos}}
+    \item {\textbf{Estructurados}: Son definidos, a menudo \textbf{cuantitativos}, organizados en formatos específicos como filas y columnas. Fáciles de ordenar y buscar. \textit{ej: registros telefónicos, Excel, DB SQL}}
+    \item {\textbf{No Estructurados} :Son variados, a menudo \textbf{cualitativos}, que no muestran algún orden o patrón aparente. Entregan libertad de análisis, pero son más difíciles de buscar. \textbf{Representan la mayoría de los datos en el mundo.} \textit{ej: DB NOSQL, SMS, fotos y videos, archivos}}
 \end{description}
 
 \subsection{Por Ubicación}
 \begin{description}
-    \item {\textbf{Internos} : Viven dentro de los sistemas de la compañía o empresa}
-    \item {\textbf{Externos} : Viven o son generados fuera de la organización}
+    \item {\textbf{Internos}: Viven dentro de los sistemas de la compañía o empresa}
+    \item {\textbf{Externos}: Viven o son generados fuera de la organización}
 \end{description}
 
 \subsection{Por Cercanía a sus Fuentes}
 \begin{description}
-    \item {\textbf{\textit{$1^{\text{st}}$ party data} - 1° Fuente} : Recolectados por un individuo o grupo, con recursos propios}
-    \item {\textbf{\textit{$2^{\text{nd}}$ party data} - 2° Fuente} : Recolectados directamente por un grupo desde su audiencia, y que luego se venden}
-    \item {\textbf{\textit{$3^{\text{rd}}$ party data} - 3° Fuente} : Recolectados desde fuentes externas, que no los capturaron directamente}
+    \item {\textbf{\textit{$1^{\text{st}}$ party data} - 1° Fuente}: Recolectados por un individuo o grupo, con recursos propios}
+    \item {\textbf{\textit{$2^{\text{nd}}$ party data} - 2° Fuente}: Recolectados directamente por un grupo desde su audiencia, y que luego se venden}
+    \item {\textbf{\textit{$3^{\text{rd}}$ party data} - 3° Fuente}: Recolectados desde fuentes externas, que no los capturaron directamente}
 \end{description}
-
-
 
 \subsection{Por Formato}
 \begin{description}
-    \item {\textbf{\textit{Wide Data} - Formato Ancho} : Cada elemento de dato refiere a un solo registro o fila, y las columnas o campos contienen sus atributos. \textit{Preferir para tablas o gráficos con pocas variables, o comparar gráficos lineales simples}}
-    \item {\textbf{\textit{Long Data} - Formato Corto} : Cada registro se relaciona con un valor específico, así que las variaciones de un atributo se dividirán en múltiples registros. \textit{Preferir cuando se almacenan muchas variables, o se realizan análisis o gráficos estadísticos más avanzados}}
+    \item {\textbf{\textit{Wide Data} - Formato Ancho}: Cada elemento de dato refiere a un solo registro o fila, y las columnas o campos contienen sus atributos. \textit{Preferir para tablas o gráficos con pocas variables, o comparar gráficos lineales simples}}
+    \item {\textbf{\textit{Long Data} - Formato Corto}: Cada registro se relaciona con un valor específico, así que las variaciones de un atributo se dividirán en múltiples registros. \textit{Preferir cuando se almacenan muchas variables, o se realizan análisis o gráficos estadísticos más avanzados}}
 \end{description}
 
 \subsection{Por Tamaño}
 \begin{description}
-    \item {\textbf{\textit{Small Data} - Microdatos} : Conjunto de datos pequeños o de métricas específicas, generados durante un periodo de tiempo corto y definido. Generalmente se trabajan en hojas de cálculo y son útiles para decisiones diarias, pequeñas y medianas empresas. Tienen un tamaño manejable para el análisis}
-    \item {\textbf{\textit{Big Data} - Macrodatos} : Conjunto de datos más amplio, menos específico, que cubre periodos de tiempo más extensos. Generalmente se mantienen en bases de datos y es probable que los utilicen organizaciones grandes, debido a que requieren más esfuerzo para recopilar, almacenar, clasificar y representar visualmente
+    \item {\textbf{\textit{Small Data} - Microdatos}: Conjunto de datos pequeños o de métricas específicas, generados durante un periodo de tiempo corto y definido. Generalmente se trabajan en hojas de cálculo y son útiles para decisiones diarias, pequeñas y medianas empresas. Tienen un tamaño manejable para el análisis}
+    \item {\textbf{\textit{Big Data} - Macrodatos}: Conjunto de datos más amplio, menos específico, que cubre periodos de tiempo más extensos. Generalmente se mantienen en bases de datos y es probable que los utilicen organizaciones grandes, debido a que requieren más esfuerzo para recopilar, almacenar, clasificar y representar visualmente
     \begin{description}
-        \item {\textbf{Desafíos} : Hay una sobrecarga de datos, con información sin relevancia o importancia, por lo que la información importante se oculta entre datos no relevantes. No siempre son de fácil acceso y debido a su tamaño, no todos los \textit{hardware/software} pueden trabajar con ellos, creando un sesgo algorítmico}
-        \item {\textbf{Beneficios} : Como la cantidad de datos almacenada es grande, su análisis es más eficiente y permite detectar tendencias y patrones debido al periodo de tiempo en que se generan. Así, presentan una comprensión más amplia del problema}
-        \item {\textbf{Cuatro 'V' para resumir Beneficios y Desafíos} : \textit{Volumen} (cantidad de datos), \textit{Variedad} (tipos diferentes de datos), \textit{Velocidad} (qué tan rápido se procesan los datos), \textit{Veracidad} (calidad y fiabilidad de los datos)}
+        \item {\textbf{Desafíos}: Hay una sobrecarga de datos, con información sin relevancia o importancia, por lo que la información importante se oculta entre datos no relevantes. No siempre son de fácil acceso y debido a su tamaño, no todos los \textit{hardware/software} pueden trabajar con ellos, creando un sesgo algorítmico}
+        \item {\textbf{Beneficios}: Como la cantidad de datos almacenada es grande, su análisis es más eficiente y permite detectar tendencias y patrones debido al periodo de tiempo en que se generan. Así, presentan una comprensión más amplia del problema}
+        \item {\textbf{Cuatro 'V' para resumir Beneficios y Desafíos}: \textit{Volumen} (cantidad de datos), \textit{Variedad} (tipos diferentes de datos), \textit{Velocidad} (qué tan rápido se procesan los datos), \textit{Veracidad} (calidad y fiabilidad de los datos)}
     \end{description}}
 \end{description}
 \newpage
