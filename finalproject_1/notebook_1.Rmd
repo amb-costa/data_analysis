@@ -95,7 +95,29 @@ Por lo tanto, un viaje se considera válido cuando *su id de viaje, id para esta
 
 ### Tengo autorización para el uso, copia y almacenamiento de la fuente de datos de Cyclistic. Estos datos cumplen con el estándar **ROCCC**, pero se reconoce su sesgo ya que carece de información sobre opciones asistidas. Se establecen los parámetros para medir la validez de un viaje, y las métricas de interés para medir la frecuencia de atributos como día de la semana o ubicación geográfica de estaciones
 
-Primera instancia: 08/01/2025 Los primeros intentos para conectar Posit Cloud con Github no son ideales. Hay alguna manera de instalar R Desktop en mac? haría las cosas más fácil. Al menos hay una descarga de archivos. La idea es generar un flujo constante entre todos los compiladores This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code.
+## Procesar
+
+Las primeras exploraciones muestran que **todos los id de viaje son únicos y no NULL; todos los viajes tienen tipo de bicicleta y tipo de membresía no NULL; todos los viajes tienen hora de inicio y fin no NULL**. También se encuentran los siguientes problemas:
+
+-   las id de estaciones no son únicos; no todos los id tienen un nombre de estación asignado
+-   algunos viajes tienen valor NULL para id de estación de inicio, fin o ambos
+-   todos los viajes tienen coordenadas para su estación de inicio, no así para las estaciones de fin
+-   las coordenadas tienen cantidad de decimales distintas para las estaciones
+-   algunos viajes se encuentran fuera de los parámetros: duración negativa, duración superior a 24 horas
+
+Como **Big Query** no admite el tamaño de algunos archivos, y para simplificar el manejo y archivado de archivos .csv, se utiliza la aplicación gratuita [Superintendent](https://superintendent.app/), creada por [Tanin Na Nakorn](https://github.com/tanin47). Esta aplicación utiliza **DuckDB**, un sistema de administración de bases de datos relacionales enfocado en **procesamiento analítico en línea (*On-Line Analytical Processing [OLAP]*)**
+
+Considerar que DuckDB posee la extensión [Spatial](https://duckdb.org/docs/stable/core_extensions/spatial/overview.html), que permite trabajos como cálculos de distancias en sistemas de georreferencia; sin embargo, Superintendent no admite su instalación. Por lo tanto, se deben utilizar otras herramientas para el trabajo con coordenadas
+
+Previo al trabajo de agregación, se realiza una **limpieza de datos** previa, donde se elimina todo viaje que no tenga id para estaciones de inicio y fin, y que tenga una duración fuera del intervalo 1-1439 minutos. 
+
+  - Eliminar todo viaje que no tenga id para estaciones de inicio y fin, y que esté fuera del intervalo 1-1439 minutos de duración
+  - Eliminar todo viaje fuera del intervalo 1-1439 minutos
+  - 
+
+Primera instancia: 08/01/2025 Los primeros intentos para conectar Posit Cloud con Github no son ideales. Hay alguna manera de instalar R Desktop en mac? haría las cosas más fácil. Al menos hay una descarga de archivos. La idea es generar un flujo constante entre todos los compiladores
+
+This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code.
 
 Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Ctrl+Shift+Enter*.
 
