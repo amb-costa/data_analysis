@@ -93,6 +93,31 @@ En base al esquema descrito, se concluye que las membresías pueden ser comparad
 
 Por lo tanto, un viaje se considera válido cuando *su id de viaje, id para estaciones de inicio y fin, tipo de bicicleta y membresía no son nulos, y el viaje dura entre 1 minuto y 1439 minutos, equivalente a 23 horas y 59 minutos*
 
+El gráfico siguiente describe el tamaño de cada archivo **.csv** en función de su total de filas, donde cada una representa un viaje único. Recordar que aún se necesita realizar una limpieza, por lo que no todos estos viajes serán usados para análisis
+
+```{r exp_size.R}
+library(tidyverse)
+library(ggplot2)
+meses <- c("Ene", "Feb", "Mar", "Abr", "May", "Jun", 
+         "Jul", "Ago", "Sep", "Oct", "Nov", "Dic")
+mes_fac <- factor(meses, levels=unique(meses))
+totales <- c(144873, 223164,301687,415025,609493,710721,748962,755639,821276,
+             616281, 335075,178372)
+datos <- data.frame(mes_fac,totales)
+
+ggplot(datos, aes(y=totales, x=mes_fac)) + 
+  geom_bar(position="dodge", stat="identity", fill= "aquamarine4") +
+  scale_y_continuous(limits = c(0,850000), n.breaks=7) + 
+  ggtitle("Total de Viajes Registrados por Mes, año 2024",
+          subtitle="Total de filas en cada archivo .csv") +
+  xlab("Mes del Año") +
+  ylab("Total de Filas") +
+  geom_text(label=totales, size=2, vjust = 2, color ="white")+
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5),
+        plot.subtitle = element_text(hjust=0.5))
+```
+
 ### Tengo autorización para el uso, copia y almacenamiento de la fuente de datos de Cyclistic. Estos datos cumplen con el estándar **ROCCC**, pero se reconoce su sesgo ya que carece de información sobre opciones asistidas. Se establecen los parámetros para medir la validez de un viaje, y las métricas de interés para medir la frecuencia de atributos como día de la semana o ubicación geográfica de estaciones
 
 ## Procesar
@@ -109,11 +134,10 @@ Como **Big Query** no admite el tamaño de algunos archivos, y para simplificar 
 
 Considerar que DuckDB posee la extensión [Spatial](https://duckdb.org/docs/stable/core_extensions/spatial/overview.html), que permite trabajos como cálculos de distancias en sistemas de georreferencia; sin embargo, Superintendent no admite su instalación. Por lo tanto, se deben utilizar otras herramientas para el trabajo con coordenadas
 
-Previo al trabajo de agregación, se realiza una **limpieza de datos** previa, donde se elimina todo viaje que no tenga id para estaciones de inicio y fin, y que tenga una duración fuera del intervalo 1-1439 minutos. 
+Previo al trabajo de agregación, se realiza una **limpieza de datos** previa, donde se elimina todo viaje que no tenga id para estaciones de inicio y fin, y que tenga una duración fuera del intervalo 1-1439 minutos.
 
-  - Eliminar todo viaje que no tenga id para estaciones de inicio y fin, y que esté fuera del intervalo 1-1439 minutos de duración
-  - Eliminar todo viaje fuera del intervalo 1-1439 minutos
-  - 
+-   Eliminar todo viaje que no tenga id para estaciones de inicio y fin, y que esté fuera del intervalo 1-1439 minutos de duración
+-   Eliminar todo viaje fuera del intervalo 1-1439 minutos
 
 Primera instancia: 08/01/2025 Los primeros intentos para conectar Posit Cloud con Github no son ideales. Hay alguna manera de instalar R Desktop en mac? haría las cosas más fácil. Al menos hay una descarga de archivos. La idea es generar un flujo constante entre todos los compiladores
 
