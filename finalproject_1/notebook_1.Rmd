@@ -96,26 +96,31 @@ Por lo tanto, un viaje se considera válido cuando *su id de viaje, id para esta
 El gráfico siguiente describe el tamaño de cada archivo **.csv** en función de su total de filas, donde cada una representa un viaje único. Recordar que aún se necesita realizar una limpieza, por lo que no todos estos viajes serán usados para análisis
 
 ```{r exp_size.R}
+
 library(tidyverse)
 library(ggplot2)
-meses <- c("Ene", "Feb", "Mar", "Abr", "May", "Jun", 
-         "Jul", "Ago", "Sep", "Oct", "Nov", "Dic")
-mes_fac <- factor(meses, levels=unique(meses))
-totales <- c(144873, 223164,301687,415025,609493,710721,748962,755639,821276,
-             616281, 335075,178372)
-datos <- data.frame(mes_fac,totales)
 
-ggplot(datos, aes(y=totales, x=mes_fac)) + 
+datos <- data.frame (
+  meses = c("Ene", "Feb", "Mar", "Abr", "May", "Jun", 
+             "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"),
+  totales = c(144873, 223164, 301687, 415025, 609493, 710721,
+              748962, 755639, 821276, 616281, 335075, 178372)
+)
+
+ggplot(datos, aes(x=factor(meses, levels=unique(meses)), y=totales)) + 
   geom_bar(position="dodge", stat="identity", fill= "aquamarine4") +
   scale_y_continuous(limits = c(0,850000), n.breaks=7) + 
-  ggtitle("Total de Viajes Registrados por Mes, año 2024",
-          subtitle="Total de filas en cada archivo .csv") +
+  ggtitle("Viajes Registrados por Mes, año 2024",
+          subtitle="Total de Filas por archivo .csv") +
   xlab("Mes del Año") +
   ylab("Total de Filas") +
   geom_text(label=totales, size=2, vjust = 2, color ="white")+
   theme_bw() +
-  theme(plot.title = element_text(hjust = 0.5),
-        plot.subtitle = element_text(hjust=0.5))
+  theme(
+    plot.title = element_text(hjust = 0.5),
+    plot.subtitle = element_text(hjust=0.5),
+        )
+
 ```
 
 ### Tengo autorización para el uso, copia y almacenamiento de la fuente de datos de Cyclistic. Estos datos cumplen con el estándar **ROCCC**, pero se reconoce su sesgo ya que carece de información sobre opciones asistidas. Se establecen los parámetros para medir la validez de un viaje, y las métricas de interés para medir la frecuencia de atributos como día de la semana o ubicación geográfica de estaciones

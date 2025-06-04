@@ -1,9 +1,6 @@
-# val_prop: proporcion de viajes válidos vs inválidos
-# formato gráfico de barras apilado: una barra contiene ambas condiciones de datos
-# la etiqueta describe el valor numérico del viaje
-# para una etiqueta en porcentajes, ver val_perc.R
-# codigo extraido desde https://r-graph-gallery.com/48-grouped-barplot-with-ggplot2.html
-# se añade la libreria forcats porque se necesita tratar a los meses como un factor, no vector
+# val_prop: número de viajes válidos vs inválidos
+# para un gráfico con los valores numéricos en vez de porcentajes, ver val_perc.R
+# se necesita la librería forcats (en tidyverse) para tratar al eje x como vector
 
 library(tidyverse)
 library(ggplot2)
