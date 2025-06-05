@@ -5,24 +5,37 @@
 library(tidyverse)
 library(ggplot2)
 
-# se genera set de datos
-meses <- c(rep("Ene",2), rep("Feb",2), rep("Mar",2), rep("Abr",2), rep("May",2), rep("Jun",2), 
-           rep("Jul",2), rep("Ago",2), rep("Sep",2), rep("Oct",2), rep("Nov",2), rep("Dic",2))
-mes_fac <- factor(meses, levels=unique(meses))
-condicion <- rep(c("Válido", "Inválido"), 12)
-valores <- c(c(112242,32631), c(183258,39906), c(228106, 73581), c(294803, 120222), c(437644, 171849), c(492377, 218344),
-             c(538936,210026), c(539158,216481), c(535011,286265), c(447745, 168536), c(245255,89820), c(130336, 48036))
-datos <- data.frame(mes_fac,condicion,valores)
+# se copia el dataframe general de clean_table.R
+# estos valores se apilan bajo un mes en formato mes[n] = (validos[n],invalidos[n])
+totales <- c(144873, 223164, 301687, 415025, 609493, 710721,
+             748962, 755639, 821276, 616281, 335075, 178372)
+validos <- c(112242, 183258, 228106, 294803, 437644, 492377,
+             538936, 539158, 535011, 447745, 245255, 130336)
+invalidos <- c(32631, 39906, 73581, 120222, 171849, 218344,
+               210026, 216481, 286265, 168536, 89820, 48036)
 
-# Grouped
-ggplot(datos, aes(x=mes_fac, y=valores, fill=factor(condicion))) + 
-  geom_bar(position="fill", stat="identity") +
-  ggtitle("Proporción de Viajes Válidos por Mes, año 2024") +
+# datos <- matriz de formato [meses, condicion, validez]
+# validez es un vector traspuesto de un dataframe
+# este df principal tiene formato [num_validos, num_invalidos]
+datos <- data.frame(
+  meses <- c(rep("Ene",2), rep("Feb",2), rep("Mar",2), rep("Abr",2), rep("May",2), rep("Jun",2), 
+             rep("Jul",2), rep("Ago",2), rep("Sep",2), rep("Oct",2), rep("Nov",2), rep("Dic",2)),
+  condicion <- c("Válido", "Inválido"),
+  validez <- as.vector(t(data.frame(validos, invalidos)))
+)
+
+# Ploteo de los datos = gráfico de barras apilado
+ggplot(datos, aes(x = factor(meses, levels = unique(meses)), y = validez, fill = rep(condicion,12))) + 
+  geom_bar(position = "fill", stat = "identity") +
+  ggtitle("Validez de Viajes por Mes, año 2024",
+          subtitle = "Total de datos Válidos/Inválidos en los archivos .csv") +
   xlab("Meses del Año") +
-  ylab("Porcentaje del Total de Viajes") +
-  labs(fill= "Condición") +
-  geom_text(label=valores, size=3, position = position_fill(vjust = 0.5))+
+  ylab("Total de Viaje") +
+  labs(fill = "Condición \n(en %)") +
+  geom_text(label = validez, size = 3, position = position_fill(vjust = 0.5)) +
   theme_bw() +
   theme(plot.title = element_text(hjust = 0.5),
-        legend.background = element_rect(colour="gray"))
+        plot.subtitle = element_text(hjust = 0.5),
+        legend.background = element_rect(colour = "gray"))
+
 
