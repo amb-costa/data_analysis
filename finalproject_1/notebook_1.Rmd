@@ -1,11 +1,13 @@
 ---
 title: "R Notebook"
-author : "amb-costa"
-organization : "Google Professional Certificate"
-output: html_notebook
+author: "amb-costa"
+organization: Google Professional Certificate
+output:
+  html_notebook :
+    highlighter : tango
 ---
 
-## Introducción al Proyecto
+<h2>Introducción al Proyecto</h2>
 
 La empresa **Cyclistic** busca **crear una nueva estrategia de marketing para convertir a sus clientes ocasionales a membresías anuales**. Se quiere maximizar esta cantidad de membresías, ya que son mucho más rentables que el resto de los planes. Se asigna la siguiente pregunta: *"¿En qué se diferencian los socios anuales y los ciclistas ocasionales con respecto al uso de las bicicletas de Cyclistic?"*
 
@@ -31,7 +33,9 @@ Se tiene esta información sobre las características de Cyclistic
 
 -   Las campañas digitales disponibles incluyen correos electrónicos y publicaciones en redes sociales, entre otros
 
-## Preguntar
+------------------------------------------------------------------------
+
+<h2>Preguntar</h2>
 
 Al considerar la pregunta recibida anteriormente, se reconoce la expectativa de comparar los dos tipos de membresía en base a otras métricas comunes. Se acepta la información previa como verídica, pero debiera confirmarse contra los datos reales una vez se tenga acceso a ellos. Se reformula la pregunta recibida en cinco preguntas **SMART**, destacando las más importantes para este trabajo:
 
@@ -57,15 +61,17 @@ Se concluye que la diferencia entre planes se podría relacionar con caracterís
 
 ### Se establece el **Problema Empresarial**: Cyclistic quiere aumentar su rentabilidad transformando sus clientes ocasionales a membresías anuales. Para esto, *se estudian los viajes realizados durante el año 2024, para buscar relaciones entre ambas membresías y otras variables asociadas a los viajes*. Las diferencias entre esas relaciones serán usadas para crear campañas de marketing que incentiven esta captura
 
-## Preparar
+------------------------------------------------------------------------
+
+<h2>Preparar</h2>
 
 Se utilizan los datos públicos de **Divvy Bikes**, que son [gestionados, entregados y actualizados mensualmente](https://divvybikes.com/system-data) por **Motivate International Inc.** con autorización de la Ciudad de Chicago, USA. Notar que la empresa en cuestión no es Cyclistic, pero serán equivalentes para efectos de este caso práctico.
 
-Esta fuente de datos contiene información desde el año 2013, y se actualiza de forma mensual desde abril del 2020. Previo a la publicación de los datos, se anonimiza todo viaje, y se excluyen tanto viajes de prueba como viajes de duración menor a 60 segundos. Se puede acceder a estos datos de forma directa en la página de Divvy Bikes, o a través de otras plataformas como **Kaggle** y **Tableau**
+Esta fuente de datos contiene información desde el año 2013, y se actualiza de forma mensual desde abril del 2020. Previo a la publicación de los datos, se anonimiza todo viaje, y se excluyen tanto viajes de prueba como viajes de duración menor a 60 segundos. Se puede acceder a estos datos de forma directa en la página de Divvy Bikes, o a través de otras plataformas como `Kaggle` y `Tableau`
 
 Como miembro del equipo de análisis computacional de Cyclistic, tengo permiso y acceso a estos **datos internos y de primera fuente**. En la realidad, estos datos son **de tercera fuente**. Cyclistic captura sus propios datos de forma regular y los somete a una limpieza previa para compartir su acceso en distintas plataformas, por lo que cumplen con el estandar **ROCCC** y son **confiables, originales, coherentes, actuales y citados**
 
-Se descargan los archivos correspondientes a los doce meses del año 2024, que consisten en archivos *comma-separated values* de formato "2024MM-divvy-tripdata.csv". Se utiliza **Google Big Query** para la exploración de la mitad de los datos debido al tamaño de algunos archivos, por lo que se necesita otro dialecto SQL a futuro. Los archivos siguen el esquema a continuación
+Se descargan los archivos correspondientes a los doce meses del año 2024, que consisten en archivos `.comma-separated values` de formato `2024MM-divvy-tripdata.csv`. Se utiliza `Google Big Query` para la exploración de la mitad de los datos debido al tamaño de algunos archivos, por lo que se necesita otro dialecto SQL a futuro. Los archivos siguen el esquema a continuación
 
 ```         
 
@@ -93,41 +99,19 @@ En base al esquema descrito, se concluye que las membresías pueden ser comparad
 
 Por lo tanto, un viaje se considera válido cuando *su id de viaje, id para estaciones de inicio y fin, tipo de bicicleta y membresía no son nulos, y el viaje dura entre 1 minuto y 1439 minutos, equivalente a 23 horas y 59 minutos*
 
-El gráfico siguiente describe el tamaño de cada archivo **.csv** en función de su total de filas, donde cada una representa un viaje único. Recordar que aún se necesita realizar una limpieza, por lo que no todos estos viajes serán usados para análisis
+El gráfico siguiente describe el tamaño de cada archivo `.csv` en función de su total de filas, donde cada una representa un viaje único. Recordar que aún se necesita realizar una limpieza, por lo que no todos estos viajes serán usados para análisis
 
-```{r exp_size.R}
-
-library(tidyverse)
-library(ggplot2)
-
-datos <- data.frame (
-  meses <- c("Ene", "Feb", "Mar", "Abr", "May", "Jun", 
-             "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"),
-  totales <- c(144873, 223164, 301687, 415025, 609493, 710721,
-              748962, 755639, 821276, 616281, 335075, 178372)
-)
-
-ggplot(datos, aes(x = factor(meses, levels = unique(meses)), y = totales)) + 
-  geom_bar(position = "dodge", stat = "identity", fill = "aquamarine4") +
-  scale_y_continuous(limits = c(0,850000), n.breaks = 7) + 
-  ggtitle("Viajes Registrados por Mes, año 2024",
-          subtitle = "Total de Filas por archivo .csv") +
-  xlab("Mes del Año") +
-  ylab("Total de Filas") +
-  geom_text(label = totales, size = 2, vjust = 2, color = "white")+
-  theme_bw() +
-  theme(
-    plot.title = element_text(hjust = 0.5),
-    plot.subtitle = element_text(hjust = 0.5),
-        )
+```{r echo=FALSE, results=FALSE, file="exp_size.R"}
 
 ```
 
 ### Tengo autorización para el uso, copia y almacenamiento de la fuente de datos de Cyclistic. Estos datos cumplen con el estándar **ROCCC**, pero se reconoce su sesgo ya que carece de información sobre opciones asistidas. Se establecen los parámetros para medir la validez de un viaje, y las métricas de interés para medir la frecuencia de atributos como día de la semana o ubicación geográfica de estaciones
 
-## Procesar
+------------------------------------------------------------------------
 
-Las primeras exploraciones muestran que **todos los id de viaje son únicos y no NULL; todos los viajes tienen tipo de bicicleta y tipo de membresía no NULL; todos los viajes tienen hora de inicio y fin no NULL**. También se encuentran los siguientes problemas:
+<h2>Procesar</h2>
+
+Las primeras exploraciones muestran que **todos los id de viaje son únicos y no NULL; todos los viajes tienen tipo de bicicleta y tipo de membresía no NULL; todos los viajes tienen hora de inicio y fin no NULL**. A la vez, se encuentran los siguientes problemas:
 
 -   las id de estaciones no son únicos; no todos los id tienen un nombre de estación asignado
 -   algunos viajes tienen valor NULL para id de estación de inicio, fin o ambos
@@ -135,26 +119,91 @@ Las primeras exploraciones muestran que **todos los id de viaje son únicos y no
 -   las coordenadas tienen cantidad de decimales distintas para las estaciones
 -   algunos viajes se encuentran fuera de los parámetros: duración negativa, duración superior a 24 horas
 
-Como **Big Query** no admite el tamaño de algunos archivos, y para simplificar el manejo y archivado de archivos .csv, se utiliza la aplicación gratuita [Superintendent](https://superintendent.app/), creada por [Tanin Na Nakorn](https://github.com/tanin47). Esta aplicación utiliza **DuckDB**, un sistema de administración de bases de datos relacionales enfocado en **procesamiento analítico en línea (*On-Line Analytical Processing [OLAP]*)**
+Como `Big Query` no admite el tamaño de algunos archivos, y para simplificar el manejo y archivado de archivos `.csv`, se utiliza la aplicación gratuita [Superintendent](https://superintendent.app/), creada por [Tanin Na Nakorn](https://github.com/tanin47). Esta aplicación utiliza `DuckDB`, un sistema de administración de bases de datos relacionales enfocado en `On-Line Analytical Processing [OLAP]`*/Procesamiento Analítico en Línea*
 
-Considerar que DuckDB posee la extensión [Spatial](https://duckdb.org/docs/stable/core_extensions/spatial/overview.html), que permite trabajos como cálculos de distancias en sistemas de georreferencia; sin embargo, Superintendent no admite su instalación. Por lo tanto, se deben utilizar otras herramientas para el trabajo con coordenadas
+Considerar que `DuckDB` posee la extensión [Spatial](https://duckdb.org/docs/stable/core_extensions/spatial/overview.html), que permite trabajos como cálculos de distancias en sistemas de georreferencia; sin embargo, Superintendent no admite su instalación. Por lo tanto, se deben utilizar otras herramientas para el trabajo con coordenadas
 
-Previo al trabajo de agregación, se realiza una **limpieza de datos** previa, donde se elimina todo viaje que no tenga id para estaciones de inicio y fin, y que tenga una duración fuera del intervalo 1-1439 minutos.
+El siguiente `query` entrega una tabla que cumple con las condiciones para que un viaje sea válido, descritas en la sección `Preparar`. Recordar que esta instrucción está escrita en el dialecto de [DuckDB](https://github.com/amb-costa/data_analysis/blob/main/finalproject_1/duck.sql), por lo que debe reescribirse para otros dialectos como [Big Query](https://github.com/amb-costa/data_analysis/blob/main/finalproject_1/bigquery.sql). Además, considerar que la tabla descrita es un `placeholder`, y requiere de una ruta de archivo válida. Los resultados se guardan en archivos de formato `mmm_clean.csv`, donde *mmm* representa las tres primeras letras del mes.
 
--   Eliminar todo viaje que no tenga id para estaciones de inicio y fin, y que esté fuera del intervalo 1-1439 minutos de duración
--   Eliminar todo viaje fuera del intervalo 1-1439 minutos
-
-Primera instancia: 08/01/2025 Los primeros intentos para conectar Posit Cloud con Github no son ideales. Hay alguna manera de instalar R Desktop en mac? haría las cosas más fácil. Al menos hay una descarga de archivos. La idea es generar un flujo constante entre todos los compiladores
-
-This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code.
-
-Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Ctrl+Shift+Enter*.
-
-```{r}
-plot(cars)
+```         
+WITH clean_station AS(
+SELECT 
+  station_id AS clean_id, 
+  MAX(station_name) AS clean_name, 
+  MAX(station_lat) AS clean_lat, 
+  MAX(station_lng) AS clean_lng
+FROM (
+  SELECT 
+    start_station_id AS station_id, 
+    start_station_name AS station_name, 
+    ROUND(AVG(start_lat),3) AS station_lat, 
+    ROUND(AVG(start_lng),3) AS station_lng
+  FROM "2024MM_csv_file" 
+  WHERE start_station_id IS NOT NULL AND start_station_name IS NOT NULL
+  GROUP BY start_station_id, start_station_name
+  UNION ALL
+  SELECT 
+    end_station_id AS station_id, 
+    end_station_name AS station_name, 
+    ROUND(AVG(end_lat),3) AS station_lat, 
+    ROUND(AVG(end_lng),3) AS station_lng
+  FROM "2024MM_csv_file"
+  WHERE end_station_id IS NOT NULL AND end_station_name IS NOT NULL
+  GROUP BY end_station_id, end_station_name)
+GROUP BY station_id)
+SELECT 
+  clean.ride_id, 
+  clean.member_casual, 
+  clean.rideable_type,
+  date_diff('minute',clean.started_at,clean.ended_at) AS ride_duration,
+  dayname(clean.started_at) AS start_day_week,
+  dayofmonth(clean.started_at) AS start_day_month, 
+    month(clean.started_at) AS start_month, 
+    strftime(clean.started_at, '%X') AS start_time, 
+  clean.start_station_id, 
+  inicio.clean_name AS start_station_name, 
+  inicio.clean_lat AS start_lat, 
+  inicio.clean_lng AS start_lng, 
+  dayname(clean.ended_at) AS end_day_week,
+  dayofmonth(clean.ended_at) AS end_day_month, 
+    month(clean.ended_at) AS end_month, 
+    strftime(clean.ended_at, '%X') AS end_time, 
+  clean.end_station_id, 
+  fin.clean_name AS end_station_name, 
+  fin.clean_lat AS end_lat, 
+  fin.clean_lng AS end_lng
+FROM "2024MM_csv_file" AS clean
+LEFT JOIN clean_station AS inicio ON (clean.start_station_id = inicio.clean_id)
+LEFT JOIN clean_station AS fin ON (clean.end_station_id = fin.clean_id)
+WHERE (date_diff('minute',clean.started_at,clean.ended_at) BETWEEN 1 AND 1439) AND clean.start_station_id IS NOT NULL AND clean.end_station_id IS NOT NULL
 ```
 
-Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Ctrl+Alt+I*.
+Los resultados de este `query` se resumen en la siguiente tabla:
+
+```{r echo=FALSE, results=FALSE, file="clean_table.R"}
+```
+
+También se tiene el gráfico siguiente, que ilustra los porcentajes entre datos válidos e inválidos por mes:
+
+```{r echo=FALSE, file="val_perc.R"}
+```
+
+En base a estos resultados preliminares, se realizan las siguientes observaciones:
+
+-   El **el 71,407% de los datos son válidos, y el 28,593% del total son datos inválidos**
+-   **Los meses con menos viajes coinciden con las temporadas de climas fríos**. Recordar que Chicago se encuentra en el Medio-Oeste de Estados Unidos, donde las temperaturas pueden descender bajo cero durante los meses de invierno. Es posible que los usuarios prefieran utilizar el automóvil o el transporte público en vez de un método de transporte expuesto. Notar que **estos meses tienen los porcentajes de datos inválidos más bajos**
+-   En contraste, **los meses con más viajes coinciden con las temporadas más cálidas**. Chicago es una ciudad turística, donde se realizan diversos eventos como festivales de música; además es la ciudad más poblada del Medio-Oeste del país. A la vez, **estos meses tienen los porcentajes de datos inválidos más altos**
+
+Como analista de datos, realizo las siguientes suposiciones y reparos:
+
+-   Quizá no sea correcto o realista incluir viajes de 1 minuto de duración, ya que es un tiempo muy corto para sacar una bicicleta, realizar un viaje y montar en la estación final. Esta idea debiera ser parte del proceso de análisis
+-   Asumo que los usuarios familiarizados con el producto cometen menos errores al registrar su viaje porque saben cómo funciona. Es probable que el número de membresías represente, en cierto grado, a la población de Chicago que utiliza este producto
+-   De la misma forma, es probable que el aumento en fallas del registro de viajes coincida con la llegada de turistas, o usuarios que prefieren no utilizar la bicicleta durante los meses más fríos
+-   Hay una gran cantidad de datos válidos disponibles para análisis, por lo que se elige continuar con el trabajo. Aún así, se aconsejaría realizar un estudio de los datos inválidos con el equipo de **Ingeniería de Datos**; si mi limpieza fue correcta, implica que la empresa libera más de un 20% de datos sucios al público, y esta información podría revelar problemas con los métodos de captura
+
+Se debe evaluar si se crea un archivo único que reúna los resultados de todas las tablas, o si se mantiene el trabajo por separado; es probable que la `RAM` disponible en `RStudio/Posit Cloud` no permita el trabajo con archivos de gran tamaño. Si el proceso se vuelve engorroso, se debiera considerar utilizar `R` de forma local
+
+### Se limpian los datos a través de `SQL`, resultando un poco menos de 80% de la información inicial; se acepta esta pérdida debido a la cantidad de viajes válidos disponibles. Se observan las primeras tendencias y se entregan opiniones sobre fenómenos relacionados, además de establecer los aspectos técnicos a futuro
 
 When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Ctrl+Shift+K* to preview the HTML file).
 

@@ -26,13 +26,13 @@ datos <- data.frame(
 
 # Ploteo de los datos = gráfico de barras apilado
 ggplot(datos, aes(x = factor(meses, levels = unique(meses)), y = validez, fill = rep(condicion,12))) + 
-  geom_bar(position = "fill", stat = "identity") +
+  geom_bar(position = "stack", stat = "identity") +
   ggtitle("Validez de Viajes por Mes, año 2024",
           subtitle = "Total de datos Válidos/Inválidos en los archivos .csv") +
   xlab("Meses del Año") +
-  ylab("Total de Viaje") +
-  labs(fill = "Condición \n(en %)") +
-  geom_text(label = validez, size = 3, position = position_fill(vjust = 0.5)) +
+  ylab("Total de Viajes") +
+  labs(fill = "Condición") +
+  geom_text(label = validez, size = 3, position = position_stack(vjust = 0.5)) +
   theme_bw() +
   theme(plot.title = element_text(hjust = 0.5),
         plot.subtitle = element_text(hjust = 0.5),
