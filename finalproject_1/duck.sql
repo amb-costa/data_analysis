@@ -20,8 +20,8 @@ FROM (
   SELECT 
     start_station_id AS station_id, 
     start_station_name AS station_name, 
-    ROUND(AVG(start_lat),3) AS station_lat, 
-    ROUND(AVG(start_lng),3) AS station_lng
+    ROUND(AVG(CAST(start_lat AS FLOAT)),3) AS station_lat, 
+    ROUND(AVG(CAST(start_lng AS FLOAT)),3) AS station_lng
   FROM "2024MM_csv_file" 
   WHERE start_station_id IS NOT NULL AND start_station_name IS NOT NULL
   GROUP BY start_station_id, start_station_name
@@ -29,8 +29,8 @@ FROM (
   SELECT 
     end_station_id AS station_id, 
     end_station_name AS station_name, 
-    ROUND(AVG(end_lat),3) AS station_lat, 
-    ROUND(AVG(end_lng),3) AS station_lng
+    ROUND(AVG(CAST(end_lat AS FLOAT)),3) AS station_lat, 
+    ROUND(AVG(CAST(end_lng AS FLOAT)),3) AS station_lng
   FROM "2024MM_csv_file"
   WHERE end_station_id IS NOT NULL AND end_station_name IS NOT NULL
   GROUP BY end_station_id, end_station_name)
@@ -39,19 +39,19 @@ SELECT
   clean.ride_id, 
   clean.member_casual, 
   clean.rideable_type,
-  date_diff('minute',clean.started_at,clean.ended_at) AS ride_duration,
-  dayname(clean.started_at) AS start_day_week,
-  dayofmonth(clean.started_at) AS start_day_month, 
-	month(clean.started_at) AS start_month, 
-	strftime(clean.started_at, '%X') AS start_time, 
+  date_diff('minute',CAST(clean.started_at AS TIMESTAMP),CAST(clean.ended_at AS TIMESTAMP)) AS ride_duration,
+  dayname(CAST(clean.started_at AS TIMESTAMP)) AS start_day_week,
+  dayofmonth(CAST(clean.started_at AS TIMESTAMP)) AS start_day_month, 
+	month(CAST(clean.started_at AS TIMESTAMP)) AS start_month, 
+	strftime(CAST(clean.started_at AS TIMESTAMP), '%X') AS start_time, 
   clean.start_station_id, 
   inicio.clean_name AS start_station_name, 
   inicio.clean_lat AS start_lat, 
   inicio.clean_lng AS start_lng, 
-  dayname(clean.ended_at) AS end_day_week,
-  dayofmonth(clean.ended_at) AS end_day_month, 
-	month(clean.ended_at) AS end_month, 
-	strftime(clean.ended_at, '%X') AS end_time, 
+  dayname(CAST(clean.ended_at AS TIMESTAMP)) AS end_day_week,
+  dayofmonth(CAST(clean.ended_at AS TIMESTAMP)) AS end_day_month, 
+	month(CAST(clean.ended_at AS TIMESTAMP)) AS end_month, 
+	strftime(CAST(clean.ended_at AS TIMESTAMP), '%X') AS end_time, 
   clean.end_station_id, 
   fin.clean_name AS end_station_name, 
   fin.clean_lat AS end_lat, 
@@ -59,4 +59,4 @@ SELECT
 FROM "2024MM_csv_file" AS clean
 LEFT JOIN clean_station AS inicio ON (clean.start_station_id = inicio.clean_id)
 LEFT JOIN clean_station AS fin ON (clean.end_station_id = fin.clean_id)
-WHERE (date_diff('minute',clean.started_at,clean.ended_at) BETWEEN 1 AND 1439) AND clean.start_station_id IS NOT NULL AND clean.end_station_id IS NOT NULL
+WHERE (date_diff('minute',CAST(clean.started_at AS TIMESTAMP),CAST(clean.ended_at AS TIMESTAMP)) BETWEEN 1 AND 1439) AND clean.start_station_id IS NOT NULL AND clean.end_station_id IS NOT NULL
