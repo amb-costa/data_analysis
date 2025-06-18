@@ -1,8 +1,8 @@
 # exp_size: total de filas en cada archivo .csv para Preparar
 # se necesita la librería forcats (en tidyverse) para tratar al eje x como vector
 
-library(tidyverse)
-library(ggplot2)
+library("tidyverse")
+library("ggplot2")
 
 # se copia el dataframe general de clean_table.R
 # datos <- matriz de formato [filas,columnas] = [meses, totales]

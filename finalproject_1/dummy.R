@@ -1,0 +1,7 @@
+january <- year[year$start_month == "january"]
+jan_member <- january[january$member_casual == "member",]
+jan_casual <- january[january$member_casual == "casual",]
+member_classic <- jan_member[jan_member$rideable_type == "classic_bike",]
+member_electric <- jan_member[jan_member$rideable_type == "electric_bike",]
+casual_classic <- jan_casual[jan_casual$rideable_type == "classic_bike",]
+casual_electric <- jan_casual[jan_casual$rideable_type == "electric_bike",]
