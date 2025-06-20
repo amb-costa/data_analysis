@@ -18,4 +18,4 @@
 
 * Esta aplicación simplifica el manejo de archivos `.csv` de gran tamaño, en contraste a realizar conexiones directas con bases de datos en otros dialectos. Se incluyen archivos de extensión `.sql` con dialecto para DuckDB y `Google Big Query`
 
-* Debido al conocimiento limitado de `R` y falta de experiencia con extensiones en `VS Code`, se utilizó `R Studio/Posit Cloud`
+* Debido al conocimiento limitado de `R` y falta de experiencia con extensiones en `VS Code`, se utilizó `Posit Cloud` para las primeras pruebas. Eventualmente se utilizó `R Studio` debido al tamaño del archivo `.csv` maestro
