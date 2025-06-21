@@ -15,7 +15,6 @@ Los objetos fundamentales de R son
     \item {\textbf{Comentarios - \#}}
     \item {\textbf{Variables}: representación de un valor que se puede guardar para usos futuros. Se asignan con el \textbf{operador de asignación <-}. \textit{siempre debieran empezar con una letra}}
     \item {\textbf{\textit{datatypes}}}
-    \item {\textbf{Pipas}: herramienta para expresar una secuencia de operaciones, representado como \textit{\%>\%}}
 \end{itemize}
 Las estructuras de datos más comunes son
 \begin{itemize}
@@ -44,9 +43,43 @@ Las estructuras de datos más comunes son
         \$New York
         2 \end{sourcecode}}
     \end{itemize}}
-    \item {\textbf{Marco de Datos}: conjunto de columnas que contienen datos, de forma similar a las hojas de cálculo y las tablas SQL. Cada columna tiene su nombre en la parte superior (que representa la variable) y una observación por fila. Los marcos pueden incluir tipos diferentes de datos, pero los elementos de una misma columna deben ser del mismo tipo
+    \item {\textbf{\textit{Data Frame} - Marco de Datos}: conjunto de columnas que contienen datos, de forma similar a las hojas de cálculo y las tablas SQL. Los nombres de columnas debieran representar la variable, y se muestran en la parte superior, y una observación por fila. Los marcos pueden incluir tipos diferentes de datos, pero los elementos de una misma columna deben ser del mismo tipo, y las columnas deben tener el mismo número de filas
     \begin{sourcecode}{r}{}
-        #  marco en filas y columnas ordenadas
+        # marco en filas y columnas ordenadas
+        # data-frame simplificado, considerar tibbles a futuro
+
+        # lista de conjunto de datos precargados
+        data()
+        
+        # cargar data-frame en el entorno
+        data("data_name") 
+        View(data_name) # en mayúsculas
+        head(data_name) # 6 primeras entradas
+        str(data_name) # ESTRUCTURA, no string
+        #> nombres de columnas y tipos de datos por columna
+        colnames(data_name) # solo nombres
+        mutate(data_name, newcol = conditions) # PARTE DE TIDYVERSE
+
+        # entrega tibble con las columnas solicitadas
+        data_frame %>%
+          select(col_name)
+
+        # entrega tibble con todas las columnas EXCEPTO la especificada
+        data_frame %>%
+          select(-col_name)
+
+        # cambia el nombre de old_col a new_name
+        data_frame %>%
+          rename(new_name = old_col)
+
+        # renombrar cada col_name en data_frame según función
+        # ej: tolower toupper
+        rename_with(data_frame,function)
+
+        # revision de los nombres de col_names
+        # solo contienen caracteres, números y guiones bajo
+        clean_names(data_frame)
+
         data.frame(x=c(1,2,3), y=c(1.5,5.5,7.5))
         #     x y
         # [1] 1 1.5
@@ -82,7 +115,7 @@ Las estructuras de datos más comunes son
     \item {No sobrepasar los 120 caracteres por línea, ojalá limitar a 80}
     \item {Utilizar \textbf{<-} para asignar en vez de \textbf{=}}
     \item {Añadir comentarios con \textbf{\#} más un espacio}
-    \item {\textbf{Recordar que hay paquetes de estilo/\textit{linters} que siguen reglas de formato específicas}}
+    \item {Recordar que hay paquetes de estilo/\textit{linters} que siguen reglas de formato específicas}
     \item {\begin{sourcecode}{r}{}
         # espacio extra alrededor de un código
         # espacio extra antes del paréntesis izquierdo
@@ -105,8 +138,11 @@ Las estructuras de datos más comunes son
 
 
 \subsection{Paquetes}
-Para utilizar R, se deben instalar paquetes, los que se invocan como una librería. Algunos paquetes son muy populares, pero se debe considerar la versión de R a trabajar
+Los \textbf{paquetes}, en el contexto R, son unidades de código reproducible. Incluyen \textbf{funciones reutilizables, documentación para las funciones, \textit{datasets} para extraer \textit{samples}, y pruebas integradas}. La instalación base de R incluye el paquete \textbf{BaseR}, y se puede instalar otros paquetes en sitios como \textbf{CRAN\textit{(Comprehensive R Archive Network)}}: un archivo online con paquetes de R, código fuente, manuales y documentación. Los paquetes se instalan, y luego se invocan en forma de librería. Considerar que la versión de R puede crear conflictos con algunos paquetes, y es necesario investigar alternativas. También se generan conflictos cuando los paquetes contienen funciones de nombres similares
 \begin{sourcecode}{r}{}
+    # obtener los paquetes instalados
+    installed.packages()
+    
     # cargar y llamar paquetes
     install.package("package_name")
     library(package_name)
@@ -157,6 +193,70 @@ R tiene tres \textit{datatype} que hacen referencia al tiempo: \textbf{fecha(\te
     #> [1] "2025-01-05"
 \end{sourcecode}
 
+
+\subsubsection{.tidyverse}
+Sistema de paquetes con un diseño común, y enfoque en la manipulación de datos, su exploración y visualización. Contiene ocho paquetes núcleo: \textbf{ggplot2 \textit{(visualización de datos, propiedades visuales)}, tidyr \textit{(limpieza de datos)}, dplyr \textit{(importación de datos)}, tibble \textit{(funciones comunes para manipulación de datos)}, readr, purrr, forcats, stringr}
+\begin{itemize}
+    \item {\textbf{Factores}: almacenamiento de datos categóricos en R, cuando los valores son limitados y se limitan a grupos finitos como países y años}
+    \item {\textbf{Pipas - Pipe (\%>\%)}: herramienta que expresa una secuencia de operaciones múltiples. Esto aprovecha las \textbf{funciones anidadas}: funciones contenidas completamente dentro de otra función
+    \begin{sourcecode}{r}{}
+        # ejemplo de pipa
+        # funcion_1 se aplica a data_set
+        # funcion_2 se aplica a data_set.funcion_1
+        data_set %>% 
+          funcion_1 %>%
+          funcion_2 %>%
+          funcion_final # pipas excepto en la última fila\end{sourcecode}}
+    \item {\textbf{Tibble}: forma simplificada de \textit{dataframes}. No cambian los tipos de datos en los inputs, los nombres de las variables, ni crean nombres para filas; esto simplifica la impresión de la información. Esto sigue la estandarización \textbf{Tidy Data} en R, donde la organización de datos se traduce en su estructura: las variables se organizan en columnas, las observaciones se organizan en filas, y cada valor tiene su propia celda. \textbf{as\_tibble(data\_name) : devuelve tabla de 10 primeras filas del marco de datos original}}
+    \item {\textbf{readr}: manejo de datos rectangulares (rectángulo perfecto de filas y columnas). Algunos tipos de archivos para almacenamiento de datos rectangulares: \textbf{.csv, .tsv\textit{(tabulación)}, .fwf\textit{(de ancho fijo)}, .log\textit{(eventos de sistemas operativos o software)}}
+    \begin{sourcecode}{r}{}
+        # funciones de readr
+        # también read_tsv, read_delim (archivos delimitados en general),
+        #   read_fwf, read_table (archivos tabulares cuyas columnas se 
+        #   separan por espacios en blanco)
+        read_csv() 
+
+        # excepción .log, pero funciona de manera similar
+        # se entrega ruta de acceso, se devuelve un tibble
+        read_log()
+
+        # archivos de muestra
+        readr_example() 
+
+        # lector del archivo csv de nombre mtcars.csv
+        # que se encuentra en los archivos de muestra
+        # entrega especificación de columnas y un tibble
+        readr_csv(readr_example("mtcars.csv"))
+
+        # paquete para importar hojas de cálculo
+        # PARTE DE TIDYVERSE pero no del núcleo, se debe cargar
+        library(readxl)
+
+        # similar a readr_csv
+        read_excel(readxl_example("type-me.xlsx")) 
+
+        # nombres de las hojas individuales
+        excel_sheets(readxl_example("type-me.xlsx"))
+
+        # devuelve tibble de la hoja mencionada
+        read_excel(readxl_example("type-me.xlsx"), sheet="sheet_name")
+
+        # skimr <- resumen de datos, revisión superficial
+        # janitor <- limpieza de datos
+        install.packages("skimr")
+        install.packages("janitor")
+
+        # revisión superficial de datos
+        skim_without_charts(data_frame)
+        glimpse(data_frame) # más corto que skim
+
+        
+
+        
+        
+    \end{sourcecode}}
+    
+\end{itemize}
     
 
 

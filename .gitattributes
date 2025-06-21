@@ -1,4 +1,6 @@
 *.sql linguist-detectable=true
 *.sql linguist-language=sql
 *.[Rr]md  linguist-detectable=true
-*.bst linguist-language= Bibtex
+*.Rtex linguist-detectable=true
+*.Rtex linguist-language=R
+*.bst linguist-language=Bibtex
