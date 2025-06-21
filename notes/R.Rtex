@@ -1,0 +1,164 @@
+% nta: 
+% introducción a los lenguajes de programación
+% exploración de las características y funciones principales
+% conceptos básicos de programación en R
+% cómo trabajar con información en R
+% limpiar, transformar, visualizar, reportar datos en R
+
+\section{Programación en R}
+R es un lenguaje de programación utilizado con frecuencia para \textbf{Reproducción de Análisis, Procesamiento de grandes cantidades de datos, y Creación de visualizaciones}, basado en S. Es \textit{Case-Sensitive}. Es \textbf{Accesible, Centrado en Datos, \gls{opnsrc}, y tiene una comunidad de usuarios}. 
+Los objetos fundamentales de R son 
+\begin{itemize}
+    \item {\textbf{Operador de Asignación}: <- en vez de =}
+    \item {\textbf{Operadores Lógicos}: AND (\&\& o \&) OR (| o ||) NOT (!)}
+    \item {\textbf{Funciones}: secciones de código reutilizable, usados para realizar tareas en específico}
+    \item {\textbf{Comentarios - \#}}
+    \item {\textbf{Variables}: representación de un valor que se puede guardar para usos futuros. Se asignan con el \textbf{operador de asignación <-}. \textit{siempre debieran empezar con una letra}}
+    \item {\textbf{\textit{datatypes}}}
+    \item {\textbf{Pipas}: herramienta para expresar una secuencia de operaciones, representado como \textit{\%>\%}}
+\end{itemize}
+Las estructuras de datos más comunes son
+\begin{itemize}
+    \item {\textbf{Vectores}: Grupo de elementos de datos del mismo tipo, guardados en secuencia. \textit{c(v1,v2,...)} crea un vector, con sus valores separados por comas
+    \begin{itemize}
+        \item {Atómicos: no se puede tener un vector de valores numéricos y lógicos. \textit{Seis tipos primarios: lógicos (bool), enteros (integer, positivos y negativos), dobles (decimales), caracter(strings), complejos y sin formato}. Algunas funciones comunes son \textit{typeof, length, is.logical, is.double, is.integer, is.character()}}
+        \item {Listas: admiten elementos de cualquier tipo. \textit{ej: list(x,y,8,TRUE)}. 
+        \begin{sourcecode}{r}{}
+        # ejemplo de vector
+        x = c(1,3,5)
+        names(x) = c("a","b","c")
+        print(x)
+        # > a b c
+        # > 1 3 5
+
+        # ejemplo de lista
+        str(list("a", 1, 1.5, TRUE)
+        # > List of 4
+        # > \$ : chr a
+        # > \$ : int 1
+        # > \$ : num 1.5
+        # > \$ : logi TRUE
+        list('Chicago' = 1, 'New York' = 2)
+        \$Chicago
+        1
+        \$New York
+        2 \end{sourcecode}}
+    \end{itemize}}
+    \item {\textbf{Marco de Datos}: conjunto de columnas que contienen datos, de forma similar a las hojas de cálculo y las tablas SQL. Cada columna tiene su nombre en la parte superior (que representa la variable) y una observación por fila. Los marcos pueden incluir tipos diferentes de datos, pero los elementos de una misma columna deben ser del mismo tipo
+    \begin{sourcecode}{r}{}
+        #  marco en filas y columnas ordenadas
+        data.frame(x=c(1,2,3), y=c(1.5,5.5,7.5))
+        #     x y
+        # [1] 1 1.5
+        # [2] 2 5.5
+        # [3] 3 7.5\end{sourcecode}}
+    \item {\textbf{Matrices}: conjunto bidireccional de elementos de datos
+    \begin{sourcecode}{r}{}
+        # crear matriz de 2x3 con 2 filas
+        # puede reemplazarse por ncol
+        # en este caso, rellena por columnas
+        matrix(c(3:8), nrow=2)
+        #       [,1] [,2] [,3]
+        # [1,]  3   5   7  
+        # [2,]  4   6   8\end{sourcecode}}
+    \item {Rangos}
+\end{itemize}
+
+\subsection{Convenciones de Código en R}
+\subsubsection{Estilos}
+\begin{itemize}
+    \item {Los archivos deben tener un nombre con significado, y deben terminar con \textbf{.R}\textit{(mayúscula)}}
+    \item {Los nombres de variables son generalmente sustantivos, y se escriben en minúscula, usar guión bajo para separar palabras en vez de espacios}
+    \item {Los nombres de funciones se escriben en minúscula, y deben ser verbos}
+\end{itemize}
+\subsubsection{Sintaxis}
+\begin{itemize}
+    \item {Los operadores se rodean de espacio}
+    \item {Los espacios se colocan \textbf{después} de la coma, no antes}
+    \item {No se añaden espacios alrededor de un código entre paréntesis o corchete}
+    \item {Debe haber un espacio antes del paréntesis izquierdo, a menos que se llame a una función}
+    \item {La llave de apertura nunca debe ir en su propia línea, siempre debe ir seguida de una línea nueva. Una llave de cierre siempre debe ir en su propia línea a menos que la siga una instrucción \textit{else}}
+    \item {Para sangrías, usar dos espacios en vez de tabular}
+    \item {No sobrepasar los 120 caracteres por línea, ojalá limitar a 80}
+    \item {Utilizar \textbf{<-} para asignar en vez de \textbf{=}}
+    \item {Añadir comentarios con \textbf{\#} más un espacio}
+    \item {\textbf{Recordar que hay paquetes de estilo/\textit{linters} que siguen reglas de formato específicas}}
+    \item {\begin{sourcecode}{r}{}
+        # espacio extra alrededor de un código
+        # espacio extra antes del paréntesis izquierdo
+        if ( debug ) do (x)
+        species[ "delfin" , ]
+
+        # comentario bien escrito
+        # asignacion con flecha
+        # falta de espacios en parentesis
+        # sangrias en codigo
+        # lineas con pocos caracteres
+        x <- 7
+        if (x>0) {
+          print("aqui hay sangria")
+        } else {
+          print("aqui tambien")
+        }\end{sourcecode}}
+\end{itemize}
+
+
+
+\subsection{Paquetes}
+Para utilizar R, se deben instalar paquetes, los que se invocan como una librería. Algunos paquetes son muy populares, pero se debe considerar la versión de R a trabajar
+\begin{sourcecode}{r}{}
+    # cargar y llamar paquetes
+    install.package("package_name")
+    library(package_name)
+
+    # crear carpeta nueva o directorio
+    dir.create("destiny_folder")
+
+    # crear archivo, si se crea R devuelve TRUE
+    file.create("name.txt") #o .docx, .csv... 
+
+    # copiar archivo a una carpeta
+    file.copy("name_file.txt", "destiny_folder")
+
+    # elimina un archivo
+    unlink("some_file.csv")\end{sourcecode}
+
+\subsubsection{.lubridate}
+R tiene tres \textit{datatype} que hacen referencia al tiempo: \textbf{fecha(\textit{"YYYY\_MM\_DD"}), hora(\textit{"20:11:59 UTC"}), fecha+hora(\textit{"2018-03-31 18:15:48 UTC"})}. \textit{Las horas se expresan en UTC}. \textbf{lubridate} es parte de \textbf{tidyverse}, que se debe instalar
+\begin{sourcecode}{r}{}
+    # funciones clásicas para fechas 
+    today()
+    #> [1] "2025-01-05"
+    now()
+    #> [1] "2025-01-05 02:38:51 UTC"
+
+    # instalar lubridate
+    install.package("tidyverse")
+    library(tidyverse)
+    library(lubridate)
+
+    # algunas funciones de lubridate
+    # convertir fechas en base a un string
+    ymd("2021-01-20")
+    #> [1] "2021-01-20"
+    mdy("January 20th, 2021")
+    #> [1] "2021-01-20"
+    dmy("20-jan-2021")
+    #> [1] "2021-01-20"
+    ymd(20210120)
+    #> [1] "2021-02-20"
+
+    # creando fecha-hora
+    ymd_hms("2021-01-20 20:11:59")
+    #> [1] "2021-01-20 20:11:59 UTC")
+    mdy_hm("01-20-2021 08:01")
+    #> [1] "2021-01-20 08:01:00 UTC"
+    as_date(now()) # conversion fecha-hora en solo fecha
+    #> [1] "2025-01-05"
+\end{sourcecode}
+
+    
+
+
+
+\newpage

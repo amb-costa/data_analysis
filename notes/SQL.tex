@@ -24,7 +24,7 @@ Definen y modifican la estructura de una DB, su esquema u objetos como índices 
 \begin{itemize}
     \item {\textbf{CREATE} [structure] strct\_name: crea una estructura a definir junto con sus características.
     \begin{itemize}
-        \item {\textbf{CREATE TABLE} table\_name (col1 dt1, col2 dt2....): define una tabla con pares de columnas y sus \gls{datatype} correspondientes. \textit{En algunos dialectos, se utiliza \textbf{CREATE TEMP TABLE} para tablas temporales}}
+        \item {\textbf{CREATE TABLE} table\_name (col1 dt1, col2 dt2....): define una tabla con pares de columnas y sus \textit{datatype} correspondientes. \textit{En algunos dialectos, se utiliza \textbf{CREATE TEMP TABLE} para tablas temporales}}
         \item {\textbf{CREATE TABLE} table\_name \textbf{AS} (query): crea una tabla utilizando los resultados de una consulta y la añade a la base de datos}
         \item {\textbf{SELECT INTO}: copia datos de una tabla a otra nueva, temporal. \textit{No es reconocido por Big Query}. Se recomienda \textit{\textbf{SELECT * INTO} table\_temp \textbf{FROM} (table\_original)}}
     \end{itemize}}
@@ -91,7 +91,7 @@ Instrucciones que se añaden a las cláusulas previamente mencionadas
 Acciones a llevar a cabo, generalmente se añaden en otras cláusulas para realizar filtros
 \begin{itemize}
     \item {\textbf{UNIX\_DATE}: devuelve la cantidad de días que han pasado desde 01/01/1970. \textit{Se utiliza para comparar fechas en distintos husos horarios}}
-    \item {\textbf{LENGTH} (col): devuelve el tamaño del \gls{str}}
+    \item {\textbf{LENGTH} (col): devuelve el tamaño del \textit{string}}
     \item {\textbf{SUBSTR} (col,start,amount): crea un substring en base a un punto de partida y una cantidad de caracteres}
     \item {\textbf{TRIM} (col): remueve espacios extra}
     \item {\textbf{CAST} (col AS data\_type): realiza \gls{typecast}. \textbf{SAFE\_CAST} devuelve NULL si la consulta falla}
