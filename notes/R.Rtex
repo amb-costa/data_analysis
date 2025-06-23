@@ -10,7 +10,9 @@ R es un lenguaje de programación utilizado con frecuencia para \textbf{Reproduc
 Los objetos fundamentales de R son 
 \begin{itemize}
     \item {\textbf{Operador de Asignación}: <- en vez de =}
-    \item {\textbf{Operadores Lógicos}: AND (\&\& o \&) OR (| o ||) NOT (!)}
+    \item {\textbf{Operadores Lógicos/Normales}: AND (\&\& o \&) OR (| o ||) NOT (!)}
+    \item {\textbf{Operadores lógicos de elemento inteligente}: \&, |}
+    \item {\textbf{Operadores relacionales o comparadores}: <, >, <=, =>, ==, !=}
     \item {\textbf{Funciones}: secciones de código reutilizable, usados para realizar tareas en específico}
     \item {\textbf{Comentarios - \#}}
     \item {\textbf{Variables}: representación de un valor que se puede guardar para usos futuros. Se asignan con el \textbf{operador de asignación <-}. \textit{siempre debieran empezar con una letra}}
@@ -21,79 +23,66 @@ Las estructuras de datos más comunes son
     \item {\textbf{Vectores}: Grupo de elementos de datos del mismo tipo, guardados en secuencia. \textit{c(v1,v2,...)} crea un vector, con sus valores separados por comas
     \begin{itemize}
         \item {Atómicos: no se puede tener un vector de valores numéricos y lógicos. \textit{Seis tipos primarios: lógicos (bool), enteros (integer, positivos y negativos), dobles (decimales), caracter(strings), complejos y sin formato}. Algunas funciones comunes son \textit{typeof, length, is.logical, is.double, is.integer, is.character()}}
-        \item {Listas: admiten elementos de cualquier tipo. \textit{ej: list(x,y,8,TRUE)}. 
-        \begin{sourcecode}{r}{}
-        # ejemplo de vector
-        x = c(1,3,5)
-        names(x) = c("a","b","c")
-        print(x)
-        # > a b c
-        # > 1 3 5
+        \item {Listas: admiten elementos de cualquier tipo. \textit{ej: list(x,y,8,TRUE)}}
+    \end{itemize}
+    \begin{lstlisting}[language=R]
+    # ejemplo de vector
+    x = c(1,3,5)
+    names(x) = c("a","b","c")
+    print(x)
+    # > a b c
+    # > 1 3 5
 
-        # ejemplo de lista
-        str(list("a", 1, 1.5, TRUE)
-        # > List of 4
-        # > \$ : chr a
-        # > \$ : int 1
-        # > \$ : num 1.5
-        # > \$ : logi TRUE
-        list('Chicago' = 1, 'New York' = 2)
-        \$Chicago
-        1
-        \$New York
-        2 \end{sourcecode}}
-    \end{itemize}}
+    # ejemplo de lista
+    str(list("a", 1, 1.5, TRUE)
+    # > List of 4
+    #> $ : chr a
+    #> $ : int 1
+    #> $ : num 1.5
+    #> $ : logi TRUE
+    list('Chicago' = 1, 'New York' = 2)
+    \$Chicago
+    1
+    \$New York
+    2\end{lstlisting}}
     \item {\textbf{\textit{Data Frame} - Marco de Datos}: conjunto de columnas que contienen datos, de forma similar a las hojas de cálculo y las tablas SQL. Los nombres de columnas debieran representar la variable, y se muestran en la parte superior, y una observación por fila. Los marcos pueden incluir tipos diferentes de datos, pero los elementos de una misma columna deben ser del mismo tipo, y las columnas deben tener el mismo número de filas
-    \begin{sourcecode}{r}{}
-        # marco en filas y columnas ordenadas
-        # data-frame simplificado, considerar tibbles a futuro
+    \begin{lstlisting}[language=R]
+    # marco en filas y columnas ordenadas
+    # data-frame simplificado, considerar tibbles a futuro
 
-        # lista de conjunto de datos precargados
-        data()
+    # lista de conjunto de datos precargados
+    data()
         
-        # cargar data-frame en el entorno
-        data("data_name") 
-        View(data_name) # en mayúsculas
-        head(data_name) # 6 primeras entradas
-        str(data_name) # ESTRUCTURA, no string
-        #> nombres de columnas y tipos de datos por columna
-        colnames(data_name) # solo nombres
-        mutate(data_name, newcol = conditions) # PARTE DE TIDYVERSE
+    # cargar data-frame en el entorno
+    data("data_name") 
+    View(data_name) # en mayúsculas
+    head(data_name) # 6 primeras entradas
+    str(data_name) # ESTRUCTURA, no string
+    #> nombres de columnas y tipos de datos por columna
+    colnames(data_name) # solo nombres
 
-        # entrega tibble con las columnas solicitadas
-        data_frame %>%
-          select(col_name)
+    # renombrar cada col_name en data_frame según función
+    # ej: tolower toupper
+    rename_with(data_frame,function)
 
-        # entrega tibble con todas las columnas EXCEPTO la especificada
-        data_frame %>%
-          select(-col_name)
+    # revision de los nombres de col_names
+    # solo contienen caracteres, números y guiones bajo
+    clean_names(data_frame)
 
-        # cambia el nombre de old_col a new_name
-        data_frame %>%
-          rename(new_name = old_col)
-
-        # renombrar cada col_name en data_frame según función
-        # ej: tolower toupper
-        rename_with(data_frame,function)
-
-        # revision de los nombres de col_names
-        # solo contienen caracteres, números y guiones bajo
-        clean_names(data_frame)
-
-        data.frame(x=c(1,2,3), y=c(1.5,5.5,7.5))
-        #     x y
-        # [1] 1 1.5
-        # [2] 2 5.5
-        # [3] 3 7.5\end{sourcecode}}
+    data.frame(x=c(1,2,3), y=c(1.5,5.5,7.5))
+    #     x y
+    # [1] 1 1.5
+    # [2] 2 5.5
+    # [3] 3 7.5\end{lstlisting}}
     \item {\textbf{Matrices}: conjunto bidireccional de elementos de datos
-    \begin{sourcecode}{r}{}
-        # crear matriz de 2x3 con 2 filas
-        # puede reemplazarse por ncol
-        # en este caso, rellena por columnas
-        matrix(c(3:8), nrow=2)
-        #       [,1] [,2] [,3]
-        # [1,]  3   5   7  
-        # [2,]  4   6   8\end{sourcecode}}
+    \begin{lstlisting}[language=R]
+    # crear matriz de 2x3 con 2 filas
+    # puede reemplazarse por ncol
+    # en este caso, rellena por columnas
+    matrix(c(3:8), nrow=2)
+    #       [,1] [,2] [,3]
+    # [1,]  3   5   7  
+    # [2,]  4   6   8\end{lstlisting}}
     \item {Rangos}
 \end{itemize}
 
@@ -116,52 +105,52 @@ Las estructuras de datos más comunes son
     \item {Utilizar \textbf{<-} para asignar en vez de \textbf{=}}
     \item {Añadir comentarios con \textbf{\#} más un espacio}
     \item {Recordar que hay paquetes de estilo/\textit{linters} que siguen reglas de formato específicas}
-    \item {\begin{sourcecode}{r}{}
-        # espacio extra alrededor de un código
-        # espacio extra antes del paréntesis izquierdo
-        if ( debug ) do (x)
-        species[ "delfin" , ]
+    \item {\begin{lstlisting}[language=R]
+    # espacio extra alrededor de un código
+    # espacio extra antes del paréntesis izquierdo
+    if ( debug ) do (x)
+    species[ "delfin" , ]
 
-        # comentario bien escrito
-        # asignacion con flecha
-        # falta de espacios en parentesis
-        # sangrias en codigo
-        # lineas con pocos caracteres
-        x <- 7
-        if (x>0) {
-          print("aqui hay sangria")
-        } else {
-          print("aqui tambien")
-        }\end{sourcecode}}
+    # comentario bien escrito
+    # asignacion con flecha
+    # falta de espacios en parentesis
+    # sangrias en codigo
+    # lineas con pocos caracteres
+    x <- 7
+    if (x>0) {
+        print("aqui hay sangria")
+    } else {
+        print("aqui tambien")
+    }\end{lstlisting}}
 \end{itemize}
 
 
 
 \subsection{Paquetes}
 Los \textbf{paquetes}, en el contexto R, son unidades de código reproducible. Incluyen \textbf{funciones reutilizables, documentación para las funciones, \textit{datasets} para extraer \textit{samples}, y pruebas integradas}. La instalación base de R incluye el paquete \textbf{BaseR}, y se puede instalar otros paquetes en sitios como \textbf{CRAN\textit{(Comprehensive R Archive Network)}}: un archivo online con paquetes de R, código fuente, manuales y documentación. Los paquetes se instalan, y luego se invocan en forma de librería. Considerar que la versión de R puede crear conflictos con algunos paquetes, y es necesario investigar alternativas. También se generan conflictos cuando los paquetes contienen funciones de nombres similares
-\begin{sourcecode}{r}{}
-    # obtener los paquetes instalados
-    installed.packages()
+\begin{lstlisting}[language=R]
+# obtener los paquetes instalados
+installed.packages()
     
-    # cargar y llamar paquetes
-    install.package("package_name")
-    library(package_name)
+# cargar y llamar paquetes
+install.package("package_name")
+library(package_name)
 
-    # crear carpeta nueva o directorio
-    dir.create("destiny_folder")
+# crear carpeta nueva o directorio
+dir.create("destiny_folder")
 
-    # crear archivo, si se crea R devuelve TRUE
-    file.create("name.txt") #o .docx, .csv... 
+# crear archivo, si se crea R devuelve TRUE
+file.create("name.txt") #o .docx, .csv... 
 
-    # copiar archivo a una carpeta
-    file.copy("name_file.txt", "destiny_folder")
+# copiar archivo a una carpeta
+file.copy("name_file.txt", "destiny_folder")
 
-    # elimina un archivo
-    unlink("some_file.csv")\end{sourcecode}
+# elimina un archivo
+unlink("some_file.csv")\end{lstlisting}
 
 \subsubsection{.lubridate}
 R tiene tres \textit{datatype} que hacen referencia al tiempo: \textbf{fecha(\textit{"YYYY\_MM\_DD"}), hora(\textit{"20:11:59 UTC"}), fecha+hora(\textit{"2018-03-31 18:15:48 UTC"})}. \textit{Las horas se expresan en UTC}. \textbf{lubridate} es parte de \textbf{tidyverse}, que se debe instalar
-\begin{sourcecode}{r}{}
+\begin{lstlisting}[language=R]
     # funciones clásicas para fechas 
     today()
     #> [1] "2025-01-05"
@@ -191,7 +180,7 @@ R tiene tres \textit{datatype} que hacen referencia al tiempo: \textbf{fecha(\te
     #> [1] "2021-01-20 08:01:00 UTC"
     as_date(now()) # conversion fecha-hora en solo fecha
     #> [1] "2025-01-05"
-\end{sourcecode}
+\end{lstlisting}
 
 
 \subsubsection{.tidyverse}
@@ -199,17 +188,60 @@ Sistema de paquetes con un diseño común, y enfoque en la manipulación de dato
 \begin{itemize}
     \item {\textbf{Factores}: almacenamiento de datos categóricos en R, cuando los valores son limitados y se limitan a grupos finitos como países y años}
     \item {\textbf{Pipas - Pipe (\%>\%)}: herramienta que expresa una secuencia de operaciones múltiples. Esto aprovecha las \textbf{funciones anidadas}: funciones contenidas completamente dentro de otra función
-    \begin{sourcecode}{r}{}
-        # ejemplo de pipa
-        # funcion_1 se aplica a data_set
-        # funcion_2 se aplica a data_set.funcion_1
-        data_set %>% 
-          funcion_1 %>%
-          funcion_2 %>%
-          funcion_final # pipas excepto en la última fila\end{sourcecode}}
+    \begin{lstlisting}[language=R]
+    # ejemplo de pipa
+    # funcion_1 se aplica a data_set
+    # funcion_2 se aplica a data_set.funcion_1
+    data_set %>% 
+        funcion_1 %>%
+        funcion_2 %>%
+        funcion_final # pipas excepto en la última fila\end{lstlisting}}
     \item {\textbf{Tibble}: forma simplificada de \textit{dataframes}. No cambian los tipos de datos en los inputs, los nombres de las variables, ni crean nombres para filas; esto simplifica la impresión de la información. Esto sigue la estandarización \textbf{Tidy Data} en R, donde la organización de datos se traduce en su estructura: las variables se organizan en columnas, las observaciones se organizan en filas, y cada valor tiene su propia celda. \textbf{as\_tibble(data\_name) : devuelve tabla de 10 primeras filas del marco de datos original}}
+    \begin{lstlisting}[language=R]
+    # ejemplo de funciones con pipas
+    # entregan TIBBLES con resultados
+    
+    penguins %>%
+    {
+      # entrega la columna solicitada
+      select(col_name) %>%
+
+      # entrega todo menos la columna solicitada
+      select(-col_name) %>%
+
+      # cambia el nombre de old_col a new_name
+      rename(new_name=old_col)
+
+      # ordena de acuerdo a una columna en ascendente
+      # para descendente, usar -col
+      arrange(col)
+        
+      # agrupa de acuerdo a una columna
+      group_by(island) %>%
+
+      # ignora celdas NA pero elimina filas
+      drop_na() %>%
+        
+      # promedio de cada isla de acuerdo a col_name
+      summarize (mean = mean(col_name)) %>%
+
+      # divide una columna en dos, asigna nombres
+        de acuerdo a un separador entregado
+      separate(data_frame, col, into=c("newname1","newname2"),
+        sep="{separator_choice}") %>%
+
+      # une dos columnas en una, con un separador entregado
+      unite(data_frame,"newcolname",col1,col2,sep="{sep}") %>%
+
+      # entrega un filtro con la columna consultada
+      filter(species == "spec_name") %>%
+
+      # modifica la variable de acuerdo a condiciones
+      mutate(new_variable, newcol = {conditions}) %>%
+      }  
+    \end{lstlisting}
     \item {\textbf{readr}: manejo de datos rectangulares (rectángulo perfecto de filas y columnas). Algunos tipos de archivos para almacenamiento de datos rectangulares: \textbf{.csv, .tsv\textit{(tabulación)}, .fwf\textit{(de ancho fijo)}, .log\textit{(eventos de sistemas operativos o software)}}
-    \begin{sourcecode}{r}{}
+    \begin{lstlisting}[language=R]
         # funciones de readr
         # también read_tsv, read_delim (archivos delimitados en general),
         #   read_fwf, read_table (archivos tabulares cuyas columnas se 
@@ -248,16 +280,26 @@ Sistema de paquetes con un diseño común, y enfoque en la manipulación de dato
 
         # revisión superficial de datos
         skim_without_charts(data_frame)
-        glimpse(data_frame) # más corto que skim
-
-        
-
-        
-        
-    \end{sourcecode}}
-    
+        glimpse(data_frame) # más corto que skim\end{lstlisting}}  
 \end{itemize}
-    
+
+\subsection{Pautas para nombres de Archivos}
+\begin{itemize}
+    \item {Nombres de largo razonable}
+    \item {Guiones bajos}
+    \item {Empezar un nombre con letra, terminar con números}
+    \item {Formatos de fecha estándar AAAA\_MM\_DD}
+    \item {Nombres de archivo que funcionen bien con el orden predeterminado \textit{(cronológico, lógico utilizando números primero...}}
+\end{itemize}
+
+\subsection{Evitar}
+\begin{itemize}
+    \item {Caracteres adicionales innecesarios}
+    \item {Usar espacios o caracteres \textit{ilegales} como \&, \%, \#, <, >}
+    \item {Empezar o terminar con símbolos}
+    \item {Formatos de fecha incompletos o incoherentes como \textit{M-D-AA}}
+    \item {Sistema aleatorio de números o fechas}
+\end{itemize}
 
 
 
