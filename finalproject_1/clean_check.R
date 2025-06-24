@@ -1,10 +1,13 @@
 # clean_check : revisión del proceso de limpieza
-# package.install(c(rlang, magrittr, data.table))
+# install.packages(c(rlang, magrittr, data.table, purrr))
 # clean_union_all <- read_csv("~/data_analysis/finalproject_1/cleaned_table.csv)
 # estrategia <- c(existencia, unicidad, viaje válido)
+
+install.packages("operators")
 library(rlang)
 library(magrittr)
 library(data.table)
+library(operators)
 
 pre_tabla <- as.data.table(clean_union_all)
 
@@ -55,8 +58,24 @@ tabla_repetidos <- pre_tabla[pre_tabla$ride_id %in% id_viajes$Var1[id_viajes$Fre
 
 # sin duplicados <- unique se deshace de los id_viajes duplicados
 tabla_limpia <- data.table(unique(pre_tabla, by="ride_id"))
+
+# unicidad <- las id de estaciones tienen station_id únicos
+# lo importante son las id, porque se pueden repetir nombres y coordenadas
+# puede que existan dos estaciones de tipos distintos en la misma cuadra
 id_estaciones_start <- data.table(unique(tabla_limpia, by="start_station_id"))
 id_estaciones_end <- data.table(unique(tabla_limpia, by="end_station_id"))
-testeo <- id_estaciones_start[id_estaciones_start$start_station_id %in% id_estaciones_end$end_station_id,]
-oetset <- id_estaciones_end[id_estaciones_end$end_station_id %in% id_estaciones_start$start_station_id,]
+id_estaciones <- merge (id_estaciones_start, id_estaciones_end, all=TRUE)
+start_notin_end<- id_estaciones[id_estaciones$start_station_id %!in% id_estaciones$end_station_id,]
+end_notin_start <-  id_estaciones[id_estaciones$end_station_id %!in% id_estaciones$start_station_id,]
+
+id_inicio <- tabla_limpia[,.(id_estacion=start_station_id, nombre_estacion=start_station_name,
+                             lat_estacion=start_lat, lng_estacion=start_lng)]
+id_fin <- tabla_limpia[,.(id_estacion=end_station_id, nombre_estacion=end_station_name,
+                             lat_estacion=end_lat, lng_estacion=end_lng)]
+id_estacion1 <- id_inicio[id_inicio$id_estacion %in% id_fin$id_estacion,]
+id_estacion2 <- id_fin[id_fin$id_estacion %in% id_inicio$id_estacion,]
+id_estaciones <-cbind(id_estacion1, id_estacion2)
+inicio_notin_fin <- id_inicio[id_inicio$id_estacion %!in% id_fin$id_estacion,]
+fin_notin_inicio <- id_fin[id_fin$id_estacion %!in% id_inicio$id_estacion,]
+# cruce de informacion <- todas las id de estaciones tienen los mismos datos en nombre y coord
 
