@@ -18,7 +18,9 @@ Los objetos fundamentales de R son
     \item {\textbf{Variables}: representación de un valor que se puede guardar para usos futuros. Se asignan con el \textbf{operador de asignación <-}. \textit{siempre debieran empezar con una letra}}
     \item {\textbf{\textit{datatypes}}}
 \end{itemize}
-Las estructuras de datos más comunes son
+
+
+\subsection{Estructuras de Datos}
 \begin{itemize}
     \item {\textbf{Vectores}: Grupo de elementos de datos del mismo tipo, guardados en secuencia. \textit{c(v1,v2,...)} crea un vector, con sus valores separados por comas
     \begin{itemize}
@@ -95,6 +97,7 @@ Las estructuras de datos más comunes son
 \end{itemize}
 \subsubsection{Sintaxis}
 \begin{itemize}
+    \item {Confirmar \textit{case-sensitivity} y cierre de todos los paréntesis}
     \item {Los operadores se rodean de espacio}
     \item {Los espacios se colocan \textbf{después} de la coma, no antes}
     \item {No se añaden espacios alrededor de un código entre paréntesis o corchete}
@@ -282,6 +285,182 @@ Sistema de paquetes con un diseño común, y enfoque en la manipulación de dato
         skim_without_charts(data_frame)
         glimpse(data_frame) # más corto que skim\end{lstlisting}}  
 \end{itemize}
+
+\subsubsection{.ggplot2 y \textit{DataViz}}
+Durante el proceso de DataViz, se hace necesario utilizar funciones que derivan de la estadística, además de conceptos de formateo de datos.
+Recordar \textit{datos en formato ancho y largo}
+Existen varios paquetes para \textit{DataViz} como \textbf{ggplot2}(el más popular), Plotly, Lattice, RGL, Dygraphs, Leaflet, Highcharter, Patchwork, gganimate, ggridges. Los beneficios de ggplot2 \textit{(grammar of graphics)} son: crear distintos tipos de gráficos, editar el estilo y sensación de los gráficos, crear visuales de alta calidad, combinar manipulación y visualización de datos utilizando pipas. Los gráficos se construyen en capas, por lo que cada línea debe terminar con +
+Se recomienda filtrar la información antes de graficar con otros paquetes como \textbf{.dplyr}
+Los aspectos núcleo del gráfico son
+\begin{itemize}
+    \item {\textit{aesthetic}: propiedad visual de un objeto como \textit{tamaño, forma, color}. Se pueden aplicar al gráfico completo o a una capa en específico al llamar dentro o fuera del \textit{mapping}}
+    \item {\textit{geom}: objeto geométrico elegido para representar los datos. Se pueden utilizar dos geom en el mismo gráfico}
+    \item {\textit{facet}: muestra de grupos o subsets de datos, en formatos pequeños. \textit{Funcionan como otra capa del diagrama}, añadir después de \textbf{GEOM\_FUNCT +}
+    \begin{lstlisting}[language=R]
+    # dos funciones
+
+    # variables singulares
+    # equivalente a facet_grid con una dimensión (~col2)
+    facet_wrap(~col)
+
+    # crea una matriz con dos variables
+    # col1 vertical como "filas"
+    # col2 horizontal como "columnas"
+    facet_grid(col1~col2)\end{lstlisting}}
+    \item {\textit{labels + annotation}: añadir notas a un documento o diagrama, para explicar o comentar aspectos. \textit{Funcionan como otra capa del diagrama} y se añaden después de \textbf{GEOM\_FUNCT +}. También es posible añadir líneas, flechas y formas al diagrama con ggplot2
+    \begin{lstlisting}[language=R]
+    # orden de etiquetas + notas
+    labs(title="plot_title", subtitle="plot_subtitle",
+      caption="plot_caption") +
+    annotate("text", x=x_coord, y=y_coord, label="plot_text",
+      color="", fontface="bold/cursive/whatever", size=4.5, angle=25)
+        
+    \end{lstlisting}}
+\end{itemize}
+\begin{lstlisting}[language=R]
+# exportar archivos con ggplot2
+# form like png, jpeg...
+ggsave("file_name.form")
+
+# exportar sin ggplot
+png()
+pdf()
+
+# transformar a formato dato ancho
+pivot_wider() # - filas + columnas
+
+# transformar a formato dato largo
+pivot_longer() # + filas - columnas
+
+# promedio de una pregunta
+mean(col)
+
+# desviación estandar en una columna
+sd(col)
+
+# correlacion entre columnas
+cor(col1, col2)
+
+# sesgo entre valores predichos y los obtenidos
+# mientras más cerca a cero, mejor
+bias(actual_value, predicted_value)
+
+# entrega muestreo aleatorio
+sample(data_frame)
+
+# mapping: define una variable del dataset como una estética
+# x, y= nombres de la estética
+# aquí todas las estéticas dentro de mapping
+ggplot(data=DATA) +
+  <GEOM_FUNCTION>(mapping=aes(x=col1, y=col2, {...aesthetic_mapping})
+
+# {...aesthetic_mapping}: estéticas para editar
+# dentro de mapping: aplica a columnas condicional
+# fuera de mapping: aplica a todas las columnas
+{
+  # color exterior distinto para c/variable en col
+  color = (col)
+
+  # forma distinta a c/variable en col
+  shape = (col)
+
+  # tamaño distinto para c/variable en col
+  size = (col)
+
+  # se rellena cada barra con un color(ver geom_bar)
+  fill = (col)
+  
+  # opacidad distinta a c/variable de la col
+  # a más grande la variable, más opaco
+  alpha = (col)
+}
+
+# <GEOM_FUNCTION>: funciones de objeto geométrico
+# reemplazar _FUNCTION con forma seleccionada
+{
+  _point()
+
+  # NO se añade aes=y
+  # la función cuenta filas donde está la variable en x
+  # si fill recibe una columna distinta a aes_x, 
+  #    se crea un gráfico de barras apilado
+  _bar(mapping=aes(x=col, fill=other_col))
+
+  _line()
+
+  # suavizado: detecta tendencia en datos
+  # otra capa de diagrama, dos tipos:
+  #   LOESS para >1000 puntos
+  #   GAM para cantidades grandes de puntos
+  _smooth(method={"loess", "gam"}, formula=y~s(x)
+  
+  # separa por valores en columna
+  # diferente línea, direrente tipo de línea para cada col
+  _smooth(mapping=aes(x,y,linetype=col)
+
+  # añade ruido aleatorio a cada punto en el gráfico
+  # evita overplotting: los puntos se superponen entre si
+  _jitter({...})  
+}\end{lstlisting}
+
+\subsubsection{.rmarkdown}
+\textbf{Markdown} es un syntax para formatear archivos de texto simple; diseñado originalmente para \textit{output} en HTML: etiquetas y código utilizado en las páginas web. \textbf{RMarkdown} es un archivo de formato para realizar documentos dinámicos con R con herramientas como \textbf{Rnotebook}: \textit{notebook} que permite ejecutar código, y mostrar visualizaciones del código como gráficos y tablas. Similar a otros notebooks como \textit{Jupyter, Kaggle, Google Collab...}. Es dinámico, así que cambia a medida que el código lo hace. Una vez se instala el paquete, se convierte un reporte con texto, código y resultados a través de \textbf{knit}
+\begin{lstlisting}[language=R]
+install.packages("rmarkdown")
+---
+# YAML = "lenguaje para traducir la metadata de estos datos, 
+        en un formato legible, se llama con tres guiones
+        al inicio del documento"
+        
+# se puede modificar el tipo de archivo en esta área
+# html_document = mejor para compartir con stakeholders
+# html_notebook = incluye copia del código fuente, útil para
+#   compartir con otros analistas o científicos de datos
+# pdf_document(usa latex), word_document, github_document, 
+#   odt_document(open document text), rtf_format(enriched-text 
+#   format), md_document(doc en markdown)
+
+# YAML para presentaciones
+# beamer_presentation(pdf), ioslides_presentation(HTML),
+#   slidy_presentation(HTML), powerpoint_presentation
+# presentacion en HTML con reveal.js
+# es un framework, se necesita el paquete
+# revealjs::revealjs_presentation
+
+# YAML para paneles = requiere paquete flexdashboard
+# Shiny: genera apps de web interactivo usando código en R
+#   incrustar animaciones en documentos RMarkdown, o alojar
+#   ejpágina web
+# runtine: shiny
+
+# Otros paquetes/formatos de salida
+# bookdown = libros y artículos
+# prettydoc = temas atractivos
+# rticles = plantillas para revistas y editoriales
+---
+    
+# para titulos más pequeños
+## añadir más whashtags
+### recordar un espacio después del #
+
+*texto en cursiva*
+**texto en negrita**
+
+# solo muestra nombre_link
+[nombre_link](url_link)
+
+# solo muestra nombre_imagen
+![nombre_imagen](url_link)
+
+# code chunk: ejecuta código en un documento .Rmd
+```{r nombre_chunk}
+  # insertar codigo entre backticks
+```
+\end{lstlisting}
+
+
+
+
 
 \subsection{Pautas para nombres de Archivos}
 \begin{itemize}
