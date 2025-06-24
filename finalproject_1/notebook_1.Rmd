@@ -34,8 +34,6 @@ Se tiene esta información sobre las características de Cyclistic
 
 -   Las campañas digitales disponibles incluyen correos electrónicos y publicaciones en redes sociales, entre otros
 
-------------------------------------------------------------------------
-
 <h2>Preguntar</h2>
 
 Al considerar la pregunta recibida anteriormente, se reconoce la expectativa de comparar los dos tipos de membresía en base a otras métricas comunes. Se acepta la información previa como verídica, pero debiera confirmarse contra los datos reales una vez se tenga acceso a ellos. Se reformula la pregunta recibida en cinco preguntas **SMART**, destacando las más importantes para este trabajo:
@@ -61,8 +59,6 @@ Los *Stakeholders* dentro de la empresa son:
 Se concluye que la diferencia entre planes se podría relacionar con características de los viajes, como duración de un trayecto o popularidad de una estación. La manera más directa de revisar estas relaciones es a través de la estadística, lo que brinda la oportunidad de comunicarse con el Equipo Ejecutivo utilizando herramientas que podrían reconocer. Finalmente, debido a la naturaleza del medio de transporte, debiera considerarse el mes o estación del año durante el proceso de análisis
 
 ### Se establece el **Problema Empresarial**: Cyclistic quiere aumentar su rentabilidad transformando sus clientes ocasionales a membresías anuales. Para esto, *se estudian los viajes realizados durante el año 2024, para buscar relaciones entre ambas membresías y otras variables asociadas a los viajes*. Las diferencias entre esas relaciones serán usadas para crear campañas de marketing que incentiven esta captura
-
-------------------------------------------------------------------------
 
 <h2>Preparar</h2>
 
@@ -107,8 +103,6 @@ El gráfico siguiente describe el tamaño de cada archivo `.csv` en función de 
 ```
 
 ### Tengo autorización para el uso, copia y almacenamiento de la fuente de datos de Cyclistic. Estos datos cumplen con el estándar **ROCCC**, pero se reconoce su sesgo ya que carece de información sobre opciones asistidas. Se establecen los parámetros para medir la validez de un viaje, y las métricas de interés para medir la frecuencia de atributos como día de la semana o ubicación geográfica de estaciones
-
-------------------------------------------------------------------------
 
 <h2>Procesar</h2>
 
@@ -205,6 +199,14 @@ Como analista de datos, realizo las siguientes suposiciones y reparos:
 Se debe evaluar si se crea un archivo único que reúna los resultados de todas las tablas, o si se mantiene el trabajo por separado; es probable que la `RAM` disponible en `RStudio/Posit Cloud` no permita el trabajo con archivos de gran tamaño. Si el proceso se vuelve engorroso, se debiera considerar utilizar `R` de forma local
 
 ### Se limpian los datos a través de `SQL`, resultando un poco menos de 80% de la información inicial; se acepta esta pérdida debido a la cantidad de viajes válidos disponibles. Se observan las primeras tendencias y se entregan opiniones sobre fenómenos relacionados, además de establecer los aspectos técnicos a futuro
+
+<h2>Analizar</h2>
+
+El tamaño del total de archivos a analizar excede la `RAM` disponible en `Posit Cloud`, por lo que se migra el proyecto a `RStudio`, que facilita el uso de R en comparación a otras `IDE` como `VS Code`. Por conveniencia, se unen todos los archivos `.csv` en uno solo, a través de cláusulas `UNION ALL` en `DuckDB`
+
+Una vez instalados los paquetes necesarios, se importa el archivo `clean_union_all.csv` para su uso y revisión. La primera tarea es revisar la efectividad de la limpieza de datos. Una vez se verifique su estado, es posible seguir con el análisis en si
+
+
 
 When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Ctrl+Shift+K* to preview the HTML file).
 
