@@ -1,45 +1,67 @@
-\section{Clasificación de Datos}
+\section{Datos y Clasificación}
+Los \textbf{datos} son conjuntos de hechos, y tienen un \textbf{ciclo de vida} independiente del proceso de análisis. En este contexto, se definen los conceptos siguientes:
+
+\begin{itemize}
+    \item {\textbf{Ecosistema}: Engloba todos los elementos que interactúan entre si para su manejo completo: \textbf{producción, administración, almacenamiento, análisis y distribución}. \textit{Esto incluye hardware y software}}
+    \item {\textbf{Diseño}: Organización de la información por formato, tipo o forma de almacenamiento}
+    \item {\textbf{Estrategia}: Gestión de la gente, herramientas y procesos a usar en el análisis}
+    \item {\textbf{Gobernanza}: Manejo formal de los activos de datos de una compañía. Parte del proceso consiste en migrar o almacenar la información en una ubicación central, ya sea física o virtual}
+    \item {\textbf{Toma de Decisiones Inspirada en Datos}: Guía del \gls{probemp}, que de por si nunca será más poderoso que su combinación con \textbf{experiencia humana, observación e intuición}. También es recomendable considerar fuentes diversas de datos para encontrar similitudes entre ellas}    
+\end{itemize} 
+
+\subsection{Ciclo de Vida}
+Los datos tienen su \textbf{ciclo de vida} independiente del proceso de análisis. Considerar que este es el ciclo de vida según \textit{Google Professional Certificate}, sin embargo puede variar de acuerdo a otras instituciones como el \href{https://www.usgs.gov/data-management/data-lifecycle}{Servicio Geológico de EEUU (USGS)} o la \href{https://online.hbs.edu/blog/post/data-life-cycle}{Escuela de Negocios de Harvard (HBS)}
+\begin{itemize}
+    \item {\textbf{\textit{Planning} - Planificación}: Decisión sobre características de los datos a tomar, como su tipo, cómo se obtendrán y cuáles son los resultados óptimos. También se decide quién estará a cargo de gestionar y administrar los datos}
+    \item {\textbf{\textit{Capture} - Captura}: Recolección de datos a través de diferentes herramientas y fuentes como entrevistas, observaciones, \textit{cookies}, formularios, cuestionarios, encuestas y sets preexistentes de datos. Una mala fuente de datos es sesgada, incompleta e incorrecta. Una \textbf{buena fuente de datos} es \textbf{Confiable, Original, Exhaustiva, Actual y Citada (\textit{Reliable, Original, Comprehensive, Current, Cited [ROCCC]})}}
+    \item {\textbf{\textit{Manage} - Mantención}: Cuidado, almacenamiento y seguridad de los datos. Se considera el lugar de almacenamiento, junto a las herramientas de manejo. \textit{Aquí no corresponde la \textbf{limpieza} porque no es una parte del ciclo, sino una tarea de analista}}
+    \item {\textbf{\textit{Analyze} - Análisis}: Resolución del problema utilizando los datos para respaldar objetivos empresariales y tomar decisiones}
+    \item {\textbf{\textit{Archive} - Archivar}: Almacenamiento de los datos en un lugar donde estén disponibles para referencias futuras, a corto y largo plazo. Puede, o no, que se usen de nuevo}
+    \item {\textbf{\textit{Destroy} - Destrucción}: Destrucción de los datos y las copias compartidas. La documentación en papel se destruye, o se realiza una limpieza de \textit{hardware} y \textit{software} para discos duros, servidores y bases de datos}
+\end{itemize}
 
 \subsection{\textit{Metadata} - Metadatos}
-Los metadatos son datos sobre los datos de una hoja de cálculo o DB, y permiten interpretar su contenido. Como forma de \gls{dtgvrnnc}, se almacenan en una ubicación central (como un \textbf{repositorio de \textit{metadata}}) de forma física o virtual. Actúan como una fuente única y verídica de información consistente, uniforme y de acceso estandarizado. Los tipos más comunes son
+Los metadatos son \textbf{datos sobre datos de un archivo} como una hoja de cálculo o una \textit{database}, y permite interpretar su contenido. Se consideran una \textbf{fuente única, verídica y consistente} de información, y se almacenan en ubicaciones físicas o virtuales, como un \textbf{repositorio de \textit{metadata}}
+
 \begin{description}
         \item {\textbf{Descriptivo}: Describe los datos, y puede utilizarse para identificarlos a futuro. \textit{títulos, descripciones, etiquetas, categorías}}
         \item {\textbf{Estructural}: Indica cómo un grupo de datos se organiza, y si es que pertenece (o no) a una o más recolecciones de datos. \textit{estructura de datos, estado, ubicación, flujo}}
         \item {\textbf{Administrativo}: Indica la fuente técnica de una propiedad u objeto digital. \textit{versión, propietarios o usuarios, permisos de acceso y edición}}
 \end{description}
 
-\subsection{Por Objetividad y Capacidad de Medición}
+\subsection{Clasificación}
+\subsubsection{Por Objetividad y Capacidad de Medición}
 \begin{description}
     \item{\textbf{Cuantitativos}: Son hechos numéricos, medidas específicas y objetivas. \textit{Qué cosas, cuántas, qué tan seguido?} Se subdividen en \textbf{discretos} (cuantificables, número limitado de valores) y \textbf{contínuos} (se miden y pueden tener casi cualquier valor numérico)}
     \item{\textbf{Cualitativos}: Son explicaciones subjetivas de cualidades y características. \textit{Por qué? Cómo?} Se subdividen en \textbf{nominal} (no presentan estructura o secuencia aparente) y \textbf{ordinal} (pueden ordenarse en base a alguna característica)}
 \end{description}
 
-\subsection{Por Nivel de Organización}
+\subsubsection{Por Nivel de Organización}
 \begin{description}
     \item {\textbf{Estructurados}: Son definidos, a menudo \textbf{cuantitativos}, organizados en formatos específicos como filas y columnas. Fáciles de ordenar y buscar. \textit{ej: registros telefónicos, Excel, DB SQL}}
     \item {\textbf{No Estructurados}: Son variados, a menudo \textbf{cualitativos}, que no muestran algún orden o patrón aparente. Entregan libertad de análisis, pero son más difíciles de buscar. \textbf{Representan la mayoría de los datos en el mundo.} \textit{ej: DB NOSQL, SMS, fotos y videos, archivos}}
 \end{description}
 
-\subsection{Por Ubicación}
+\subsubsection{Por Ubicación}
 \begin{description}
     \item {\textbf{Internos}: Viven dentro de los sistemas de la compañía o empresa}
     \item {\textbf{Externos}: Viven o son generados fuera de la organización}
 \end{description}
 
-\subsection{Por Cercanía a sus Fuentes}
+\subsubsection{Por Cercanía a sus Fuentes}
 \begin{description}
     \item {\textbf{\textit{$1^{\text{st}}$ party data} - 1° Fuente}: Recolectados por un individuo o grupo, con recursos propios}
     \item {\textbf{\textit{$2^{\text{nd}}$ party data} - 2° Fuente}: Recolectados directamente por un grupo desde su audiencia, y que luego se venden}
     \item {\textbf{\textit{$3^{\text{rd}}$ party data} - 3° Fuente}: Recolectados desde fuentes externas, que no los capturaron directamente}
 \end{description}
 
-\subsection{Por Formato}
+\subsubsection{Por Formato}
 \begin{description}
     \item {\textbf{\textit{Wide Data} - Formato Ancho}: Cada elemento de dato refiere a un solo registro o fila, y las columnas o campos contienen sus atributos. \textit{Preferir para tablas o gráficos con pocas variables, o comparar gráficos lineales simples}}
     \item {\textbf{\textit{Long Data} - Formato Corto}: Cada registro se relaciona con un valor específico, así que las variaciones de un atributo se dividirán en múltiples registros. \textit{Preferir cuando se almacenan muchas variables, o se realizan análisis o gráficos estadísticos más avanzados}}
 \end{description}
 
-\subsection{Por Tamaño}
+\subsubsection{Por Tamaño}
 \begin{description}
     \item {\textbf{\textit{Small Data} - Microdatos}: Conjunto de datos pequeños o de métricas específicas, generados durante un periodo de tiempo corto y definido. Generalmente se trabajan en hojas de cálculo y son útiles para decisiones diarias, pequeñas y medianas empresas. Tienen un tamaño manejable para el análisis}
     \item {\textbf{\textit{Big Data} - Macrodatos}: Conjunto de datos más amplio, menos específico, que cubre periodos de tiempo más extensos. Generalmente se mantienen en bases de datos y es probable que los utilicen organizaciones grandes, debido a que requieren más esfuerzo para recopilar, almacenar, clasificar y representar visualmente
