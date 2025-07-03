@@ -2,11 +2,9 @@
 % se hace necesario tener más secciones 
 
 \section{SQL - \textit{Structured Query Language}}
-SQL origina desde \textit{System R/IBM}, y está directamente relacionado con DB relacionales. Permite trabajar con conjuntos de datos grandes al acceder a tablas de DB, en tareas como preparación para análisis posteriores en otro software. Es ideal para el trabajo colaborativo y el seguimiento de \gls{qry} por todos los usuarios.
+SQL origina desde \textit{System R/IBM}, y está conectado con el uso de \textbf{RDBMS}. Permite el trabajo con conjuntos de datos grandes y permite el seguimiento de \textit{queries} por todos los usuarios. Notar que SQL no guarda los resultados de las consultas como tablas, y se debe crear una si eso es necesario
 
-Tomar en cuenta que existen múltiples dialectos SQL y es recomendable consultar la documentación. Sin embargo, la gran mayoría de las instrucciones son comunes, y se promueven buenas prácticas de comandos. \textit{Ejemplos de Dialectos SQL: MySQL, BigQuery, PostgreSQL, Microsoft SQL, SQLite}
-
-También considerar que SQL no guarda los resultados de los \gls{qry} como tablas, por lo que debe crearse una si es que eso es necesario.
+Existen múltiples dialectos SQL y es recomendable consultar la documentación, pero la gran mayoría de las instrucciones son comunes, y se promueven buenas prácticas de comandos. \textit{ej: MySQL, BigQuery, PostgreSQL, Microsoft SQL, SQLite}
 
 \paragraph{Términos comunes}
 \begin{description}
@@ -94,7 +92,7 @@ Acciones a llevar a cabo, generalmente se añaden en otras cláusulas para reali
     \item {\textbf{LENGTH} (col): devuelve el tamaño del \textit{string}}
     \item {\textbf{SUBSTR} (col,start,amount): crea un substring en base a un punto de partida y una cantidad de caracteres}
     \item {\textbf{TRIM} (col): remueve espacios extra}
-    \item {\textbf{CAST} (col AS data\_type): realiza \gls{typecast}. \textbf{SAFE\_CAST} devuelve NULL si la consulta falla}
+    \item {\textbf{CAST} (col AS data\_type): realiza \textit{typecast}. \textbf{SAFE\_CAST} devuelve NULL si la consulta falla}
     \item {\textbf{COUNT}(cols): devuelve el número de filas para un rango especificado}
     \item {COUNT(\textbf{DISTINCT} cols): devuelve el número de filas con valores distintos para un rango en específico}
     \item {\textbf{CONCAT} (substr1, substr2, ...) \textbf{AS} full\_str: une dos o más substrings en una columna

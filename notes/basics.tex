@@ -7,9 +7,10 @@
 La \textbf{Programación Computacional} consiste en entregar instrucciones a una computadora para llevar una acción (o un grupo de ellas) a cabo. Un \textbf{Lenguaje de Programación} corresponde a las palabras y símbolos que utilizamos para escribir instrucciones, de forma que un computador las siga. Esto permite \textbf{clarificar pasos del análisis, ahorrar tiempo, y reproducir y compartir el trabajo.}\textit{ej: R, Python, Javascript}
 \begin{itemize}
     \item {\textbf{IDE}: aplicación ligera que reúne varias herramientas a usar, en un lugar central}
-    \item {\textbf{Instrucciones Condicionales}: if(), else(), elseif(),
-            if(condicion){acción} else if(otra){otra accion} else {accion final}}
-    \item {\textbf{Consola} : área donde se entregan comandos al lenguaje. Se borra cuando el lenguaje se cierra, por lo que se necesita usar un editor para guardar comandos necesarios}
+    \item {\textbf{Instrucciones Condicionales}: if(), else(), elseif(), if(condicion){acción} else if(otra){otra accion} else {accion final}}
+    \item {\textbf{Consola}: área donde se entregan comandos al lenguaje. Se borra cuando el lenguaje se cierra, por lo que se necesita usar un editor para guardar comandos necesarios}
+    \item {\textbf{\textit{Syntax} - Sintaxis}: estructura predeterminada que incluye toda la información requerida, junto a su ubicación correcta}
+    \item {\textbf{\textit{Schema} - Esquema}: descripción de la forma en que algo está organizado, como una tabla relacional}
 \end{itemize}
 
 \subsection{Conceptos Clave}
@@ -17,6 +18,78 @@ La \textbf{Programación Computacional} consiste en entregar instrucciones a una
     \item {\textbf{Algoritmo}: conjunto de pasos a seguir para completar una tarea. \textit{Conjunto de pasos para que un programa termine una tarea}}
     \item {\textbf{La Nube}: ubicación virtual donde se pueden almacenar datos, en vez de utilizar un \textit{harddrive} de computador}
     \item {\textbf{Operador}: símbolo que nombra el tipo de operación o cálculo matemático a realizar. \textit{ej: \textbf{aritmético}(+-*/), \textbf{lógico}(AND, OR, NOT), }}
-    \item {\textbf{\textit{Datatype} - Tipo de Dato}: Descripción del tipo de valor que cierto atributo posee. \textit{ej: number(int,float), string, bool(TRUE, FALSE)}}
-    \item {\textbf{\textit{String}[str] - Cadena de Texto}: secuencia de caracteres y puntuación dentro de una celda con información textual, compuesto en mayor proporción por letras}
+    \item {\textbf{\textit{Datatype} - Tipo de Dato}: Descripción del tipo de valor que cierto atributo posee. \textit{ej: number(int,float), string, bool(TRUE, FALSE)}. Se define el \textbf{\textit{Typecasting}} como la conversión de \textit{datatype}}
+    \item {\textbf{\textit{String}[str] - Cadena de Texto}: Secuencia de caracteres y puntuación dentro de una celda con información textual, compuesto en mayor proporción por letras}
+    \item {\textbf{Fórmula}: Conjunto de instrucciones para un cálculo específico con datos datos. \textit{ej: promedio, error, desviación estándar}}
+    \item {\textbf{Celda}: Posición descrita usando filas o \textbf{registros} y columnas o \textbf{campos}. \textit{ej: A3 columna A fila 3}. Hay dos tipos de referencia para celdas
+    \begin{itemize}
+        \item {\textbf{Referencia Relativa}: al ser arrastrada, la celda cambia de valor junto con la fórmula donde está presente}
+        \item {\textbf{Referencia Absoluta}: el valor de la celda es fijo y no cambia con movimientos en fórmulas o celdas}
+    \end{itemize}
+    \begin{table}
+            \centering
+            \begin{tabular}{|p{5cm}|p{4.5cm}|p{4.5cm}|}
+                \hline
+                \multicolumn{3}{|c|}{Diferencias entre Referencias de Celdas} \\
+                \hline
+                & \textbf{Referencia Absoluta} & \textbf{Referencia Relativa} \\
+                \hline
+                \textbf{Ejemplos} & A1, C3, G2:G9 & \$A\$10, C\$2, \$D3 \\
+                \hline
+                \textbf{Si la celda se arrastra una columna a la derecha, una fila hacia abajo} & A10 $\rightarrow$ B11 & \$A10 $\rightarrow$ \$A11 \\
+                \hline
+            \end{tabular}
+        \end{table}}
 \end{itemize}
+
+\subsection{Bases de Datos}
+Al igual que al momento de clasificar, las bases de datos \textbf{relacionales} (\textit{Relational Database Management System - RDBMS}) contienen un grupo de tablas que se pueden conectar entre si, en base a sus relaciones o lo que tengan en común. \textbf{Si un campo se usa en dos tablas, se puede usar como conexión}
+
+\begin{itemize}
+    \item {\textbf{\textit{Primary Key} - Clave Primaria}: Identificador para una columna en específico donde cada uno de sus valores son únicos. No admite valores nulos o blancos, y no siempre es requerida en una tabla pero si aparece, solo se permite una. También es posible crear una \textbf{Clave Compuesta} a partir de varias columnas de una tabla}
+    \item {\textbf{\textit{Foreign Key} - Clave Externa}: Campo (o conjunto de) dentro de una tabla que es llave primaria en otra. Esta referencia permite conectar ambas tablas, y una tabla puede tener múltiples claves externas}
+\end{itemize}
+
+Así, las bases de datos \textbf{no relacionales} agrupan datos con todas las variables posibles en conjunto, lo que dificulta clasificar. Generalmente se relaciona con dialectos \textit{NOSQL}
+
+Se aísla la información de una \textit{database} a través de consultas o \textit{\textbf{queries}}. Así, se puede seleccionar, crear, añadir o descargar datos desde y hacia la \textit{database}
+
+\subsubsection{\textit{Spreadsheets vs Databases}}
+Considerar que para ambos, \textbf{Campo} corresponde a las columnas, y \textbf{Registro} a las filas. En un registro se contienen múltiples campos, o sea: un set de datos puede tener múltiples valores.
+
+\paragraph{Características en Común}
+Ambas herramientas permiten aritmética, fórmulas, y la agregación de datos
+
+\paragraph{Diferencias}
+Las hojas de cálculo se generan en un programa, mientras que SQL es un lenguaje de interacción con programas de DB.
+Las hojas de cálculo se guardan de forma local, mientras que las consultas SQL se mantienen en la DB.
+Las hojas de cálculo brindan acceso a datos que el usuario ingresa. SQL puede obtener información desde fuentes variadas en la misma DB
+Las hojas de cálculo son ideales para sets de datos pequeños, SQL permiten trabajar con sets más grandes
+Las hojas de cálculo facilitan el trabajo independiente, mientras que SQL mantiene registro de los cambios dentro del equipo
+Las hojas de cálculo contienen funcionalidades incorporadas, y SQL es útil en varios programas
+
+
+\begin{table}
+    \centering
+    \begin{tabular}{|p{3.5cm}|p{5.5cm}|p{5.5cm}|}
+        \hline
+        & \textbf{Spreadsheet} & \textbf{Database} \\
+        \hline
+        \textbf{Ubicación} & Apps de Software & Almacenes de datos accesibles mediante \textit{queries} \\
+        \hline
+        \textbf{Estructura\break de Datos} & Formato de filas y columnas & Uso de reglas y relaciones \\
+        \hline
+        \textbf{Organización} & En celdas & En colecciones completas \\
+        \hline
+        \textbf{Acceso de Datos} & Cantidad limitada & Grandes cantidades \\
+        \hline
+        \textbf{Ingreso de Datos} & Manual & Escrito y Coherente \\
+        \hline
+        \textbf{Personas\break trabajando} & Generalmente un usuario a la vez & Múltiples usuarios \\
+        \hline
+        \textbf{Controlado por} & Usuario & Sistema de gestión de base de datos \\
+        \hline
+    \end{tabular}
+\end{table}
+
+\newpage

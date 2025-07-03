@@ -1,12 +1,12 @@
 % separación de subsección por motivos de orden
 
 \section{\textit{Spreadsheets} - Hojas de Cálculo}
-Las hojas de cálculo se utilizan generalmente para conjuntos de datos pequeños, donde los valores se ingresan de forma manual. Brindan funciones incorporadas como creaciones de gráficos y visualizaciones, corrección ortográfica incorporada, entre otras. Pueden conectarse con otras hojas, tablas HTML y archivos \gls{csv}.
+Las hojas de cálculo se utilizan para conjuntos de datos pequeños, donde los valores se ingresan de forma manual. Permite la conexión con otras hojas, tablas HTML y archivos \textit{\textbf{comma-separated values}}, donde los valores se separan por comas. Para referenciar otras hojas de cálculo, se utilizan apóstrofes simples, terminadas con un signo de exclamación, seguidas del rango a referenciar. \textit{`otra\_hoja`!ra:ngo}
 
-Las hojas de cálculo pueden bloquearse para prevenir cambios por otros usuarios, ya sea la hoja completa o solo un rango. 
+Entegan funciones incorporadas como creadores de gráficos y visualizaciones, corrección ortográfica, entre otras. Las hojas se pueden bloquear para prevenir cambios por otros usuarios, ya sea la hoja completa o solo un rango
 
 \paragraph{Herramientas Comunes}
-Toda fórmula se comienza escribiendo '='. Al hacerlo, se despliega un menú que incluye fórmulas, nombres y \textit{strings}. Se incluyen ejemplos de \gls{syntx} para \textcolor{blue}{fórmulas} y \textcolor{ForestGreen}{funciones}. Después de aplicar una fórmula, se recomienda copiar y pegar la información generada para convertirla en datos estáticos
+Toda fórmula se comienza escribiendo '='. Al hacerlo, se despliega un menú que incluye fórmulas, nombres y \textit{strings}. Se incluyen ejemplos de \textit{syntax} para \textcolor{blue}{fórmulas} y \textcolor{ForestGreen}{funciones}. Después de aplicar una fórmula, se recomienda copiar y pegar la información generada para convertirla en datos estáticos
 \begin{itemize}
     \item {\textbf{Llenado Automático}: Presente como un cuadrado en la esquina inferior derecha de la celda, se arrastra y llena celdas vacías con el contenido y referencias de la celda inicial}
     \item {\textbf{Remover Duplicados}: Busca y elimina automáticamente aquellas entradas que podrían estar duplicadas} 
@@ -52,46 +52,18 @@ Para ciertas funciones, es posible añadir el sufijo IF para tomar ciertos argum
     \item {\textcolor{ForestGreen}{\textbf{=COUNTA(rango)}}: Cuenta el total de valores de cualquier tipo dentro de un rango especificado}
     \item {\textcolor{ForestGreen}{\textbf{=COUNT(rango)}}: Cuenta el total de valores numéricos o fechas dentro de un rango específico}
     \item {\textcolor{ForestGreen}{\textbf{=COUNTIF(rango,"valor\_comillas")}}: Cuenta el número de celdas, dentro de un rango determinado que cumplen con una condición. Es posible entregar una celda en vez del criterio, y se usa su contenido. \textit{ej =COUNTIF(A2:A30,'${\geq}$10') devuelve la cantidad de valores que son iguales o mayores a 10}}
-    
-    
 \end{itemize}
 
-\begin{description}
-    \item[Celda]{: Posición descrita usando filas \textbf{o registros/\textit{records}} y columnas \textbf{o campos/\textit{fields}}. \textit{Ejemplo: columna A fila 3 = A3}. 
-    \item {Para referenciar otras hojas de cálculo, se utilizan apóstrofes simples, terminadas con un signo de exclamación, seguidas del rango a referenciar. \textit{`otra\_hoja`!ra:ngo}}
-    \begin{description}
-        \item[Referencia Relativa]{: El valor de la celda cambia junto con la fórmula donde está presente, al arrastrarla o copiarla en otro lugar}
-        \item[Referencia Absoluta]{: El valor de la celda es fijo y no cambia con movimientos en fórmulas o celdas.\textit{Para realizar cambio entre absoluto y relativo, presionar F4}}
-        \begin{table}
-            \centering
-            \begin{tabular}{|p{5cm}|p{4.5cm}|p{4.5cm}|}
-                \hline
-                \multicolumn{3}{|c|}{Diferencias entre Referencias de Celdas} \\
-                \hline
-                & \textbf{Referencia Absoluta} & \textbf{Referencia Relativa} \\
-                \hline
-                \textbf{Ejemplos} & A1, C3, G2:G9 & \$A\$10, C\$2, \$D3 \\
-                \hline
-                \textbf{Si la celda se arrastra una columna a la derecha, una fila hacia abajo} & A10 $\rightarrow$ B11 & \$A10 $\rightarrow$ \$A11 \\
-                \hline
-            \end{tabular}
-        \end{table}
-    \end{description}}
-    \item[Fórmulas y Funciones]{: 
-    \begin{description}
-        \item {No todas las funciones requieren operadores. \textit{Ejemplos: SUM, AVERAGE, COUNT, MIN, MAX}}
-        \item[Errores Comunes]{: 
-        \begin{itemize}
-            \item {\textbf{\#DIV/0!}: Intento de dividir por cero o por una celda vacía}
-            \item {\textbf{\#ERROR()}: Fórmula no puede ser interpretada como input. \textit{Parsing error}}
-            \item {\textbf{\#N/A}: Los datos a usar en la fórmula no se encuentran en la hoja}
-            \item {\textbf{\#NAME?}: No se entiende el nombre de la fórmula o función}
-            \item {\textbf{\#NUM!}: Los cálculos de la fórmula o función no pueden realizarse}
-            \item {\textbf{\#VALUE!}: Error general para problemas con fórmulas o referencias de celda}
-            \item {\textbf{\#REF!}: Una fórmula referencia una celda no válida o eliminada}
-        \end{itemize}} 
-    \end{description}}
-\end{description}
+\paragraph{Errores Comunes}
+\begin{itemize}
+    \item {\textbf{\#DIV/0!}: Intento de dividir por cero o por una celda vacía}
+    \item {\textbf{\#ERROR()}: Fórmula no puede ser interpretada como input. \textit{Parsing error}}
+    \item {\textbf{\#N/A}: Los datos a usar en la fórmula no se encuentran en la hoja}
+    \item {\textbf{\#NAME?}: No se entiende el nombre de la fórmula o función}
+    \item {\textbf{\#NUM!}: Los cálculos de la fórmula o función no pueden realizarse}
+    \item {\textbf{\#VALUE!}: Error general para problema con fórmulas o referencias de celda}
+    \item {\textbf{\#REF!}: Una fórmula referencia una celda no válida o eliminada}
+\end{itemize}
 
 \newpage
 
