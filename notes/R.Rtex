@@ -404,7 +404,7 @@ ggplot(data=DATA) +
 }\end{lstlisting}
 
 \subsubsection{.rmarkdown}
-\textbf{Markdown} es un syntax para formatear archivos de texto simple; diseñado originalmente para \textit{output} en HTML: etiquetas y código utilizado en las páginas web. \textbf{RMarkdown} es un archivo de formato para realizar documentos dinámicos con R con herramientas como \textbf{Rnotebook}: \textit{notebook} que permite ejecutar código, y mostrar visualizaciones del código como gráficos y tablas. Similar a otros notebooks como \textit{Jupyter, Kaggle, Google Collab...}. Es dinámico, así que cambia a medida que el código lo hace. Una vez se instala el paquete, se convierte un reporte con texto, código y resultados a través de \textbf{knit}
+\textbf{Markdown} es un syntax para formatear archivos de texto simple; diseñado originalmente para \textit{output} en HTML: etiquetas y código utilizado en las páginas web. \textbf{RMarkdown} es un archivo de formato para realizar documentos dinámicos con R con herramientas como \textbf{Rnotebook}: \textit{notebook} que permite ejecutar \textbf{código en vivo}, y mostrar visualizaciones del código como gráficos y tablas. Similar a otros notebooks como \textit{Jupyter, Kaggle, Google Collab...}. Es dinámico, así que cambia a medida que el código lo hace. Una vez se instala el paquete, se convierte un reporte con texto, código y resultados a través de \textbf{knit}
 \begin{lstlisting}[language=R]
 install.packages("rmarkdown")
 ---
